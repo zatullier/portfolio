@@ -1,0 +1,23 @@
+---
+import type { WritingPiece } from '../data/writing';
+import { withBase } from '../utils/paths';
+
+type Props = {
+  piece: WritingPiece;
+  index: number;
+};
+
+const { piece, index } = Astro.props;
+---
+
+<article class="writing-card">
+  <div class="writing-index">0{index + 1}</div>
+  <div>
+    <p class="eyebrow">{piece.category} · {piece.readTime}</p>
+    <h3>{piece.title}</h3>
+    <p>{piece.summary}</p>
+  </div>
+  <a href={withBase(`/writing/${piece.slug}/`)} aria-label={`Read ${piece.title}`}>
+    <span>Read note</span><span aria-hidden="true">↗</span>
+  </a>
+</article>

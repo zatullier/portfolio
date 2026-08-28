@@ -1,0 +1,107 @@
+---
+import type { Project } from '../data/projects';
+
+type Props = {
+  project: Project;
+};
+
+const { project } = Astro.props;
+---
+
+<article class="case-study">
+  <section class="case-hero section-pad">
+    <div class="shell case-hero-grid">
+      <div>
+        <p class="eyebrow">Case study / {project.number}</p>
+        <h1>{project.title}</h1>
+        <p class="hero-lede">{project.summary}</p>
+      </div>
+      <aside class="case-meta">
+        <p class="case-status"><span></span>{project.status}</p>
+        <dl>
+          <div>
+            <dt>Format</dt>
+            <dd>Public, sanitized</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>{project.disciplines.join(' · ')}</dd>
+          </div>
+          <div>
+            <dt>Disclosure</dt>
+            <dd>No proprietary values or identifiers</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="paper-section section-pad">
+    <div class="shell content-grid">
+      <div class="content-label">
+        <span>01</span>
+        <p>Challenge</p>
+      </div>
+      <div class="prose-large">
+        <h2>The engineering question</h2>
+        <p>{project.challenge}</p>
+        <h3>Working constraints</h3>
+        <ul class="constraint-list">
+          {project.constraints.map((constraint) => <li>{constraint}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell content-grid">
+      <div class="content-label">
+        <span>02</span>
+        <p>Approach</p>
+      </div>
+      <div>
+        <h2>A reviewable path from question to evidence</h2>
+        <div class="process-grid">
+          {
+            project.approach.map((step, index) => (
+              <article class="process-step">
+                <span>0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="accent-section section-pad">
+    <div class="shell content-grid">
+      <div class="content-label content-label--dark">
+        <span>03</span>
+        <p>Outputs</p>
+      </div>
+      <div>
+        <h2>Artifacts built for review and reuse</h2>
+        <ol class="artifact-list">
+          {project.artifacts.map((artifact, index) => <li><span>0{index + 1}</span>{artifact}</li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="paper-section section-pad">
+    <div class="shell outcome-grid">
+      <div>
+        <p class="eyebrow eyebrow--dark">Outcome</p>
+        <h2>What changed</h2>
+        <p>{project.outcome}</p>
+      </div>
+      <blockquote>
+        <p>{project.reflection}</p>
+        <footer>Engineering reflection</footer>
+      </blockquote>
+    </div>
+  </section>
+</article>

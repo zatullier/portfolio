@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
+---
+
+<BaseLayout title="Page not found" description="The requested portfolio page could not be found.">
+  <section class="not-found section-pad">
+    <div class="shell">
+      <p class="eyebrow">Navigation fault</p>
+      <h1>404</h1>
+      <h2>This trajectory ends here.</h2>
+      <p>The page may have moved, or the address may be incomplete.</p>
+      <a class="button button--primary" href={withBase('/')}>Return home</a>
+    </div>
+  </section>
+</BaseLayout>

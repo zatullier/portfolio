@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { WritingPiece } from '../../data/writing';
+import { writing } from '../../data/writing';
+import { withBase } from '../../utils/paths';
+
+export function getStaticPaths() {
+  return writing.map((piece) => ({
+    params: { slug: piece.slug },
+    props: { piece },
+  }));
+}
+
+type Props = {
+  piece: WritingPiece;
+};
+
+const { piece } = Astro.props;
+---
+
+<BaseLayout title={piece.title} description={piece.summary}>
+  <article>
+    <header class="article-header">
+      <div class="shell article-header-inner">
+        <p class="eyebrow">{piece.category} · {piece.readTime}</p>
+        <h1>{piece.title}</h1>
+        <p class="article-dek">{piece.summary}</p>
+      </div>
+    </header>
+
+    <section class="article-body section-pad">
+      <div class="shell article-grid">
+        <aside class="article-aside">
+          <p>Public engineering note</p>
+          <a href={withBase('/technical-writing/')}>← All writing</a>
+        </aside>
+        <div class="article-prose">
+          <p>{piece.lede}</p>
+          {
+            piece.sections.map((section) => (
+              <section class="article-section">
+                <h2>{section.heading}</h2>
+                {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+                {section.bullets && (
+                  <ul>
+                    {section.bullets.map((bullet) => <li>{bullet}</li>)}
+                  </ul>
+                )}
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

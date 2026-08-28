@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact an aerospace and mechanical engineer for thoughtful technical conversations."
+>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <span class="page-hero-index">06 / CONTACT</span>
+        <p class="eyebrow">Contact</p>
+        <h1>Let’s talk through the hard part.</h1>
+      </div>
+      <div class="page-hero-note">
+        <p>
+          A focused note with the problem, context, and useful next step is the best way to begin.
+          Please do not send proprietary, export-controlled, or otherwise restricted material.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell contact-grid">
+      <div class="contact-lead">
+        <p class="eyebrow">Start a conversation</p>
+        <h2>Good engineering begins with a precise question.</h2>
+        <p>
+          I’m especially interested in analysis-to-test problems, mechanical systems, technical
+          decision-making, and teams that care about both rigor and clarity.
+        </p>
+
+        <div class="placeholder-note" style="margin-top: 2rem; margin-bottom: 0;">
+          <strong>Before launch</strong>
+          <span>
+            Replace the placeholder email in <code>src/data/site.ts</code>. The GitHub link is
+            already pointed at the connected public profile.
+          </span>
+        </div>
+
+        <div class="contact-methods">
+          <a class="contact-method" href={`mailto:${site.email}`}>
+            <span>Email</span>
+            <strong>{site.email}</strong>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="contact-method" href={site.github} target="_blank" rel="noreferrer">
+            <span>GitHub</span>
+            <strong>@zatullier</strong>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="contact-aside">
+        <p class="eyebrow">Useful context</p>
+        <h3>A strong first note includes:</h3>
+        <ul>
+          <li>The engineering question or role you have in mind</li>
+          <li>Why the problem matters and what decision is pending</li>
+          <li>The discipline mix and current phase of work</li>
+          <li>A practical next step or timeframe</li>
+        </ul>
+        <p class="confidentiality-note">
+          Keep initial outreach public-safe. Sensitive technical material should only be shared
+          through an approved process after appropriate agreements are in place.
+        </p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

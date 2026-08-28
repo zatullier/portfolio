@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#081216"/>
+      <stop offset="1" stop-color="#10232b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#b8ff72"/>
+      <stop offset="1" stop-color="#5bbcff"/>
+    </linearGradient>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0v54" fill="none" stroke="#dfeae6" stroke-opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="950" cy="315" r="228" fill="none" stroke="#dfeae6" stroke-opacity=".14"/>
+  <circle cx="950" cy="315" r="158" fill="none" stroke="#dfeae6" stroke-opacity=".09"/>
+  <ellipse cx="950" cy="315" rx="250" ry="95" transform="rotate(-24 950 315)" fill="none" stroke="url(#accent)" stroke-width="3" stroke-dasharray="7 12"/>
+  <circle cx="1086" cy="121" r="8" fill="#b8ff72"/>
+  <path d="M1072 122 1105 131 1078 151l5-14Z" fill="#b8ff72"/>
+  <path d="M94 93h56" stroke="#b8ff72" stroke-width="3"/>
+  <text x="94" y="154" fill="#b8ff72" font-family="monospace" font-size="18" font-weight="700" letter-spacing="4">Z. TULLIER / ENGINEERING</text>
+  <text x="88" y="293" fill="#e9eee9" font-family="Arial, sans-serif" font-size="68" font-weight="600" letter-spacing="-3">Clarity from first</text>
+  <text x="88" y="370" fill="#e9eee9" font-family="Arial, sans-serif" font-size="68" font-weight="600" letter-spacing="-3">principles to flight-ready</text>
+  <text x="88" y="447" fill="#b8ff72" font-family="Arial, sans-serif" font-size="68" font-weight="600" letter-spacing="-3">decisions.</text>
+  <text x="94" y="540" fill="#91a39f" font-family="monospace" font-size="16" letter-spacing="2">ANALYSIS / HARDWARE / VERIFICATION / WRITING</text>
+</svg>
