@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { site } from '../data/site';
+import { withBase } from '../utils/paths';
+---
+
+<BaseLayout
+  title="About"
+  description="About an aerospace and mechanical engineer focused on traceable analysis, hardware, verification, and communication."
+>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <span class="page-hero-index">01 / PROFILE</span>
+        <p class="eyebrow">About</p>
+        <h1>Engineering at the boundary of analysis and hardware.</h1>
+      </div>
+      <div class="page-hero-note">
+        <p>
+          I’m drawn to problems where the right answer depends on both a sound model and a clear
+          understanding of how real hardware is built, tested, and operated.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell about-intro-grid">
+      <aside class="about-aside">
+        <dl>
+          <div>
+            <dt>Discipline</dt>
+            <dd>Aerospace & mechanical engineering</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>{site.location}</dd>
+          </div>
+          <div>
+            <dt>Working style</dt>
+            <dd>Analytical · collaborative · hardware-aware</dd>
+          </div>
+          <div>
+            <dt>Portfolio scope</dt>
+            <dd>Sanitized public examples</dd>
+          </div>
+        </dl>
+      </aside>
+      <div class="prose-large">
+        <p class="eyebrow">Profile</p>
+        <h2>I like making complicated systems legible.</h2>
+        <p>
+          My best work begins by turning an ambiguous technical question into something a team
+          can reason about: explicit requirements, bounded assumptions, observable evidence, and
+          a decision that can be revisited when new information arrives.
+        </p>
+        <p>
+          That usually means moving comfortably between detail and system context—following a
+          load path, interrogating a model, planning a useful test, or writing the short memo that
+          helps several disciplines make the same decision for the same reasons.
+        </p>
+        <p>
+          The content in this starter portfolio is intentionally representative. Program names,
+          organizations, numerical results, and proprietary design details are omitted until
+          approved public material is available.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Focus areas"
+        title="Where I add leverage."
+        intro="A generalist’s view of technical work, with depth where analysis, verification, and mechanical judgment meet."
+      />
+      <div class="focus-grid">
+        <article class="focus-card">
+          <span>01</span>
+          <h3>Analysis & modeling</h3>
+          <p>
+            Build calculation and model chains that expose assumptions, sensitivities, margins,
+            and the practical limits of the result.
+          </p>
+        </article>
+        <article class="focus-card">
+          <span>02</span>
+          <h3>Hardware & verification</h3>
+          <p>
+            Connect design intent to interfaces, tolerances, failure modes, instrumentation, and
+            evidence that closes the right risk.
+          </p>
+        </article>
+        <article class="focus-card">
+          <span>03</span>
+          <h3>Technical decisions</h3>
+          <p>
+            Turn cross-disciplinary evidence into concise recommendations, durable rationale,
+            and clear ownership of remaining uncertainty.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="toolkit-section section-pad">
+    <div class="shell toolkit-grid">
+      <div>
+        <p class="eyebrow eyebrow--dark">Working toolkit</p>
+        <h2>Methods before software.</h2>
+        <p style="color: var(--paper-soft);">
+          Tools change by problem. The durable capability is knowing what evidence is needed,
+          how to produce it efficiently, and where the method can fail.
+        </p>
+        <a class="text-link" href={withBase('/experience/')}>See experience <span>↗</span></a>
+      </div>
+      <div class="toolkit-list">
+        <div>
+          <span>01</span>
+          <h3>Requirements decomposition</h3>
+          <p>Translate system intent into discipline-level questions and verification paths.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <h3>First-principles models</h3>
+          <p>Use transparent calculations to bound behavior before adding model complexity.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <h3>Trade studies</h3>
+          <p>Pair scores with risk, maturity evidence, and sensitivity to the framing.</p>
+        </div>
+        <div>
+          <span>04</span>
+          <h3>Test correlation</h3>
+          <p>Preserve predictions, interrogate mismatches, and update with physical rationale.</p>
+        </div>
+        <div>
+          <span>05</span>
+          <h3>Risk reduction</h3>
+          <p>Target the unknown most likely to change a design or program decision.</p>
+        </div>
+        <div>
+          <span>06</span>
+          <h3>Technical documentation</h3>
+          <p>Write concise records that carry assumptions and rationale into future work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

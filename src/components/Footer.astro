@@ -1,0 +1,33 @@
+---
+import { navigation, site } from '../data/site';
+import { withBase } from '../utils/paths';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <a class="brand footer-brand" href={withBase('/')}>
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <path d="M4 20.5 12.5 16l5.2-9 1.4 7.1L28 17l-8.9 1.2-4.6 7.2-1.8-6.1Z" fill="currentColor" />
+        </svg>
+        <span>{site.name}</span>
+      </a>
+      <p class="footer-note">
+        Engineering work, explained with the assumptions visible.
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      {navigation.slice(1).map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+    </nav>
+
+    <div class="footer-meta">
+      <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+      <p>Built with Astro · Deployed on GitHub Pages</p>
+      <p>© {year} {site.name}</p>
+    </div>
+  </div>
+</footer>

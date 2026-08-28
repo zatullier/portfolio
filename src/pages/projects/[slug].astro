@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCaseStudy from '../../components/ProjectCaseStudy.astro';
+import type { Project } from '../../data/projects';
+import { projects } from '../../data/projects';
+import { withBase } from '../../utils/paths';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+type Props = {
+  project: Project;
+};
+
+const { project } = Astro.props;
+const currentIndex = projects.findIndex((item) => item.slug === project.slug);
+const nextProject = projects[(currentIndex + 1) % projects.length];
+---
+
+<BaseLayout title={project.title} description={project.summary}>
+  <ProjectCaseStudy project={project} />
+  <section class="next-project section-pad">
+    <a class="shell" href={withBase(`/projects/${nextProject.slug}/`)}>
+      <div>
+        <p class="eyebrow">Next case study</p>
+        <h2>{nextProject.title}</h2>
+      </div>
+      <span class="next-arrow" aria-hidden="true">↗</span>
+    </a>
+  </section>
+</BaseLayout>

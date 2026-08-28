@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Resume"
+  description="Print-ready aerospace and mechanical engineering resume template with sanitized placeholders."
+>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <span class="page-hero-index">05 / RÉSUMÉ</span>
+        <p class="eyebrow">Résumé</p>
+        <h1>A concise record, ready for approved details.</h1>
+      </div>
+      <div class="page-hero-note">
+        <p>
+          This print-ready layout intentionally avoids invented education, employer, date, and
+          performance claims. Replace bracketed prompts before sharing publicly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell">
+      <div class="resume-toolbar">
+        <p>
+          Starter content is visibly generic by design. After customization, use your browser’s
+          print dialog to save a clean PDF.
+        </p>
+        <button class="button button--primary" type="button" data-print-resume>
+          Print / save PDF
+        </button>
+      </div>
+
+      <article class="resume-sheet">
+        <header class="resume-header">
+          <div>
+            <h1>{site.name}</h1>
+            <p>{site.title}</p>
+          </div>
+          <p class="resume-contact">
+            <span>{site.location}</span>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={site.github}>{site.github.replace('https://', '')}</a>
+          </p>
+        </header>
+
+        <section class="resume-summary">
+          <p>
+            Aerospace and mechanical engineering profile centered on traceable analysis,
+            hardware-aware judgment, verification planning, and clear technical decisions.
+            Replace this summary with a factual two- or three-sentence professional statement.
+          </p>
+        </section>
+
+        <section class="resume-section">
+          <h2>Experience</h2>
+          <div>
+            <article class="resume-entry">
+              <div class="resume-entry-header">
+                <div>
+                  <h3>Aerospace / Mechanical Engineering Role</h3>
+                  <p>[Organization — approved public name]</p>
+                </div>
+                <span>[Location] · [Dates]</span>
+              </div>
+              <ul>
+                <li>[Describe ownership using a verified engineering result.]</li>
+                <li>[Show how analysis, design, or test evidence informed a decision.]</li>
+                <li>[Add an approved measure of scope or impact; otherwise stay qualitative.]</li>
+              </ul>
+            </article>
+            <article class="resume-entry">
+              <div class="resume-entry-header">
+                <div>
+                  <h3>Prior Engineering Role</h3>
+                  <p>[Organization — approved public name]</p>
+                </div>
+                <span>[Location] · [Dates]</span>
+              </div>
+              <ul>
+                <li>[Summarize the problem class without exposing restricted context.]</li>
+                <li>[Name a method, deliverable, and decision it supported.]</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Education</h2>
+          <div class="resume-entry">
+            <div class="resume-entry-header">
+              <div>
+                <h3>[Engineering degree and field]</h3>
+                <p>[Institution]</p>
+              </div>
+              <span>[Year]</span>
+            </div>
+            <ul>
+              <li>[Optional: concentration, honors, relevant research, or design team.]</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Skills</h2>
+          <div class="resume-skills">
+            <div>
+              <strong>Analysis</strong>
+              <span>[Validated methods and analysis domains]</span>
+            </div>
+            <div>
+              <strong>Design</strong>
+              <span>[CAD, drawings, tolerance, mechanisms]</span>
+            </div>
+            <div>
+              <strong>Verification</strong>
+              <span>[Test planning, instrumentation, correlation]</span>
+            </div>
+            <div>
+              <strong>Software</strong>
+              <span>[Only tools you can discuss with confidence]</span>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    document.querySelector('[data-print-resume]')?.addEventListener('click', () => window.print());
+  </script>
+</BaseLayout>

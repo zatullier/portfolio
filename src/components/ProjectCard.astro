@@ -1,0 +1,28 @@
+---
+import type { Project } from '../data/projects';
+import { withBase } from '../utils/paths';
+
+type Props = {
+  project: Project;
+  compact?: boolean;
+};
+
+const { project, compact = false } = Astro.props;
+---
+
+<article class:list={['project-card', compact && 'project-card--compact']}>
+  <div class="project-card-topline">
+    <span class="project-number">{project.number}</span>
+    <span>{project.eyebrow}</span>
+  </div>
+  <div class="project-card-body">
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+  </div>
+  <ul class="tag-list" aria-label="Disciplines">
+    {project.disciplines.map((discipline) => <li>{discipline}</li>)}
+  </ul>
+  <a class="card-link" href={withBase(`/projects/${project.slug}/`)}>
+    View case study <span aria-hidden="true">↗</span>
+  </a>
+</article>

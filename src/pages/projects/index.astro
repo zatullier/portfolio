@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+---
+
+<BaseLayout
+  title="Projects"
+  description="Sanitized aerospace and mechanical engineering case studies built around traceable decisions."
+>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <span class="page-hero-index">03 / PROJECTS</span>
+        <p class="eyebrow">Project archive</p>
+        <h1>Work shown through the decisions it enabled.</h1>
+      </div>
+      <div class="page-hero-note">
+        <p>
+          Each case study uses a reusable structure: challenge, constraints, approach, artifacts,
+          outcome, and reflection. The examples are sanitized and make no proprietary claim.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell">
+      <div class="projects-intro" style="margin-bottom: 4rem;">
+        <p class="eyebrow">Case-study system</p>
+        <p>
+          Engineering portfolios are strongest when they make reasoning visible. These examples
+          focus on how a question was framed, what evidence mattered, and how uncertainty changed
+          the recommendation—not on confidential hardware details.
+        </p>
+      </div>
+      <div class="project-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

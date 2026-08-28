@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import WritingCard from '../components/WritingCard.astro';
+import { writing } from '../data/writing';
+---
+
+<BaseLayout
+  title="Technical Writing"
+  description="Public engineering notes on technical decisions, verification, and review practice."
+>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <span class="page-hero-index">04 / WRITING</span>
+        <p class="eyebrow">Technical writing</p>
+        <h1>Clear writing is part of the engineering.</h1>
+      </div>
+      <div class="page-hero-note">
+        <p>
+          Short public notes on traceability, model-to-test learning, technical reviews, and the
+          craft of making sound work easier for other people to use.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Selected notes"
+        title="Writing for technical action."
+        intro="These original, program-neutral articles demonstrate voice and structure without reproducing internal documents or proprietary examples."
+      />
+      <div class="writing-list">
+        {writing.map((piece, index) => <WritingCard piece={piece} index={index} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="principles-section section-pad">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Editorial standard"
+        title="What every technical document should do."
+      />
+      <div class="writing-standard-grid">
+        <article>
+          <span>01 / ORIENT</span>
+          <h3>Name the decision</h3>
+          <p>Give the reader a reason to care before asking them to process detail.</p>
+        </article>
+        <article>
+          <span>02 / TRACE</span>
+          <h3>Separate evidence</h3>
+          <p>Keep observations, assumptions, calculations, and judgment distinguishable.</p>
+        </article>
+        <article>
+          <span>03 / BOUND</span>
+          <h3>State uncertainty</h3>
+          <p>Show where the result is robust and where one input can still move it.</p>
+        </article>
+        <article>
+          <span>04 / ACT</span>
+          <h3>Close the loop</h3>
+          <p>End with the decision, remaining risk, owner, and next evidence required.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
