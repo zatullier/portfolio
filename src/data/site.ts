@@ -1,9 +1,9 @@
 export const site = {
-  name: 'Z. Tullier',
+  name: 'Zachary Tullier',
   title: 'Aerospace & Mechanical Engineer',
   description:
     'A clean engineering portfolio focused on analysis, hardware, verification, and technical communication.',
-  email: 'your.name@example.com',
+  email: 'zachary.r.tullier@gmail.com',
   github: 'https://github.com/zatullier',
   location: 'United States',
   availability: 'Open to thoughtful engineering conversations',
