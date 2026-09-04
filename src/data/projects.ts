@@ -18,7 +18,7 @@ export const projects: Project[] = [
   {
     slug: 'thermal-margin-assessment',
     number: '01',
-    title: 'Thermal Margin Assessment',
+    title: 'Assessment',
     eyebrow: 'Analysis · Sanitized case study',
     summary:
       'A traceable way to turn uncertain environments, heat paths, and limits into a decision-ready margin story.',
