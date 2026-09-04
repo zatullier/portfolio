@@ -2164,34 +2164,3 @@ h3 {
     text-decoration: none;
   }
 }
-
-  body {
-    background: #fff;
-  }
-
-  .site-header,
-  .site-footer,
-  .resume-toolbar,
-  .page-hero {
-    display: none !important;
-  }
-
-  .section-pad {
-    padding: 0;
-  }
-
-  .resume-sheet {
-    max-width: none;
-    padding: 0;
-    box-shadow: none;
-  }
-
-  .resume-header h1 {
-    font-size: 32pt;
-  }
-
-  .resume-section,
-  .resume-entry {
-    break-inside: avoid;
-  }
-}
