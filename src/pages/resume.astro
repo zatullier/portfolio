@@ -4,13 +4,13 @@ import { site } from '../data/site';
 ---
 
 <BaseLayout
-  title="Resume"
+  title=""
   description="Ayo1"
 >
   <section class="page-hero">
     <div class="shell page-hero-grid">
       <div>
-        <span class="page-hero-index">05 / RESUME</span>
+        <span class="page-hero-index">05 / RESUMEAYO</span>
         <p class="eyebrow">Resume</p>
         <h1>A concise record, ready for approved details.</h1>
       </div>
@@ -28,25 +28,25 @@ import { site } from '../data/site';
         <p>
           Ayo3.
         </p>
-        <button class="button button--primary" type="button" data-print-resume>
+        <button class="button button--primary" type="button" data-print->
           Print / save PDF
         </button>
       </div>
 
-      <article class="resume-sheet">
-        <header class="resume-header">
+      <article class="-sheet">
+        <header class="-header">
           <div>
             <h1>{site.name}</h1>
             <p>{site.title}</p>
           </div>
-          <p class="resume-contact">
+          <p class="-contact">
             <span>{site.location}</span>
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <a href={site.github}>{site.github.replace('https://', '')}</a>
           </p>
         </header>
 
-        <section class="resume-summary">
+        <section class="-summary">
           <p>
             Systems-focused aerospace and mechanical engineer experienced in leading multimillion-dollar development 
             of safety-critical mechanical and fluid hardware for human-spaceflight programs. 
@@ -56,17 +56,17 @@ import { site } from '../data/site';
           </p>
         </section>
         
-        <section class="resume-section">
+        <section class="-section">
           <h2>Education</h2>
-          <div class="resume-entry">
-            <div class="resume-entry-header">
+          <div class="-entry">
+            <div class="-entry-header">
               <div>
                 <h3>[Bachelor of Science, Dual Degree - Aerospace Engineering and Mechanical Engineering]</h3>
                 <p>[Oklahoma State University]</p>
               </div>
               <span>[2016-2021]</span>
             </div>
-            <div class="resume-entry-header">
+            <div class="-entry-header">
               <div>
                 <h3>[Masters of Science, Physics]</h3>
                 <p>[University of Houston - Clear Lake]</p>
@@ -88,11 +88,11 @@ import { site } from '../data/site';
           </div>
         </section>
 
-        <section class="resume-section">
+        <section class="-section">
           <h2>Experience</h2>
           <div>
-            <article class="resume-entry">
-              <div class="resume-entry-header">
+            <article class="-entry">
+              <div class="-entry-header">
                 <div>
                   <h3>Project Engineer</h3>
                   <p>Leidos / KBR (NASA Contracts)</p>
@@ -128,8 +128,8 @@ import { site } from '../data/site';
             </article>
 
 
-            <article class="resume-entry">
-              <div class="resume-entry-header">
+            <article class="-entry">
+              <div class="-entry-header">
                 <div>
                   <h3>Fluid Systems Engineer</h3>
                   <p>PBK - LEAF Engineers</p>
@@ -156,8 +156,8 @@ import { site } from '../data/site';
               </ul>
             </article>
 
-            <article class="resume-entry">
-              <div class="resume-entry-header">
+            <article class="-entry">
+              <div class="-entry-header">
                 <div>
                   <h3>Design to Flight Engineer and Metal Finishing Technician</h3>
                   <p>NASA HUNCH Program</p>
@@ -187,9 +187,9 @@ import { site } from '../data/site';
 
         
 
-        <section class="resume-section">
+        <section class="-section">
           <h2>Skills</h2>
-          <div class="resume-skills">
+          <div class="-skills">
             <div>
               <strong>Engineering Software & CAD</strong>
               <span>Solidworks, Creo, Inventor, AutoCAD, Revit, Onshape, PTC Windchill 
@@ -261,6 +261,6 @@ import { site } from '../data/site';
   </section>
 
   <script>
-    document.querySelector('[data-print-resume]')?.addEventListener('click', () => window.print());
+    document.querySelector('[data-print-]')?.addEventListener('click', () => window.print());
   </script>
 </BaseLayout>
