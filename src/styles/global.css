@@ -2143,8 +2143,8 @@ h3 {
   }
 
   .resume-section {
-    grid-template-columns: 0.95in 1fr;                        /* width reserved for EDUCATION, etc. */
-    gap: 0.12in;                                              /* space after that column */
+    grid-template-columns: 1.05in 1fr;
+    gap: 0.25in;                      
     padding-block: 0.16in;
     break-inside: auto;
   }
