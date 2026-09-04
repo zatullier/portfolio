@@ -2057,6 +2057,10 @@ h3 {
   body {
     width: auto;
     min-width: 0;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #fff !important;
@@ -2065,6 +2069,7 @@ h3 {
     print-color-adjust: economy;
   }
 
+  .skip-link,
   .site-header,
   .site-footer,
   .resume-toolbar,
@@ -2075,15 +2080,34 @@ h3 {
   .section-pad,
   .section-pad > .shell {
     width: auto;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0;
     padding: 0;
+    overflow: visible !important;
+  }
+
+  #main-content {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
 
   .resume-sheet {
+    position: static !important;
     width: auto;
     max-width: none;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0;
     padding: 0.08in 0.1in;
+    overflow: visible !important;
     background: #fff !important;
     box-shadow: none;
     color: #111;
