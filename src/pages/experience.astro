@@ -4,6 +4,7 @@ import CareerTimeline from '../components/CareerTimeline.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 ---
+<!--
 {
   careerTimeline.map((item) => (
     <article>
@@ -16,6 +17,7 @@ import { site } from '../data/site';
 const education = careerTimeline.find(
   (item) => item.tone === 'foundation'
 );
+-->
 ---
 
 <BaseLayout
@@ -81,7 +83,7 @@ const education = careerTimeline.find(
             <article class="resume-entry">
               <div class="resume-entry-header">
                 <div>
-                  <h3>{education?.title}</h3>
+                  <h3>{careerTimeline[0].title}</h3>
                   <p>Oklahoma State University</p>
                 </div>
                 <span>2016-2021</span>
