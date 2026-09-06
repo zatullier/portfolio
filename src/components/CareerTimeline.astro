@@ -1,0 +1,95 @@
+---
+import {
+  careerTimeline,
+  timelineEndYear,
+  timelineStartYear,
+} from '../data/career';
+
+const yearCount = timelineEndYear - timelineStartYear + 1;
+const yearTicks = [2016, 2018, 2020, 2022, 2024, 2026];
+---
+
+<div class="career-timeline" style={`--timeline-columns: ${yearCount}`}>
+  <div class="career-timeline__meta">
+    <p>Career + education tracks</p>
+    <div class="career-timeline__key" aria-label="Timeline key">
+      <span><i aria-hidden="true"></i> Duration</span>
+      <span><i class="is-current" aria-hidden="true"></i> Current</span>
+    </div>
+  </div>
+
+  <div class="career-timeline__axis" aria-hidden="true">
+    <span>Track</span>
+    <div class="career-timeline__years">
+      {
+        yearTicks.map((year) => (
+          <span
+            class="career-timeline__year"
+            style={`--tick: ${year - timelineStartYear + 1}`}
+          >
+            {year === timelineEndYear ? 'NOW' : year}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <ol class="career-timeline__rows">
+    {
+      careerTimeline.map((item) => {
+        const start = item.startYear - timelineStartYear + 1;
+        const span = item.endYear - item.startYear + 1;
+        const accessiblePeriod = item.current
+          ? `${item.startYear} to present`
+          : item.startYear === item.endYear
+            ? `${item.startYear}`
+            : `${item.startYear} to ${item.endYear}`;
+
+        return (
+          <li class={`career-timeline__row is-${item.tone}`}>
+            <div class="career-timeline__identity">
+              <span>{item.period}</span>
+              <h3>{item.title}</h3>
+              <p>{item.organization}</p>
+            </div>
+
+            <div
+              class="career-timeline__track"
+              role="img"
+              aria-label={`${item.title} at ${item.organization}, ${accessiblePeriod}`}
+            >
+              <div
+                class:list={[
+                  'career-timeline__bar',
+                  { 'is-current': item.current },
+                ]}
+                style={`--start: ${start}; --span: ${span}`}
+              >
+                <span>{item.period}</span>
+              </div>
+            </div>
+
+            <ul class="career-timeline__disciplines" aria-label={`${item.title} disciplines`}>
+              {item.disciplines.map((discipline) => <li>{discipline}</li>)}
+            </ul>
+          </li>
+        );
+      })
+    }
+  </ol>
+
+  <aside class="career-timeline__current" aria-label="Current phase of work">
+    <div>
+      <span>Current phase</span>
+      <strong>
+        <span>Development</span>
+        <span><i>→</i> Integration</span>
+        <span><i>→</i> Verification</span>
+      </strong>
+    </div>
+    <p>
+      Leading safety-critical mechanical and fluid hardware through requirements, interfaces,
+      supplier execution, test, and configuration-controlled delivery.
+    </p>
+  </aside>
+</div>
