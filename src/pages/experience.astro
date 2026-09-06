@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CareerTimeline from '../components/CareerTimeline.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import { site } from '../data/site';
 ---
 
 <BaseLayout
   title="Experience"
-  description="A sanitized experience framework for aerospace and mechanical engineering work."
+  description="Zachary Tullier’s aerospace and mechanical engineering experience, resume, and career timeline."
 >
   <section class="page-hero">
     <div class="shell page-hero-grid">
@@ -17,14 +18,14 @@ import SectionHeading from '../components/SectionHeading.astro';
       </div>
       <div class="page-hero-note">
         <p>
-          The role entries below are intentionally generalized placeholders. Replace them with
-          approved employer names, dates, scope, and outcomes before publication.
+          Review the detailed resume, save a clean letter-size PDF, and explore how each
+          engineering discipline developed across the career timeline.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section-pad">
+  <section class="section-pad resume-print-section" id="resume">
     <div class="shell">
       <div class="resume-toolbar">
         <p>
@@ -311,58 +312,6 @@ import SectionHeading from '../components/SectionHeading.astro';
       </article>
     </div>
   </section>
-  <section class="section-pad">
-    <div class="shell">
-      <div class="placeholder-note">
-        <strong>Disclosure note</strong>
-        <span>
-          No employer, customer, vehicle, program, schedule, performance value, or controlled
-          technical detail is implied by this starter content.
-        </span>
-      </div>
-
-      <div class="experience-list">
-        <article class="experience-item">
-          <div class="experience-period">Recent role · Add dates</div>
-          <div class="experience-role">
-            <h2>Aerospace / Mechanical Engineering Role</h2>
-            <p>Organization name — add approved public name</p>
-          </div>
-          <ul class="experience-details">
-            <li>Describe technical ownership across requirements, analysis, design, or test.</li>
-            <li>Replace with a verified outcome; omit customer and program identifiers.</li>
-            <li>Name the cross-functional interfaces that are safe to discuss publicly.</li>
-          </ul>
-        </article>
-
-        <article class="experience-item">
-          <div class="experience-period">Prior role · Add dates</div>
-          <div class="experience-role">
-            <h2>Mechanical Design / Analysis Role</h2>
-            <p>Organization name — add approved public name</p>
-          </div>
-          <ul class="experience-details">
-            <li>Summarize the class of hardware or analysis without revealing architecture.</li>
-            <li>Use scale or impact only when the number is approved for public release.</li>
-            <li>Include one example of how evidence changed an engineering decision.</li>
-          </ul>
-        </article>
-
-        <article class="experience-item">
-          <div class="experience-period">Foundation · Add dates</div>
-          <div class="experience-role">
-            <h2>Early-Career Engineering Role</h2>
-            <p>Organization name — add approved public name</p>
-          </div>
-          <ul class="experience-details">
-            <li>Describe the foundational technical methods developed in this role.</li>
-            <li>Highlight responsibility growth with factual, non-sensitive examples.</li>
-            <li>Keep tool lists secondary to the engineering problem and result.</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <section class="principles-section section-pad">
     <div class="shell">
@@ -381,3 +330,5 @@ import SectionHeading from '../components/SectionHeading.astro';
       ?.addEventListener('click', () => window.print());
   </script>
 </BaseLayout>
+
+
