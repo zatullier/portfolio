@@ -2429,6 +2429,10 @@ h3 {
     display: none !important;
   }
 
+  .resume-print-section ~ section {
+    display: none !important;
+  }
+
   .section-pad,
   .section-pad > .shell {
     width: auto;
@@ -2614,3 +2618,4 @@ h3 {
     text-decoration: none;
   }
 }
+
