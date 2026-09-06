@@ -4,16 +4,6 @@ import CareerTimeline from '../components/CareerTimeline.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 import {careerTimeline} from '../data/career';
-<!--
-{
-  careerTimeline.map((item) => (
-    <article>
-      <h3>{item.title}</h3>
-      <p>{item.organization}</p>
-      <span>{item.period}</span>
-    </article>
-  ))
--->
 }
 const education = careerTimeline.find(
   (item) => item.tone === 'foundation'
