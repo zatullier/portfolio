@@ -8,6 +8,9 @@ export type CareerTimelineItem = {
   tone: 'foundation' | 'hardware' | 'fluids' | 'systems' | 'research';
   disciplines: string[];
   bullets: string[];
+  location: string;
+  startMonth: string;
+  endMonth: string;
 };
 
 export const timelineStartYear = 2016;
@@ -22,7 +25,10 @@ export const careerTimeline: CareerTimelineItem[] = [
     endYear: 2021,
     tone: 'Bach',
     disciplines: ['Aerospace', 'Mechanical', 'Analysis'],
-    bullets: ['Aerospace', 'Mechanical', 'Analysis'],
+    bullets: ['Ayo', 'Ayo', 'Ayo'],
+    location: ['Ayo'],
+    startMonth: ['Ayo'],
+    endMonth: ['Ayo'],
 
   },
   {
@@ -33,7 +39,10 @@ export const careerTimeline: CareerTimelineItem[] = [
     endYear: 2021,
     tone: 'hunch',
     disciplines: ['Flight hardware', 'Manufacturing', 'Verification'],
-    bullets: ['Aerospace', 'Mechanical', 'Analysis'],
+    bullets: ['Ayo', 'Ayo', 'Ayo'],
+    location: ['Ayo'],
+    startMonth: ['Ayo'],
+    endMonth: ['Ayo'],
   },
   {
     period: '2021',
@@ -43,7 +52,10 @@ export const careerTimeline: CareerTimelineItem[] = [
     endYear: 2021,
     tone: 'fluids',
     disciplines: ['Fluid systems', 'Hydraulics', 'Codes'],
-    bullets: ['Aerospace', 'Mechanical', 'Analysis'],
+    bullets: ['Ayo', 'Ayo', 'Ayo'],
+    location: ['Ayo'],
+    startMonth: ['Ayo'],
+    endMonth: ['Ayo'],
   },
   {
     period: '2021–Present',
@@ -54,7 +66,10 @@ export const careerTimeline: CareerTimelineItem[] = [
     current: true,
     tone: 'pe',
     disciplines: ['Systems integration', 'Mechanical + fluids', 'Verification', 'Leadership'],
-    bullets: ['Aerospace', 'Mechanical', 'Analysis'],
+    bullets: ['Ayo', 'Ayo', 'Ayo'],
+    location: ['Johnson Space Center - Houston, Texas'],
+    startMonth: ['Ayo'],
+    endMonth: ['Ayo'],
   },
   {
     period: '2024–2026',
@@ -71,5 +86,9 @@ export const careerTimeline: CareerTimelineItem[] = [
               'Applied quantum and classical radiation theory, transport equations, and field-particle interaction models to evaluate how perturbative magnetic geometries influence emissivity, stability, and energy balance.',
               'Produced research combining plasma physics, electrodynamics, computational modeling, and radiation transport - skills directly translatable to nuclear system analysis, radiation effects evaluation, and multiphysics design integration.'
               ],
+    location: ['Houston, Texas'],
+    startMonth: ['Ayo'],
+    endMonth: ['Ayo'],
+    
   },
 ];
