@@ -65,10 +65,10 @@ export const careerTimeline: CareerTimelineItem[] = [
     tone: 'mast',
     disciplines: ['Plasma physics', 'Multiphysics', 'Radiation transport'],
     bullets: ['Thesis: Suppression of radiation emissions from relativistic plasma by utilizing magnetic perturbations', 
-              'Developed and analyzed multiphysics models describing plasma-magnetic-field interactions, exploring how imposed magnetic perturbations can modify radiation spectra, energy losses, and confinement behavior - concepts applicable to nuclear, fusion, and high-energy reactor systems.'
-              'Conducted advanced theoretical and computational modeling of relativistic plasmas, focusing on the mechanisms governing Bremsstrahlung and synchrotron radiation in high-temperature, high-density environments.'
-              'Developed and analyzed multiphysics models describing plasma-magnetic-field interactions, exploring how imposed magnetic perturbations can modify radiation spectra, energy losses, and confinement behavior - concepts applicable to nuclear, fusion, and high-energy reactor systems.'
-              'Applied quantum and classical radiation theory, transport equations, and field-particle interaction models to evaluate how perturbative magnetic geometries influence emissivity, stability, and energy balance.'
+              'Developed and analyzed multiphysics models describing plasma-magnetic-field interactions, exploring how imposed magnetic perturbations can modify radiation spectra, energy losses, and confinement behavior - concepts applicable to nuclear, fusion, and high-energy reactor systems.',
+              'Conducted advanced theoretical and computational modeling of relativistic plasmas, focusing on the mechanisms governing Bremsstrahlung and synchrotron radiation in high-temperature, high-density environments.',
+              'Developed and analyzed multiphysics models describing plasma-magnetic-field interactions, exploring how imposed magnetic perturbations can modify radiation spectra, energy losses, and confinement behavior - concepts applicable to nuclear, fusion, and high-energy reactor systems.',
+              'Applied quantum and classical radiation theory, transport equations, and field-particle interaction models to evaluate how perturbative magnetic geometries influence emissivity, stability, and energy balance.',
               'Produced research combining plasma physics, electrodynamics, computational modeling, and radiation transport - skills directly translatable to nuclear system analysis, radiation effects evaluation, and multiphysics design integration.'
               ],
   },
