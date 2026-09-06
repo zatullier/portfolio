@@ -4,7 +4,11 @@ import CareerTimeline from '../components/CareerTimeline.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 import {careerTimeline} from '../data/career';
-const education = careerTimeline.find((item) => item.tone === 'foundation');
+const bach = careerTimeline.find((item) => item.tone === 'bach');
+const mast = careerTimeline.find((item) => item.tone === 'mast');
+const hunch = careerTimeline.find((item) => item.tone === 'hunch');
+const fluids = careerTimeline.find((item) => item.tone === 'fluids');
+const pe = careerTimeline.find((item) => item.tone === 'pe');
 
 ---
 
@@ -71,8 +75,8 @@ const education = careerTimeline.find((item) => item.tone === 'foundation');
             <article class="resume-entry">
               <div class="resume-entry-header">
                 <div>
-                  <h3>{education?.title}</h3>
-                  <p>Oklahoma State University</p>
+                  <h3>{bach?.title}</h3>
+                  <p>{bach?.organization}</p>
                 </div>
                 <span>2016-2021</span>
               </div>
@@ -81,15 +85,14 @@ const education = careerTimeline.find((item) => item.tone === 'foundation');
             <article class="resume-entry">
               <div class="resume-entry-header">
                 <div>
-                  <h3>Masters of Science, Physics</h3>
-                  <p>University of Houston - Clear Lake</p>
+                  <h3>{mast?.title}</h3>
+                  <p>{mast?.organization}</p>
                 </div>
                 <span>2024-2026</span>
               </div>
               <ul>
                 <li>
-                  Thesis: Suppression of radiation emissions from relativistic plasma by
-                  utilizing magnetic perturbations.
+                  {mast?.bullets[0]}
                 </li>
                 <li>
                   Conducted advanced theoretical and computational modeling of relativistic
