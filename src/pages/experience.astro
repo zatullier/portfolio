@@ -4,10 +4,7 @@ import CareerTimeline from '../components/CareerTimeline.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 import {careerTimeline} from '../data/career';
-}
-const education = careerTimeline.find(
-  (item) => item.tone === 'foundation'
-);
+const education = careerTimeline.find((item) => item.tone === 'foundation');
 
 ---
 
