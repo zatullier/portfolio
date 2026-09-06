@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CareerTimeline from '../components/CareerTimeline.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 ---
 
@@ -79,32 +80,11 @@ import SectionHeading from '../components/SectionHeading.astro';
   <section class="principles-section section-pad">
     <div class="shell">
       <SectionHeading
-        eyebrow="Capability arc"
-        title="What the experience should demonstrate."
-        intro="Use these dimensions to replace generic role text with a compact, evidence-based career story."
+        eyebrow="Career trajectory"
+        title="One timeline. Multiple disciplines."
+        intro="Education, hands-on hardware, fluid systems, systems integration, verification, and computational physics developed as overlapping tracks—not isolated chapters."
       />
-      <div class="capability-matrix">
-        <article>
-          <span>01 / FRAME</span>
-          <h3>Problem definition</h3>
-          <p>Turn open-ended requests into bounded technical questions and success criteria.</p>
-        </article>
-        <article>
-          <span>02 / BUILD</span>
-          <h3>Engineering execution</h3>
-          <p>Produce models, designs, test plans, data reductions, and reviewable artifacts.</p>
-        </article>
-        <article>
-          <span>03 / CONNECT</span>
-          <h3>Cross-functional judgment</h3>
-          <p>Integrate constraints and evidence across design, systems, test, and operations.</p>
-        </article>
-        <article>
-          <span>04 / DECIDE</span>
-          <h3>Technical leadership</h3>
-          <p>Clarify risk, recommend a path, and preserve a durable decision record.</p>
-        </article>
-      </div>
+      <CareerTimeline />
     </div>
   </section>
 </BaseLayout>
