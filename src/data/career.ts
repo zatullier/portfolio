@@ -64,7 +64,7 @@ export const careerTimeline: CareerTimelineItem[] = [
     endYear: 2026,
     tone: 'mast',
     disciplines: ['Plasma physics', 'Multiphysics', 'Radiation transport'],
-    bullets: [Thesis: Suppression of radiation emissions from relativistic plasma by utilizing magnetic perturbations, 
-              Developed and analyzed multiphysics models describing plasma-magnetic-field interactions, exploring how imposed magnetic perturbations can modify radiation spectra, energy losses, and confinement behavior - concepts applicable to nuclear, fusion, and high-energy reactor systems.],
+    bullets: ['Thesis: Suppression of radiation emissions from relativistic plasma by utilizing magnetic perturbations', 
+              'Developed and analyzed multiphysics models describing plasma-magnetic-field interactions, exploring how imposed magnetic perturbations can modify radiation spectra, energy losses, and confinement behavior - concepts applicable to nuclear, fusion, and high-energy reactor systems'],
   },
 ];
