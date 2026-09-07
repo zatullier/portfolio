@@ -20,7 +20,7 @@ const { piece } = Astro.props;
 
 <BaseLayout title={piece.title} description={piece.summary}>
   <article>
-    <header class="article-header">
+    <header class:list={['article-header', piece.resources && 'article-header--research']}>
       <div class="shell article-header-inner">
         <p class="eyebrow">{piece.category} · {piece.readTime}</p>
         <h1>{piece.title}</h1>
@@ -31,11 +31,29 @@ const { piece } = Astro.props;
     <section class="article-body section-pad">
       <div class="shell article-grid">
         <aside class="article-aside">
-          <p>Public engineering note</p>
+          <p>{piece.documentType ?? 'Public engineering note'}</p>
           <a href={withBase('/technical-writing/')}>← All writing</a>
         </aside>
         <div class="article-prose">
           <p>{piece.lede}</p>
+          {
+            piece.resources && (
+              <section class="article-resources" aria-label="Thesis resources">
+                <p class="eyebrow">Thesis resources</p>
+                <div class="article-resource-list">
+                  {piece.resources.map((resource) => (
+                    <a href={resource.href} target="_blank" rel="noreferrer">
+                      <span>
+                        <strong>{resource.label}</strong>
+                        <small>{resource.description}</small>
+                      </span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )
+          }
           {
             piece.sections.map((section) => (
               <section class="article-section">
@@ -54,3 +72,4 @@ const { piece } = Astro.props;
     </section>
   </article>
 </BaseLayout>
+
