@@ -4,7 +4,7 @@ export type ExpertiseSkill = {
   slug: string;
   title: string;
   category: string;
-  electrons: ExpertiseLevel;
+  level: ExpertiseLevel;
   evidence: string;
 };
 
@@ -19,14 +19,14 @@ export const expertiseScale: Record<ExpertiseLevel, string> = {
   8: 'Mastery',
 };
 
-// Provisional self-assessment based on the public resume. Adjust the electron count (1–8)
-// whenever you want to tune how much depth the visualization communicates.
+// Provisional self-assessment based on the public resume. Adjust the level (1–8)
+// whenever you want to tune how much mission range the visualization communicates.
 export const expertiseSkills: ExpertiseSkill[] = [
   {
     slug: 'systems-integration',
     title: 'Systems integration',
     category: 'Technical leadership',
-    electrons: 8,
+    level: 8,
     evidence:
       'Leads cross-functional hardware development through requirements, interfaces, supplier execution, testing, and configuration-controlled delivery.',
   },
@@ -34,7 +34,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'requirements-interfaces',
     title: 'Requirements & interfaces',
     category: 'Systems engineering',
-    electrons: 7,
+    level: 7,
     evidence:
       'Develops system requirements, interface definitions, verification plans, and change packages for safety-critical hardware.',
   },
@@ -42,7 +42,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'verification-validation',
     title: 'Verification & validation',
     category: 'Systems engineering',
-    electrons: 7,
+    level: 7,
     evidence:
       'Plans and coordinates verification evidence across analysis, inspection, supplier data, and integrated testing.',
   },
@@ -50,7 +50,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'mechanical-fluids',
     title: 'Mechanical & fluid systems',
     category: 'Engineering analysis',
-    electrons: 7,
+    level: 7,
     evidence:
       'Applies fluid, thermal, mechanical, and pressurized-system fundamentals from design through integration and test.',
   },
@@ -58,7 +58,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'configuration-management',
     title: 'Configuration management',
     category: 'Program execution',
-    electrons: 7,
+    level: 7,
     evidence:
       'Maintains traceability among controlled drawings, requirements, procedures, analyses, and engineering changes.',
   },
@@ -66,7 +66,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'cad-drawings',
     title: 'CAD & technical drawings',
     category: 'Mechanical design',
-    electrons: 6,
+    level: 6,
     evidence:
       'Creates and reviews production drawings using GD&T, ASME Y14 practices, and configuration-controlled CAD workflows.',
   },
@@ -74,7 +74,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'manufacturing-test',
     title: 'Manufacturing & test',
     category: 'Hardware execution',
-    electrons: 6,
+    level: 6,
     evidence:
       'Supports fabrication, precision inspection, assembly documentation, environmental testing, and flight-hardware readiness.',
   },
@@ -82,7 +82,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'computational-physics',
     title: 'Computational physics',
     category: 'Research & modeling',
-    electrons: 6,
+    level: 6,
     evidence:
       'Builds multiphysics models spanning plasma dynamics, magnetic-field interactions, and radiation transport.',
   },
@@ -90,7 +90,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'programming-automation',
     title: 'Programming & automation',
     category: 'Digital engineering',
-    electrons: 5,
+    level: 5,
     evidence:
       'Uses Python, MATLAB, VBA, Java, and LabVIEW for analysis, data workflows, modeling, and engineering automation.',
   },
