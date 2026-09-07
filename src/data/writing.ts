@@ -4,6 +4,12 @@ export type WritingSection = {
   bullets?: string[];
 };
 
+export type WritingResource = {
+  label: string;
+  description: string;
+  href: string;
+};
+
 export type WritingPiece = {
   slug: string;
   category: string;
@@ -12,42 +18,59 @@ export type WritingPiece = {
   readTime: string;
   lede: string;
   sections: WritingSection[];
+  documentType?: string;
+  cta?: string;
+  resources?: WritingResource[];
 };
 
 export const writing: WritingPiece[] = [
   {
     slug: 'decision-memos-engineers-can-use',
-    category: 'Technical communication',
-    title: 'Decision memos engineers can actually use',
+    category: 'Master\'s thesis',
+    title: 'Biological implications of suppressing radiation emissions',
     summary:
-      'A compact structure for preserving technical reasoning without burying the decision.',
-    readTime: '4 min read',
+      'A multiscale framework connecting magnetic control of relativistic plasmas to radiation transport, absorbed dose, and biologically weighted risk.',
+    readTime: 'July 2026 · 121 pages',
     lede:
-      'A good decision memo lets a reader understand what changed, why it matters, and what evidence supports the recommendation—without recreating the entire analysis.',
+      'This thesis asks whether controlled magnetic perturbations can reshape the superthermal electron population that drives relativistic bremsstrahlung—and how any resulting spectral change propagates through shielding, dosimetry, and biological response.',
+    documentType: 'Master\'s thesis · University of Houston–Clear Lake',
+    cta: 'Explore thesis',
+    resources: [
+      {
+        label: 'Download thesis PDF',
+        description: 'Read the complete compiled thesis.',
+        href: 'https://github.com/zatullier/Latex/raw/refs/heads/main/assets/Thesis%20-%20Biological%20Implications%20of%20Suppressing%20Radiation%20Emissions.pdf',
+      },
+      {
+        label: 'Browse LaTeX source',
+        description: 'View the source files, figures, and project structure.',
+        href: 'https://github.com/zatullier/Latex/tree/main/src/Masters/Thesis',
+      },
+    ],
     sections: [
       {
-        heading: 'Start with the decision, not the history',
+        heading: 'From plasma kinetics to consequence',
         paragraphs: [
-          'Open with the choice that must be made, the recommended path, and the consequence of waiting. Background belongs only where it changes how the reader should evaluate the recommendation.',
-          'This framing is especially useful in multidisciplinary work, where each reviewer needs a common decision surface before diving into discipline-specific evidence.',
+          'Relativistic plasmas can lose a significant share of stored energy through bremsstrahlung, synchrotron emission, and related high-energy photon processes. The work examines magnetic perturbations as a way to selectively deplete or redistribute the superthermal electrons that contribute disproportionately to those losses.',
+          'The engineering question does not end at reduced radiated power. A changed photon spectrum must still be transported through structures and shielding, converted to absorbed dose, and evaluated against molecular and cellular response.',
         ],
       },
       {
-        heading: 'Make the evidence traceable',
+        heading: 'A source-to-dose framework',
         paragraphs: [
-          'Summarize the analysis at the level needed for the decision, then link each conclusion to an assumption, test, calculation, or source. Traceability builds confidence without turning the memo into a report.',
+          'The thesis builds a common causal chain from the electron distribution function to photon emissivity, transport, dosimetry, DNA damage, and cell survival. It treats source suppression and shielding as complementary controls and preserves spectral information instead of assuming that equal reductions in total power produce equal biological benefit.',
         ],
         bullets: [
-          'State the controlling requirement or objective.',
-          'Name the assumptions that could reverse the recommendation.',
-          'Separate observed evidence from engineering judgment.',
-          'Record dissent, residual risk, and the owner of the next action.',
+          'A number-conserving cutoff-and-redistribution representation for superthermal electrons.',
+          'An energy-dependent magnetic loss operator for relativistic kinetic modeling.',
+          'A spectrally resolved transfer model from emitted radiation to absorbed dose.',
+          'A shared validation plan spanning plasma diagnostics, spectroscopy, transport, dosimetry, and biological assays.',
         ],
       },
       {
-        heading: 'End with a durable record',
+        heading: 'Scope and next phase',
         paragraphs: [
-          'Close with the decision, conditions of approval, and follow-up actions. Months later, another engineer should be able to tell what was known at the time and why the chosen path was reasonable.',
+          'The numerical examples are reproducible, illustrative calculations rather than unreported experimental results. The proposed magnetic configurations remain physics concepts, not final reactor hardware. The recommended next phase is a staged validation campaign that first confirms electron-tail control, closes the energy balance, measures the absolute photon spectrum, and validates transport and dosimetry before biological testing.',
         ],
       },
     ],
@@ -125,3 +148,4 @@ export const writing: WritingPiece[] = [
     ],
   },
 ];
+
