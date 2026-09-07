@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CareerTimeline from '../components/CareerTimeline.astro';
-import ExpertiseAtom from '../components/ExpertiseAtom.astro';
+import CapabilityFlightPlan from '../components/CapabilityFlightPlan.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 import {careerTimeline} from '../data/career';
@@ -311,11 +311,11 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
   <section class="section-pad" id="expertise">
     <div class="shell">
       <SectionHeading
-        eyebrow="Expertise orbitals"
-        title="Technical depth, mapped as a valence shell."
-        intro="Each illuminated electron represents one level of demonstrated depth. A complete eight-electron shell marks the highest self-assessed level: mastery and the ability to lead the work independently."
+        eyebrow="Capability flight plan"
+        title="Technical depth, plotted as mission range."
+        intro="Select a discipline to move the vehicle along an eight-stage trajectory. Greater range represents deeper independent ownership—from exposure at launch to mission command."
       />
-      <ExpertiseAtom />
+      <CapabilityFlightPlan />
     </div>
   </section>
 
