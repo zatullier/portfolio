@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CareerTimeline from '../components/CareerTimeline.astro';
+import ExpertiseAtom from '../components/ExpertiseAtom.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 import {careerTimeline} from '../data/career';
@@ -304,6 +305,17 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
         intro="Education, hands-on hardware, fluid systems, systems integration, verification, and computational physics developed as overlapping tracks—not isolated chapters."
       />
       <CareerTimeline />
+    </div>
+  </section>
+
+  <section class="section-pad" id="expertise">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Expertise orbitals"
+        title="Technical depth, mapped as a valence shell."
+        intro="Each illuminated electron represents one level of demonstrated depth. A complete eight-electron shell marks the highest self-assessed level: mastery and the ability to lead the work independently."
+      />
+      <ExpertiseAtom />
     </div>
   </section>
 

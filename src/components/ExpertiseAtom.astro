@@ -1,0 +1,593 @@
+---
+import { expertiseScale, expertiseSkills } from '../data/expertise';
+
+const initialSkill = expertiseSkills[0];
+const orbitPlanes = [0, 1, 2];
+const electronPositions = [
+  { orbit: 0, angle: 4 },
+  { orbit: 1, angle: 48 },
+  { orbit: 2, angle: 92 },
+  { orbit: 0, angle: 138 },
+  { orbit: 1, angle: 184 },
+  { orbit: 2, angle: 228 },
+  { orbit: 0, angle: 274 },
+  { orbit: 1, angle: 318 },
+];
+---
+
+<div
+  class="expertise-atom"
+  data-expertise-root
+  style="--fill-strength: 1; --nucleus-glow: 3.9rem"
+>
+  <div class="expertise-atom__visual">
+    <div
+      class="expertise-atom__stage"
+      data-atom-stage
+      role="img"
+      aria-label={`${initialSkill.title}: ${initialSkill.electrons} of 8 valence electrons, ${expertiseScale[initialSkill.electrons]}`}
+    >
+      <div class="expertise-atom__space">
+        <span class="expertise-atom__core-orbit" aria-hidden="true"></span>
+
+        {
+          orbitPlanes.map((orbit) => (
+            <span class={`expertise-atom__orbit expertise-atom__orbit--${orbit}`} aria-hidden="true">
+              {
+                electronPositions.map((position, index) =>
+                  position.orbit === orbit ? (
+                    <i
+                      class:list={[
+                        'expertise-atom__electron',
+                        index < initialSkill.electrons && 'is-filled',
+                      ]}
+                      data-electron-index={index + 1}
+                      style={`--electron-angle: ${position.angle}deg`}
+                    />
+                  ) : null
+                )
+              }
+            </span>
+          ))
+        }
+
+        <div class="expertise-atom__nucleus" aria-hidden="true">
+          <span data-nucleus-count>{initialSkill.electrons}</span>
+          <small>/ 8</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="expertise-atom__readout" aria-live="polite">
+      <div>
+        <span data-selected-category>{initialSkill.category}</span>
+        <h3 data-selected-title>{initialSkill.title}</h3>
+      </div>
+      <div class="expertise-atom__charge">
+        <strong><span data-selected-count>{initialSkill.electrons}</span> / 8</strong>
+        <span data-selected-label>{expertiseScale[initialSkill.electrons]}</span>
+      </div>
+      <p data-selected-evidence>{initialSkill.evidence}</p>
+    </div>
+  </div>
+
+  <div class="expertise-atom__controls">
+    <div class="expertise-atom__controls-heading">
+      <p class="eyebrow">Select a skill</p>
+      <p>Illuminated particles show demonstrated depth; open positions show room to keep growing.</p>
+    </div>
+
+    <div class="expertise-atom__skills">
+      {
+        expertiseSkills.map((skill, index) => (
+          <button
+            class:list={['expertise-atom__skill', index === 0 && 'is-active']}
+            type="button"
+            data-expertise-choice
+            data-title={skill.title}
+            data-category={skill.category}
+            data-evidence={skill.evidence}
+            data-electrons={skill.electrons}
+            data-level-label={expertiseScale[skill.electrons]}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            <span class="expertise-atom__skill-copy">
+              <strong>{skill.title}</strong>
+              <small>{skill.category}</small>
+            </span>
+            <span
+              class="expertise-atom__mini-shell"
+              aria-label={`${skill.electrons} of 8, ${expertiseScale[skill.electrons]}`}
+            >
+              {
+                Array.from({ length: 8 }, (_, electron) => (
+                  <i class:list={[electron < skill.electrons && 'is-filled']} aria-hidden="true" />
+                ))
+              }
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="expertise-atom__scale" aria-label="Expertise scale">
+      <span><strong>1–2</strong> Foundation</span>
+      <span><strong>3–4</strong> Applied</span>
+      <span><strong>5–6</strong> Advanced</span>
+      <span><strong>7–8</strong> Specialist → Mastery</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const expertiseRoots = document.querySelectorAll<HTMLElement>('[data-expertise-root]');
+
+  expertiseRoots.forEach((root) => {
+    const choices = Array.from(
+      root.querySelectorAll<HTMLButtonElement>('[data-expertise-choice]')
+    );
+    const electrons = Array.from(
+      root.querySelectorAll<HTMLElement>('[data-electron-index]')
+    );
+    const stage = root.querySelector<HTMLElement>('[data-atom-stage]');
+    const nucleusCount = root.querySelector<HTMLElement>('[data-nucleus-count]');
+    const selectedTitle = root.querySelector<HTMLElement>('[data-selected-title]');
+    const selectedCategory = root.querySelector<HTMLElement>('[data-selected-category]');
+    const selectedCount = root.querySelector<HTMLElement>('[data-selected-count]');
+    const selectedLabel = root.querySelector<HTMLElement>('[data-selected-label]');
+    const selectedEvidence = root.querySelector<HTMLElement>('[data-selected-evidence]');
+
+    const selectSkill = (choice: HTMLButtonElement) => {
+      const level = Number(choice.dataset.electrons);
+      const title = choice.dataset.title ?? '';
+      const category = choice.dataset.category ?? '';
+      const label = choice.dataset.levelLabel ?? '';
+      const evidence = choice.dataset.evidence ?? '';
+
+      choices.forEach((button) => {
+        const active = button === choice;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+
+      electrons.forEach((electron) => {
+        const index = Number(electron.dataset.electronIndex);
+        electron.classList.toggle('is-filled', index <= level);
+      });
+
+      root.style.setProperty('--fill-strength', String(level / 8));
+      root.style.setProperty('--nucleus-glow', `${1.3 + 2.6 * (level / 8)}rem`);
+      if (nucleusCount) nucleusCount.textContent = String(level);
+      if (selectedTitle) selectedTitle.textContent = title;
+      if (selectedCategory) selectedCategory.textContent = category;
+      if (selectedCount) selectedCount.textContent = String(level);
+      if (selectedLabel) selectedLabel.textContent = label;
+      if (selectedEvidence) selectedEvidence.textContent = evidence;
+      stage?.setAttribute(
+        'aria-label',
+        `${title}: ${level} of 8 valence electrons, ${label}`
+      );
+    };
+
+    choices.forEach((choice) => {
+      choice.addEventListener('click', () => selectSkill(choice));
+    });
+
+    if (stage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stage.addEventListener('pointermove', (event) => {
+        const bounds = stage.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        stage.style.setProperty('--tilt-x', `${-y * 10}deg`);
+        stage.style.setProperty('--tilt-y', `${x * 12}deg`);
+      });
+
+      stage.addEventListener('pointerleave', () => {
+        stage.style.setProperty('--tilt-x', '-4deg');
+        stage.style.setProperty('--tilt-y', '7deg');
+      });
+    }
+  });
+</script>
+
+<style>
+  .expertise-atom {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .expertise-atom__visual {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(rgba(91, 188, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91, 188, 255, 0.035) 1px, transparent 1px),
+      radial-gradient(circle at 50% 43%, rgba(91, 188, 255, 0.12), transparent 44%),
+      var(--night-raised);
+    background-size: 2rem 2rem, 2rem 2rem, auto, auto;
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.28);
+  }
+
+  .expertise-atom__visual::before,
+  .expertise-atom__visual::after {
+    position: absolute;
+    width: 7rem;
+    height: 1px;
+    background: var(--line-strong);
+    content: '';
+  }
+
+  .expertise-atom__visual::before {
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .expertise-atom__visual::after {
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+
+  .expertise-atom__stage {
+    --tilt-x: -4deg;
+    --tilt-y: 7deg;
+    display: grid;
+    width: min(31rem, 92%);
+    aspect-ratio: 1;
+    place-items: center;
+    margin-inline: auto;
+    perspective: 900px;
+    touch-action: pan-y;
+  }
+
+  .expertise-atom__space {
+    position: relative;
+    width: 82%;
+    aspect-ratio: 1;
+    transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transform-style: preserve-3d;
+    transition: transform 180ms ease-out;
+  }
+
+  .expertise-atom__core-orbit,
+  .expertise-atom__orbit {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    border: 1px solid rgba(226, 237, 233, 0.24);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+  }
+
+  .expertise-atom__core-orbit {
+    width: 42%;
+    aspect-ratio: 1;
+    border-color: rgba(184, 255, 114, 0.2);
+    transform: translate(-50%, -50%) rotateX(70deg);
+  }
+
+  .expertise-atom__orbit {
+    width: 100%;
+    aspect-ratio: 1;
+    animation: expertise-orbit 20s linear infinite;
+  }
+
+  .expertise-atom__orbit--0 {
+    --orbit-rx: 68deg;
+    --orbit-ry: 4deg;
+    --orbit-rz: 9deg;
+    animation-duration: 18s;
+  }
+
+  .expertise-atom__orbit--1 {
+    --orbit-rx: 8deg;
+    --orbit-ry: 68deg;
+    --orbit-rz: 52deg;
+    animation-duration: 22s;
+    animation-direction: reverse;
+  }
+
+  .expertise-atom__orbit--2 {
+    --orbit-rx: 62deg;
+    --orbit-ry: 56deg;
+    --orbit-rz: -34deg;
+    animation-duration: 26s;
+  }
+
+  .expertise-atom__electron {
+    --electron-radius: clamp(7rem, 16vw, 12rem);
+    position: absolute;
+    top: calc(50% - 0.42rem);
+    left: calc(50% - 0.42rem);
+    width: 0.84rem;
+    height: 0.84rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: var(--night);
+    opacity: 0.42;
+    transform: rotate(var(--electron-angle)) translateX(var(--electron-radius));
+    transition:
+      opacity 240ms ease,
+      background-color 240ms ease,
+      box-shadow 240ms ease,
+      scale 240ms ease;
+  }
+
+  .expertise-atom__electron.is-filled {
+    border-color: var(--lime);
+    background: var(--lime);
+    box-shadow:
+      0 0 0.6rem rgba(184, 255, 114, 0.85),
+      0 0 1.6rem rgba(91, 188, 255, 0.55);
+    opacity: 1;
+    scale: 1.18;
+  }
+
+  .expertise-atom__nucleus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    width: 29%;
+    aspect-ratio: 1;
+    align-items: baseline;
+    justify-content: center;
+    border: 1px solid rgba(184, 255, 114, 0.42);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 31% 25%, var(--ink), var(--blue) 9%, var(--night-soft) 54%, var(--night) 78%);
+    box-shadow:
+      0 0 var(--nucleus-glow) rgba(91, 188, 255, 0.38),
+      inset -1rem -1rem 2rem rgba(0, 0, 0, 0.38);
+    color: var(--ink);
+    line-height: 1;
+    transform: translate(-50%, -50%) translateZ(2.25rem);
+  }
+
+  .expertise-atom__nucleus span {
+    align-self: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 700;
+  }
+
+  .expertise-atom__nucleus small {
+    align-self: center;
+    margin-left: 0.2rem;
+    color: var(--ink-soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+  }
+
+  .expertise-atom__readout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem 1.5rem;
+    align-items: end;
+    padding: 1.4rem clamp(1.25rem, 3vw, 2rem) 1.6rem;
+    border-top: 1px solid var(--line);
+    background: rgba(8, 18, 22, 0.76);
+  }
+
+  .expertise-atom__readout h3 {
+    margin: 0.25rem 0 0;
+    font-size: clamp(1.35rem, 2.2vw, 2rem);
+  }
+
+  .expertise-atom__readout > div:first-child > span,
+  .expertise-atom__charge > span {
+    color: var(--lime);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .expertise-atom__charge {
+    display: grid;
+    justify-items: end;
+  }
+
+  .expertise-atom__charge strong {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 1rem;
+  }
+
+  .expertise-atom__readout > p {
+    grid-column: 1 / -1;
+    max-width: 58ch;
+    margin: 0.35rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .expertise-atom__controls-heading {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    margin-bottom: 1.25rem;
+  }
+
+  .expertise-atom__controls-heading .eyebrow {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .expertise-atom__controls-heading > p:last-child {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.84rem;
+  }
+
+  .expertise-atom__skills {
+    border-top: 1px solid var(--line);
+  }
+
+  .expertise-atom__skill {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      padding-left 160ms ease;
+  }
+
+  .expertise-atom__skill:hover,
+  .expertise-atom__skill.is-active {
+    padding-left: 1rem;
+    background: rgba(184, 255, 114, 0.07);
+  }
+
+  .expertise-atom__skill.is-active {
+    box-shadow: inset 2px 0 0 var(--lime);
+  }
+
+  .expertise-atom__skill-copy {
+    display: grid;
+    min-width: 0;
+  }
+
+  .expertise-atom__skill-copy strong {
+    font-size: 0.91rem;
+  }
+
+  .expertise-atom__skill-copy small {
+    overflow: hidden;
+    color: var(--ink-faint);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .expertise-atom__mini-shell {
+    display: grid;
+    grid-template-columns: repeat(4, 0.38rem);
+    gap: 0.25rem;
+  }
+
+  .expertise-atom__mini-shell i {
+    width: 0.38rem;
+    height: 0.38rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .expertise-atom__mini-shell i.is-filled {
+    border-color: var(--lime);
+    background: var(--lime);
+    box-shadow: 0 0 0.35rem rgba(184, 255, 114, 0.5);
+  }
+
+  .expertise-atom__scale {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem 1rem;
+    margin-top: 1.4rem;
+    color: var(--ink-faint);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.67rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .expertise-atom__scale strong {
+    margin-right: 0.35rem;
+    color: var(--ink);
+  }
+
+  @keyframes expertise-orbit {
+    from {
+      transform: translate(-50%, -50%) rotateX(var(--orbit-rx)) rotateY(var(--orbit-ry)) rotateZ(var(--orbit-rz));
+    }
+    to {
+      transform: translate(-50%, -50%) rotateX(var(--orbit-rx)) rotateY(var(--orbit-ry)) rotateZ(calc(var(--orbit-rz) + 360deg));
+    }
+  }
+
+  @media (max-width: 920px) {
+    .expertise-atom {
+      grid-template-columns: 1fr;
+    }
+
+    .expertise-atom__skills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-left: 1px solid var(--line);
+    }
+
+    .expertise-atom__skill {
+      border-right: 1px solid var(--line);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .expertise-atom__stage {
+      width: 100%;
+    }
+
+    .expertise-atom__electron {
+      --electron-radius: clamp(6.25rem, 35vw, 9.25rem);
+    }
+
+    .expertise-atom__readout {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .expertise-atom__charge {
+      justify-items: start;
+    }
+
+    .expertise-atom__readout > p {
+      grid-column: 1;
+    }
+
+    .expertise-atom__controls-heading,
+    .expertise-atom__skills {
+      grid-template-columns: 1fr;
+    }
+
+    .expertise-atom__controls-heading {
+      gap: 0.4rem;
+    }
+
+    .expertise-atom__skills {
+      border-left: 0;
+    }
+
+    .expertise-atom__skill {
+      border-right: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .expertise-atom__orbit {
+      animation: none;
+    }
+
+    .expertise-atom__space,
+    .expertise-atom__electron,
+    .expertise-atom__skill {
+      transition: none;
+    }
+  }
+</style>
+
