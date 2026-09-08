@@ -16,14 +16,14 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'thermal-margin-assessment',
+    slug: 'Bremsstrahlung',
     number: '01',
-    title: 'Assessment',
-    eyebrow: 'Analysis! · Sanitized case study',
+    title: 'Bremsstrahlung Reduction Using Energy Cutoff Method',
+    eyebrow: 'Analysis · Model Generation',
     summary:
-      'A traceable way to turn uncertain environments, heat paths, and limits into a decision-ready margin story.',
-    status: 'Representative example — values and program context intentionally omitted',
-    disciplines: ['Thermal analysis', 'Requirements', 'Sensitivity studies'],
+      'A reproducible computational framework for studying how energy-selective modification of relativistic electron distributions affects bremsstrahlung spectra and receptor-weighted radiation dose.',
+    status: 'Thesis calculations reproduced and benchmarked relativistic electron-ion bremsstrahlung kernel produced',
+    disciplines: ['Particle Physics', 'Numerical Analysis', 'Radiobiology'],
     challenge:
       'A flight-like assembly needed a defensible view of thermal margin across several operating modes. The useful answer was not a single temperature; it was a clear explanation of assumptions, sensitivities, and decision thresholds.',
     constraints: [
