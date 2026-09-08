@@ -15,6 +15,7 @@ Task List
 > Polish plasma model program and put in projects
 > Polish LEAF automation and put in projects. Waiting on NASA comp.
 > Polish 5020 automation and put in projects. Waiting on NASA comp.
+> Generate magnet calculation tool
 > Put NASA articles about flywheel
 > Determine what to do with other writing places
 > Determine what other projects you want added
