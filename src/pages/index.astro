@@ -48,11 +48,18 @@ import { withBase } from '../utils/paths';
       <div class="section-topline">
         <SectionHeading
           eyebrow="Selected work"
-          title="Inspectable Models, Engineering decisions, and Userful Tools"
-          intro="Representative case studies show the reasoning, review artifacts, and decision structure without exposing proprietary program details."
+          title="Inspectable Models, Engineering decisions, and Useful Tools"
+          intro="Nuclear models to test feasability of hypothesis, representative case studies to showcase decision structure, and practical tools to optimize the design to flight process."
         />
+<!--
         <a class="text-link" href={withBase('/projects/')}>All projects <span>↗</span></a>
+-->
       </div>
+        <div class="button-row">
+          <a class="button button--primary" href={withBase('/projects/')}>
+            Explore all projects <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       <div class="project-grid">
         {projects.map((project) => <ProjectCard project={project} compact />)}
       </div>
