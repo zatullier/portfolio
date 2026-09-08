@@ -19,11 +19,15 @@ const { project, compact = false } = Astro.props;
     <h3>{project.title}</h3>
     <p>{project.summary}</p>
   </div>
-  <div <p>Disciplines</p>
-  <ul class="tag-list" aria-label="Disciplines">
-    {project.disciplines.map((discipline) => <li>{discipline}</li>)}
-  </ul>
+  <div>
+    <h3>Disciplines</h3> 
+    <ul className="tag-list" aria-label="Disciplines"> 
+      {project.disciplines.map((discipline, index) => (
+        <li key={discipline || index}>{discipline}</li>
+      ))} 
+    </ul>
   </div>
+
   <a class="card-link" href={withBase(`/projects/${project.slug}/`)}>
     View case study <span aria-hidden="true">↗</span>
   </a>
