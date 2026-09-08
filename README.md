@@ -13,8 +13,8 @@ Task List
 > Wordsmith the "What I am looking for" portion of the contact page and find better style to display it
 > Add photos to 500px and add connectoin to projects page and link to contact page
 > Polish plasma model program and put in projects
-> Polish LEAF automation and put in projects
-> Polish 5020 automation and put in projects
+> Polish LEAF automation and put in projects. Waiting on NASA comp.
+> Polish 5020 automation and put in projects. Waiting on NASA comp.
 > Put NASA articles about flywheel
 > Determine what to do with other writing places
 > Determine what other projects you want added
