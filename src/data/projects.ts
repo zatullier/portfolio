@@ -162,6 +162,8 @@ export const projects: Project[] = [
     reflection:
       'A useful trade study does more than rank ideas. It reveals which assumptions control the ranking and identifies the cheapest evidence that could change the decision.',
   },
+
+<!--
   {
     slug: 'ayo',
     number: '10',
@@ -170,8 +172,17 @@ export const projects: Project[] = [
     summary: 'ayo',
     status: 'ayo',
     disciplines: ['ayo',],
+    tools: ['ayo',],
     challenge: 'ayo',
     constraints: ['ayo',],
+    assumptionSummary: 'ayo',
+    assumption: [
+      {
+        title: 'ayo',
+        description: 'ayo',
+      },
+    ],
+    approachSummary: 'ayo',    
     approach: [
       {
         title: 'ayo',
@@ -182,6 +193,8 @@ export const projects: Project[] = [
     outcome: 'ayo',
     reflection: 'ayo',
   },
+-->
+      
 ];
 
 export function getProject(slug: string) {
