@@ -162,6 +162,26 @@ export const projects: Project[] = [
     reflection:
       'A useful trade study does more than rank ideas. It reveals which assumptions control the ranking and identifies the cheapest evidence that could change the decision.',
   },
+  {
+    slug: 'ayo',
+    number: '10',
+    title: 'ayo',
+    eyebrow: 'ayo',
+    summary: 'ayo',
+    status: 'ayo',
+    disciplines: ['ayo',],
+    challenge: 'ayo',
+    constraints: ['ayo',],
+    approach: [
+      {
+        title: 'ayo',
+        description: 'ayo',
+      },
+    ],
+    artifacts: ['ayo',],
+    outcome: 'ayo',
+    reflection: 'ayo',
+  },
 ];
 
 export function getProject(slug: string) {
