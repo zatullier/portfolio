@@ -20,6 +20,7 @@ const { project, compact = false } = Astro.props;
     <p>{project.summary}</p>
   </div>
   <ul class="tag-list" aria-label="Disciplines">
+    <p>Disciplines</p>
     {project.disciplines.map((discipline) => <li>{discipline}</li>)}
   </ul>
   <a class="card-link" href={withBase(`/projects/${project.slug}/`)}>
