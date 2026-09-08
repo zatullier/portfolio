@@ -4,9 +4,27 @@ A responsive aerospace/mechanical engineering portfolio built with Astro and con
 GitHub Pages. The starter emphasizes traceable engineering decisions, reusable project case
 studies, technical writing, and careful handling of sensitive work.
 
-> The checked-in content is intentionally sanitized. It does not claim real employers, programs,
-> dates, education, performance values, or proprietary technical details. Replace placeholders
-> only with facts approved for public release.
+Task List
+> Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free. 
+> Go through current latex papers and determine which ones you want presented
+> Delete all non polished documents in Latex repository
+> Organize Latex repository
+> Delete "Resume Tab"
+> Wordsmith the "What I am looking for" portion of the contact page and find better style to display it
+> Add photos to 500px and add connectoin to projects page and link to contact page
+> Polish plasma model program and put in projects
+> Polish LEAF automation and put in projects
+> Polish 5020 automation and put in projects
+> Put NASA articles about flywheel
+> Determine what to do with other writing places
+> Determine what other projects you want added
+> Fix Printed Resume
+> Finish transferring all resume information over to career.ts
+> Make more accurate timeline (months), add projects and writings and skills
+> Determine less cheesy way to display skills
+> Personalize about page
+> Organize Home page to match structure 3 bar (about, experience...) with links to those pages.
+> Scan, crop, create symbol from Maci's drawings to add as the everypage symbol next to my name
 
 ## Pages
 
