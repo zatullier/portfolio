@@ -26,6 +26,10 @@ Task List
 - Personalize about page
 - Organize Home page to match structure 3 bar (about, experience...) with links to those pages.
 - Scan, crop, create symbol from Maci's drawings to add as the everypage symbol next to my name
+- Make ProjectCaseStudy.astro similar to writing>[slug].astro or vice versa, but either way, include links to output and background code.
+- Make Project and Writing code structure similar
+- Change color scheme on all pages. All dark, but different flavors
+- Generate News page
 
 ## Pages
 
