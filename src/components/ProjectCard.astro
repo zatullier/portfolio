@@ -19,28 +19,10 @@ const { project, compact = false } = Astro.props;
     <h3>{project.title}</h3>
     <p>{project.summary}</p>
   </div>
-<!--
-  <div>
-    <h3>Disciplines</h3> 
-    <ul className="tag-list" aria-label="Disciplines"> 
-      {project.disciplines.map((discipline, index) => (
-        <li key={discipline || index}>{discipline}</li>
-      ))} 
-    </ul>
-  </div>
--->
-<!--
-  <ul className="tag-list" aria-label="Disciplines" style={{ display: 'flex', flexDirection: 'column' }}> 
-    <p style={{ margin: 0 }}>Disciplines</p> 
-    {project.disciplines.map((discipline, index) => (
-      <li key={discipline || index}>{discipline}</li>
-    ))} 
-  </ul>
--->
   <div>
     <h3>Disciplines</h3> 
   </div>
-  <ul class="tag-list" aria-label="Disciplines"> <p>Disciplines</p> {project.disciplines.map((discipline) => <li>{discipline}</li>)} </ul>
+  <ul class="tag-list" aria-label="Disciplines"> {project.disciplines.map((discipline) => <li>{discipline}</li>)} </ul>
 
   <a class="card-link" href={withBase(`/projects/${project.slug}/`)}>
     View case study <span aria-hidden="true">↗</span>
