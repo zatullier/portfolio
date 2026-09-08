@@ -66,9 +66,7 @@ import { withBase } from '../utils/paths';
 -->
         {projects
           .filter((project) => [01, 02, 04].includes(project.number))
-          .map((project) => (
-            <ProjectCard key={project.id} project={project} compact />
-          ))
+          .map((project) => <ProjectCard project={project} compact />)
         }
       </div>
     </div>
