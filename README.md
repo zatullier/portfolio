@@ -5,7 +5,7 @@ GitHub Pages. The starter emphasizes traceable engineering decisions, reusable p
 studies, technical writing, and careful handling of sensitive work.
 
 Task List
-> Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free. 
+- Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free. 
 > Go through current latex papers and determine which ones you want presented
 > Delete all non polished documents in Latex repository
 > Organize Latex repository
