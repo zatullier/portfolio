@@ -5,31 +5,36 @@ GitHub Pages. The starter emphasizes traceable engineering decisions, reusable p
 studies, technical writing, and careful handling of sensitive work.
 
 Task List
-- Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free. 
+Hard
+- Add connection from 500px to projects page and link to contact page
+- Polish plasma model program and put in projects
+- Generate News page
+- Generate Tools page
+- Polish 5020 automation and put in projects. Waiting on NASA comp.
+- Generate magnet calculation tool
+- Delete "Resume Tab"
+- Create symbol from Maci's drawings to add as the everypage symbol next to my name
+- Put NASA articles about flywheel
+- Fix Printed Resume
+- Determine less cheesy way to display skills
+- Personalize about page
+- Change color scheme on all pages. All dark, but different flavors
+- Make more accurate timeline (months), add projects and writings and skills
+- Determine what to do with other writing places
+- Determine what other projects you want added
+- Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free.
+- Polish LEAF automation and put in projects. Waiting on NASA comp.
+  
+Easy, timeconsuming
 - Go through current latex papers and determine which ones you want presented
 - Delete all non polished documents in Latex repository
 - Organize Latex repository
-- Delete "Resume Tab"
-- Wordsmith the "What I am looking for" portion of the contact page and find better style to display it
-- Add photos to 500px and add connectoin to projects page and link to contact page
-- Polish plasma model program and put in projects
-- Polish LEAF automation and put in projects. Waiting on NASA comp.
-- Polish 5020 automation and put in projects. Waiting on NASA comp.
-- Generate magnet calculation tool
-- Put NASA articles about flywheel
-- Determine what to do with other writing places
-- Determine what other projects you want added
-- Fix Printed Resume
+- Add photos to 500px
 - Finish transferring all resume information over to career.ts
-- Make more accurate timeline (months), add projects and writings and skills
-- Determine less cheesy way to display skills
-- Personalize about page
 - Organize Home page to match structure 3 bar (about, experience...) with links to those pages.
-- Scan, crop, create symbol from Maci's drawings to add as the everypage symbol next to my name
 - Make ProjectCaseStudy.astro similar to writing>[slug].astro or vice versa, but either way, include links to output and background code.
 - Make Project and Writing code structure similar
-- Change color scheme on all pages. All dark, but different flavors
-- Generate News page
+
 
 ## Pages
 
