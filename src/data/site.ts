@@ -5,7 +5,7 @@ export const site = {
     'A clean engineering portfolio focused on analysis, hardware, verification, and technical communication.',
   email: 'zachary.r.tullier@gmail.com',
   github: 'https://github.com/zatullier',
-  photogrphy: 'https://500px.com/user/NWurp3II8BD', 
+  photography: 'https://500px.com/user/NWurp3II8BD', 
   location: 'Houston Texas',
   availability: 'Open to thoughtful engineering conversations',
 };
