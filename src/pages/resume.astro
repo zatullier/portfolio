@@ -3,25 +3,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../utils/paths';
 ---
 
-<BaseLayout
-  title="Resume"
-  description="The resume is now part of Zachary Tullier’s Experience page."
->
+<BaseLayout title="News" description="The former Resume page has moved to News.">
   <section class="page-hero">
     <div class="shell page-hero-grid">
       <div>
         <span class="page-hero-index">05 / NEWS</span>
-        <h1>Compiled list of publically available information about my work</h1>
+        <p class="eyebrow">Page moved</p>
+        <h1>Resume is now News.</h1>
       </div>
-      <div class="contact-methods">
-          <a class="contact-method" href={`https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-ryan-schulte/`}>
-            <span>I am Artemis</span>
-            <strong>{Interesting article form my Project Manager}</strong>
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
+      <div class="page-hero-note">
+        <p>
+          The navigation slot formerly used for Resume now opens a researched public archive
+          about the Orion Flywheel Exercise Device.
+        </p>
+      </div>
     </div>
+  </section>
 
+  <section class="section-pad">
+    <div class="shell">
+      <div class="placeholder-note">
+        <strong>Looking for the resume?</strong>
+        <span>
+          The detailed resume and its PDF export remain available on the Experience page.
+        </span>
+      </div>
+      <div class="hero-actions button-row">
+        <a class="button button--primary" href={withBase('/news/')}>Open News</a>
+        <a class="button" href={withBase('/experience/#resume')}>
+          View resume
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
-
 
