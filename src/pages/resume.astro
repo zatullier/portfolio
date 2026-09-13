@@ -10,34 +10,18 @@ import { withBase } from '../utils/paths';
   <section class="page-hero">
     <div class="shell page-hero-grid">
       <div>
-        <span class="page-hero-index">05 / RESUME</span>
-        <p class="eyebrow">Resume</p>
-        <h1>The resume has moved to Experience.</h1>
+        <span class="page-hero-index">05 / NEWS</span>
+        <h1>Compiled list of publically available information about my work</h1>
       </div>
-      <div class="page-hero-note">
-        <p>
-          Experience now brings the detailed resume and career timeline together in one place.
-        </p>
-      </div>
+      <div class="contact-methods">
+          <a class="contact-method" href={`https://www.nasa.gov/missions/artemis/i-am-artemis/i-am-artemis-ryan-schulte/`}>
+            <span>I am Artemis</span>
+            <strong>{Interesting article form my Project Manager}</strong>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
     </div>
-  </section>
 
-  <section class="section-pad">
-    <div class="shell">
-      <div class="placeholder-note">
-        <strong>Resume and PDF export</strong>
-        <span>
-          Open the Experience page to review the resume or use its print control to save a
-          letter-size PDF.
-        </span>
-      </div>
-      <div class="hero-actions">
-        <a class="button button--primary" href={withBase('/experience/#resume')}>
-          View resume on Experience
-        </a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
 
 
