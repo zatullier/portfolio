@@ -6,8 +6,8 @@ studies, technical writing, and careful handling of sensitive work.
 
 Task List
 Hard
-- Add connection from 500px to projects page and link to contact page
-- Polish plasma model program and put in projects
+- Add connection from 500px to projects page and link to contact page. Done
+- Polish plasma model program and put in projects. Working
 - Generate News page
 - Generate Tools page
 - Polish 5020 automation and put in projects. Waiting on NASA comp.
@@ -24,6 +24,7 @@ Hard
 - Determine what other projects you want added
 - Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free.
 - Polish LEAF automation and put in projects. Waiting on NASA comp.
+- Generate LitMaps (https://app.litmaps.com/) for projects (bremm) and areas of interest. 
   
 Easy, timeconsuming
 - Go through current latex papers and determine which ones you want presented
