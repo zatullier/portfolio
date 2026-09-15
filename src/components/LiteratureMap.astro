@@ -1,0 +1,411 @@
+---
+import {
+  literatureLinks,
+  literatureNodes,
+  literatureTopics,
+  type LiteratureTopic,
+} from '../data/bremsstrahlung-literature';
+
+const minYear = 1954;
+const maxYear = 2026;
+const plotLeft = 140;
+const plotWidth = 980;
+const rowY: Record<LiteratureTopic, number> = {
+  plasma: 125,
+  control: 265,
+  dosimetry: 405,
+  biology: 545,
+};
+const rowLabels: Array<{ topic: LiteratureTopic; label: string }> = [
+  { topic: 'plasma', label: 'Bremsstrahlung' },
+  { topic: 'control', label: 'Magnetic control' },
+  { topic: 'dosimetry', label: 'Dosimetry' },
+  { topic: 'biology', label: 'Biological effect' },
+];
+const tickYears = [1954, 1970, 1986, 2000, 2016, 2026];
+const defaultNode = literatureNodes.find((node) => node.id === 'tullier-2026')!;
+const topicLabels = Object.fromEntries(literatureTopics.map((topic) => [topic.id, topic.label]));
+
+const xFor = (year: number) => plotLeft + ((year - minYear) / (maxYear - minYear)) * plotWidth;
+const yFor = (topic: LiteratureTopic, lane = 0) => rowY[topic] + lane * 34;
+const positions = Object.fromEntries(
+  literatureNodes.map((node) => [node.id, { x: xFor(node.year), y: yFor(node.topic, node.lane) }]),
+);
+const plottedLinks = literatureLinks.map((link) => {
+  const source = positions[link.source];
+  const target = positions[link.target];
+  const middle = source.x + (target.x - source.x) * 0.5;
+  return {
+    ...link,
+    path: `M ${source.x} ${source.y} C ${middle} ${source.y}, ${middle} ${target.y}, ${target.x} ${target.y}`,
+  };
+});
+---
+
+<section class="literature-section section-pad" id="literature-map" aria-labelledby="literature-map-title">
+  <div class="shell">
+    <header class="literature-heading">
+      <div>
+        <p class="eyebrow">Interactive research landscape</p>
+        <h2 id="literature-map-title">Follow the ideas behind the model</h2>
+      </div>
+      <p>
+        Explore a curated set of the thesis’s most influential sources. Select a paper in the
+        list or on the map to see how it contributes to the work.
+      </p>
+    </header>
+
+    <div class="literature-explorer" data-literature-map>
+      <div class="literature-toolbar" aria-label="Literature map controls">
+        <label class="literature-search">
+          <span>Search the map</span>
+          <input type="search" placeholder="Title, author, journal, or concept" data-literature-search />
+        </label>
+
+        <div class="literature-filters" aria-label="Filter sources by domain">
+          {
+            literatureTopics.map((topic) => (
+              <button
+                type="button"
+                class={`literature-filter literature-filter--${topic.id}`}
+                data-literature-filter={topic.id}
+                aria-pressed={topic.id === 'all' ? 'true' : 'false'}
+              >
+                <span aria-hidden="true"></span>{topic.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <button class="literature-reset" type="button" data-literature-reset>Reset view</button>
+      </div>
+
+      <div class="literature-workspace">
+        <aside class="literature-library" aria-label="Source library">
+          <div class="literature-library__header">
+            <div>
+              <span>Source library</span>
+              <strong data-literature-count>{literatureNodes.length} sources</strong>
+            </div>
+            <a
+              href="https://github.com/zatullier/Latex/blob/main/src/Masters/Thesis/references.bib"
+              target="_blank"
+              rel="noreferrer"
+            >Full BibTeX ↗</a>
+          </div>
+
+          <ol class="literature-paper-list">
+            {
+              [...literatureNodes]
+                .sort((a, b) => b.year - a.year)
+                .map((paper) => (
+                  <li
+                    class={`literature-paper literature-paper--${paper.topic}`}
+                    data-paper
+                    data-paper-id={paper.id}
+                    data-paper-topic={paper.topic}
+                    data-paper-title={paper.title}
+                    data-paper-meta={`${paper.authors} · ${paper.year} · ${paper.venue}`}
+                    data-paper-summary={paper.summary}
+                    data-paper-href={paper.href}
+                    data-paper-topic-label={topicLabels[paper.topic]}
+                    data-paper-seed={paper.seed ? 'true' : 'false'}
+                    data-paper-search={`${paper.title} ${paper.shortTitle} ${paper.authors} ${paper.year} ${paper.venue} ${paper.summary}`.toLowerCase()}
+                  >
+                    <button
+                      type="button"
+                      class="literature-paper__select"
+                      data-paper-select
+                      aria-pressed={paper.id === defaultNode.id ? 'true' : 'false'}
+                    >
+                      <span class="literature-paper__topline">
+                        <span>{paper.year}</span>
+                        <span>{topicLabels[paper.topic]}</span>
+                        {paper.seed && <em>Seed</em>}
+                      </span>
+                      <strong>{paper.title}</strong>
+                      <small>{paper.authors}</small>
+                      <small>{paper.venue}</small>
+                    </button>
+                    <a href={paper.href} target="_blank" rel="noreferrer" aria-label={`Open ${paper.title}`}>
+                      ↗
+                    </a>
+                  </li>
+                ))
+            }
+          </ol>
+        </aside>
+
+        <div class="literature-graph-card">
+          <div class="literature-graph__header">
+            <div>
+              <span>Concept network</span>
+              <strong>1954—2026</strong>
+            </div>
+            <p>Scroll horizontally on small screens</p>
+          </div>
+
+          <div
+            class="literature-graph-scroll"
+            tabindex="0"
+            aria-label="Scrollable literature network organized by year and research domain"
+          >
+            <svg
+              class="literature-graph"
+              viewBox="0 0 1240 640"
+              role="img"
+              aria-labelledby="literature-graph-title literature-graph-description"
+            >
+              <title id="literature-graph-title">Bremsstrahlung thesis literature map</title>
+              <desc id="literature-graph-description">
+                Eighteen sources arranged by publication year and research domain. Lines indicate
+                thematic paths into the thesis rather than direct citation claims.
+              </desc>
+              <defs>
+                <marker
+                  id="literature-arrow"
+                  markerWidth="8"
+                  markerHeight="8"
+                  refX="7"
+                  refY="4"
+                  orient="auto"
+                  markerUnits="strokeWidth"
+                >
+                  <path d="M 0 0 L 8 4 L 0 8 z"></path>
+                </marker>
+                <filter id="literature-glow" x="-80%" y="-80%" width="260%" height="260%">
+                  <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+                  <feMerge>
+                    <feMergeNode in="blur"></feMergeNode>
+                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <g class="literature-grid" aria-hidden="true">
+                {
+                  rowLabels.map((row) => (
+                    <g>
+                      <line x1={plotLeft} y1={rowY[row.topic]} x2="1160" y2={rowY[row.topic]}></line>
+                      <text x="24" y={rowY[row.topic] + 4}>{row.label}</text>
+                    </g>
+                  ))
+                }
+                {
+                  tickYears.map((year) => (
+                    <g>
+                      <line x1={xFor(year)} y1="72" x2={xFor(year)} y2="586"></line>
+                      <text x={xFor(year)} y="45" text-anchor="middle">{year}</text>
+                    </g>
+                  ))
+                }
+              </g>
+
+              <g class="literature-links" aria-hidden="true">
+                {
+                  plottedLinks.map((link) => (
+                    <path
+                      d={link.path}
+                      data-literature-edge
+                      data-edge-source={link.source}
+                      data-edge-target={link.target}
+                      marker-end="url(#literature-arrow)"
+                    ></path>
+                  ))
+                }
+              </g>
+
+              <g class="literature-nodes">
+                {
+                  literatureNodes.map((node) => {
+                    const position = positions[node.id];
+                    return (
+                      <g
+                        class={`literature-node literature-node--${node.topic}${node.seed ? ' literature-node--seed' : ''}${node.id === defaultNode.id ? ' is-selected' : ''}`}
+                        transform={`translate(${position.x} ${position.y})`}
+                        data-literature-node
+                        data-node-id={node.id}
+                        data-node-x={position.x}
+                        role="button"
+                        tabindex="0"
+                        aria-label={`${node.title}, ${node.authors}, ${node.year}`}
+                        aria-pressed={node.id === defaultNode.id ? 'true' : 'false'}
+                      >
+                        <circle class="literature-node__halo" r={node.seed ? 24 : 18}></circle>
+                        <circle class="literature-node__dot" r={node.seed ? 10 : 7}></circle>
+                        <text class="literature-node__year" y="-17" text-anchor="middle">{node.year}</text>
+                        <text class="literature-node__label" y="29" text-anchor="middle">{node.shortTitle}</text>
+                        <title>{node.title}</title>
+                      </g>
+                    );
+                  })
+                }
+              </g>
+            </svg>
+          </div>
+
+          <article class="literature-detail" aria-live="polite">
+            <div class="literature-detail__marker">
+              <span class={`literature-topic-dot literature-topic-dot--${defaultNode.topic}`}></span>
+              <span data-detail-topic>{topicLabels[defaultNode.topic]}</span>
+              <em data-detail-seed>Seed / synthesis</em>
+            </div>
+            <div>
+              <p data-detail-meta>{defaultNode.authors} · {defaultNode.year} · {defaultNode.venue}</p>
+              <h3 data-detail-title>{defaultNode.title}</h3>
+              <p data-detail-summary>{defaultNode.summary}</p>
+            </div>
+            <a href={defaultNode.href} target="_blank" rel="noreferrer" data-detail-link>
+              Open source <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+      </div>
+
+      <p class="literature-note">
+        <strong>How to read the map:</strong> position shows publication year and research domain;
+        connecting lines show the thesis’s conceptual path from foundational physics to source-term
+        control, dose, and biological interpretation. They do not assert that every connected source
+        directly cites the next.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const initializeLiteratureMap = (root: HTMLElement) => {
+    const search = root.querySelector<HTMLInputElement>('[data-literature-search]');
+    const count = root.querySelector<HTMLElement>('[data-literature-count]');
+    const reset = root.querySelector<HTMLButtonElement>('[data-literature-reset]');
+    const filters = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-literature-filter]'));
+    const papers = Array.from(root.querySelectorAll<HTMLElement>('[data-paper]'));
+    const nodes = Array.from(root.querySelectorAll<SVGGElement>('[data-literature-node]'));
+    const edges = Array.from(root.querySelectorAll<SVGPathElement>('[data-literature-edge]'));
+    const graphScroll = root.querySelector<HTMLElement>('.literature-graph-scroll');
+    const detailTitle = root.querySelector<HTMLElement>('[data-detail-title]');
+    const detailMeta = root.querySelector<HTMLElement>('[data-detail-meta]');
+    const detailSummary = root.querySelector<HTMLElement>('[data-detail-summary]');
+    const detailTopic = root.querySelector<HTMLElement>('[data-detail-topic]');
+    const detailSeed = root.querySelector<HTMLElement>('[data-detail-seed]');
+    const detailLink = root.querySelector<HTMLAnchorElement>('[data-detail-link]');
+    const detailDot = root.querySelector<HTMLElement>('.literature-topic-dot');
+    let activeTopic = 'all';
+    let selectedId = 'tullier-2026';
+
+    const paperFor = (id: string) => papers.find((paper) => paper.dataset.paperId === id);
+
+    const selectPaper = (id: string) => {
+      const paper = paperFor(id);
+      if (!paper || paper.hidden) return;
+      selectedId = id;
+
+      papers.forEach((item) => {
+        const selected = item.dataset.paperId === id;
+        item.classList.toggle('is-selected', selected);
+        item.querySelector<HTMLButtonElement>('[data-paper-select]')?.setAttribute('aria-pressed', String(selected));
+      });
+      nodes.forEach((node) => {
+        const selected = node.dataset.nodeId === id;
+        node.classList.toggle('is-selected', selected);
+        node.setAttribute('aria-pressed', String(selected));
+      });
+
+      const selectedNode = nodes.find((node) => node.dataset.nodeId === id);
+      if (graphScroll && selectedNode) {
+        const nodeX = Number(selectedNode.dataset.nodeX ?? 0);
+        const target = (nodeX / 1240) * graphScroll.scrollWidth - graphScroll.clientWidth / 2;
+        graphScroll.scrollTo({
+          left: Math.max(0, target),
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        });
+      }
+
+      if (detailTitle) detailTitle.textContent = paper.dataset.paperTitle ?? '';
+      if (detailMeta) detailMeta.textContent = paper.dataset.paperMeta ?? '';
+      if (detailSummary) detailSummary.textContent = paper.dataset.paperSummary ?? '';
+      if (detailTopic) detailTopic.textContent = paper.dataset.paperTopicLabel ?? '';
+      if (detailLink) detailLink.href = paper.dataset.paperHref ?? '#';
+      if (detailSeed) detailSeed.hidden = paper.dataset.paperSeed !== 'true';
+      if (detailDot) {
+        detailDot.className = `literature-topic-dot literature-topic-dot--${paper.dataset.paperTopic}`;
+      }
+    };
+
+    const applyFilters = () => {
+      const term = search?.value.trim().toLowerCase() ?? '';
+      const visibleIds = new Set<string>();
+
+      papers.forEach((paper) => {
+        const topicMatches = activeTopic === 'all' || paper.dataset.paperTopic === activeTopic;
+        const textMatches = !term || paper.dataset.paperSearch?.includes(term);
+        const visible = topicMatches && Boolean(textMatches);
+        paper.hidden = !visible;
+        if (visible && paper.dataset.paperId) visibleIds.add(paper.dataset.paperId);
+      });
+
+      nodes.forEach((node) => {
+        node.classList.toggle('is-filtered', !visibleIds.has(node.dataset.nodeId ?? ''));
+      });
+      edges.forEach((edge) => {
+        const visible =
+          visibleIds.has(edge.dataset.edgeSource ?? '') && visibleIds.has(edge.dataset.edgeTarget ?? '');
+        edge.classList.toggle('is-filtered', !visible);
+      });
+
+      if (count) {
+        const total = visibleIds.size;
+        count.textContent = `${total} source${total === 1 ? '' : 's'}`;
+      }
+
+      if (!visibleIds.has(selectedId)) {
+        const next = papers.find((paper) => !paper.hidden)?.dataset.paperId;
+        if (next) selectPaper(next);
+      }
+    };
+
+    papers.forEach((paper) => {
+      paper.querySelector<HTMLButtonElement>('[data-paper-select]')?.addEventListener('click', () => {
+        if (paper.dataset.paperId) selectPaper(paper.dataset.paperId);
+      });
+    });
+
+    nodes.forEach((node) => {
+      const activate = () => {
+        if (!node.classList.contains('is-filtered') && node.dataset.nodeId) {
+          selectPaper(node.dataset.nodeId);
+        }
+      };
+      node.addEventListener('click', activate);
+      node.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          activate();
+        }
+      });
+    });
+
+    filters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        activeTopic = filter.dataset.literatureFilter ?? 'all';
+        filters.forEach((item) => item.setAttribute('aria-pressed', String(item === filter)));
+        applyFilters();
+      });
+    });
+
+    search?.addEventListener('input', applyFilters);
+    reset?.addEventListener('click', () => {
+      activeTopic = 'all';
+      if (search) search.value = '';
+      filters.forEach((item) =>
+        item.setAttribute('aria-pressed', String(item.dataset.literatureFilter === 'all')),
+      );
+      applyFilters();
+      selectPaper('tullier-2026');
+    });
+
+    selectPaper(selectedId);
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-literature-map]').forEach(initializeLiteratureMap);
+</script>
+

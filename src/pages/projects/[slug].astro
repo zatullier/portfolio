@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LiteratureMap from '../../components/LiteratureMap.astro';
 import ProjectCaseStudy from '../../components/ProjectCaseStudy.astro';
 import type { Project } from '../../data/projects';
 import { projects } from '../../data/projects';
@@ -23,6 +24,7 @@ const nextProject = projects[(currentIndex + 1) % projects.length];
 
 <BaseLayout title={project.title} description={project.summary}>
   <ProjectCaseStudy project={project} />
+  {project.slug.toLowerCase() === 'bremsstrahlung' && <LiteratureMap />}
   <section class="next-project section-pad">
     <a class="shell" href={withBase(`/projects/${nextProject.slug}/`)}>
       <div>
