@@ -8,16 +8,10 @@ Task List
 Hard
 
 - Polish plasma model program and put in projects. Generated, in git, review and add to projects.
-- Generate Tools page
 - Polish 5020 automation and put in projects. Waiting on NASA comp.
 - Generate magnet calculation tool
-
-- Create symbol from Maci's drawings to add as the everypage symbol next to my name
-
 - Fix Printed Resume
 - Determine less cheesy way to display skills
-- Personalize about page
-- Change color scheme on all pages. All dark, but different flavors
 - Make more accurate timeline (months), add projects and writings and skills
 - Determine what to do with other writing places
 - Determine what other projects you want added
@@ -31,6 +25,10 @@ Hard
 - Add connection from 500px to projects page and link to contact page. Done
   
 Easy, timeconsuming
+- Create symbol from Maci's drawings to add as the everypage symbol next to my name
+- Generate Tools page
+- Personalize about page
+- Change color scheme on all pages. All dark, but different flavors
 - Go through current latex papers and determine which ones you want presented
 - Delete all non polished documents in Latex repository
 - Organize Latex repository
