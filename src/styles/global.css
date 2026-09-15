@@ -3182,3 +3182,601 @@ h3 {
   }
 }
 
+/* Bremsstrahlung literature map */
+.literature-section {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(91, 188, 255, 0.09), transparent 28rem),
+    var(--night);
+}
+
+.literature-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 7rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.literature-heading h2 {
+  max-width: 13ch;
+  margin-bottom: 0;
+}
+
+.literature-heading > p {
+  max-width: 40rem;
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.literature-explorer {
+  border: 1px solid var(--line-strong);
+  background: var(--night-raised);
+  box-shadow: var(--shadow);
+}
+
+.literature-toolbar {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.6fr) auto;
+  align-items: end;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--line);
+  background: #0b181d;
+}
+
+.literature-search {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.literature-search > span,
+.literature-library__header span,
+.literature-graph__header span {
+  color: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.literature-search input {
+  width: 100%;
+  min-height: 2.65rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  outline: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-size: 0.78rem;
+}
+
+.literature-search input::placeholder {
+  color: var(--ink-faint);
+}
+
+.literature-search input:focus {
+  border-color: var(--lime);
+  box-shadow: 0 0 0 1px var(--lime);
+}
+
+.literature-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.literature-filter,
+.literature-reset {
+  min-height: 2.65rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.literature-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.literature-filter > span,
+.literature-topic-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+.literature-filter--plasma > span,
+.literature-topic-dot--plasma {
+  background: var(--blue);
+}
+
+.literature-filter--control > span,
+.literature-topic-dot--control {
+  background: var(--lime);
+}
+
+.literature-filter--dosimetry > span,
+.literature-topic-dot--dosimetry {
+  background: var(--orange);
+}
+
+.literature-filter--biology > span,
+.literature-topic-dot--biology {
+  background: #ef8bb8;
+}
+
+.literature-filter--all > span {
+  background: conic-gradient(var(--blue), var(--lime), var(--orange), #ef8bb8, var(--blue));
+}
+
+.literature-filter:hover,
+.literature-reset:hover,
+.literature-filter[aria-pressed='true'] {
+  border-color: var(--lime);
+  background: rgba(184, 255, 114, 0.08);
+  color: var(--ink);
+}
+
+.literature-reset {
+  white-space: nowrap;
+}
+
+.literature-workspace {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.68fr) minmax(0, 1.7fr);
+  min-height: 44rem;
+}
+
+.literature-library {
+  min-width: 0;
+  border-right: 1px solid var(--line);
+  background: #0c191e;
+}
+
+.literature-library__header,
+.literature-graph__header {
+  display: flex;
+  min-height: 4.35rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.literature-library__header > div,
+.literature-graph__header > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.literature-library__header strong,
+.literature-graph__header strong {
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.literature-library__header a {
+  color: var(--lime);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.literature-paper-list {
+  max-height: 48rem;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-color: var(--ink-faint) transparent;
+  scrollbar-width: thin;
+  list-style: none;
+}
+
+.literature-paper {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.literature-paper::before {
+  position: absolute;
+  z-index: 2;
+  top: 1.2rem;
+  left: 1rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  content: '';
+}
+
+.literature-paper--plasma::before {
+  background: var(--blue);
+}
+
+.literature-paper--control::before {
+  background: var(--lime);
+}
+
+.literature-paper--dosimetry::before {
+  background: var(--orange);
+}
+
+.literature-paper--biology::before {
+  background: #ef8bb8;
+}
+
+.literature-paper:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.literature-paper.is-selected {
+  border-left-color: var(--lime);
+  background: rgba(184, 255, 114, 0.065);
+}
+
+.literature-paper__select {
+  display: grid;
+  width: 100%;
+  gap: 0.3rem;
+  padding: 1rem 2.7rem 1rem 2rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.literature-paper__topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.literature-paper__topline span + span::before {
+  margin-right: 0.45rem;
+  content: '/';
+}
+
+.literature-paper__topline em {
+  padding: 0.12rem 0.35rem;
+  border: 1px solid rgba(184, 255, 114, 0.35);
+  color: var(--lime);
+  font-style: normal;
+}
+
+.literature-paper strong {
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.literature-paper small {
+  color: var(--ink-faint);
+  font-size: 0.65rem;
+  line-height: 1.45;
+}
+
+.literature-paper > a {
+  position: absolute;
+  z-index: 3;
+  top: 0.9rem;
+  right: 0.85rem;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  color: var(--lime);
+  font-size: 0.82rem;
+}
+
+.literature-graph-card {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: #09151a;
+}
+
+.literature-graph__header p {
+  margin: 0;
+  color: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.literature-graph-scroll {
+  min-height: 34rem;
+  overflow-x: auto;
+  background:
+    radial-gradient(circle at 75% 30%, rgba(91, 188, 255, 0.08), transparent 20rem),
+    linear-gradient(180deg, #0a171c 0%, #081216 100%);
+  scrollbar-color: var(--lime-dark) transparent;
+  scrollbar-width: thin;
+}
+
+.literature-graph {
+  width: 100%;
+  min-width: 940px;
+  height: 100%;
+  min-height: 34rem;
+}
+
+.literature-grid line {
+  stroke: rgba(226, 237, 233, 0.08);
+  stroke-dasharray: 3 7;
+}
+
+.literature-grid text {
+  fill: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.literature-links path {
+  fill: none;
+  stroke: rgba(184, 255, 114, 0.24);
+  stroke-width: 1.4;
+  transition: opacity 180ms ease;
+}
+
+#literature-arrow path {
+  fill: rgba(184, 255, 114, 0.45);
+}
+
+.literature-node {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 180ms ease;
+}
+
+.literature-node__halo {
+  fill: rgba(8, 18, 22, 0.82);
+  stroke: rgba(226, 237, 233, 0.18);
+  stroke-width: 1;
+  transition:
+    fill 160ms ease,
+    stroke 160ms ease,
+    stroke-width 160ms ease;
+}
+
+.literature-node__dot {
+  fill: var(--ink-faint);
+  transition:
+    filter 160ms ease,
+    transform 160ms ease;
+}
+
+.literature-node--plasma .literature-node__dot {
+  fill: var(--blue);
+}
+
+.literature-node--control .literature-node__dot {
+  fill: var(--lime);
+}
+
+.literature-node--dosimetry .literature-node__dot {
+  fill: var(--orange);
+}
+
+.literature-node--biology .literature-node__dot {
+  fill: #ef8bb8;
+}
+
+.literature-node__year,
+.literature-node__label {
+  fill: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  pointer-events: none;
+}
+
+.literature-node__label {
+  fill: var(--ink-soft);
+  font-size: 9.5px;
+  font-weight: 650;
+}
+
+.literature-node:hover .literature-node__halo,
+.literature-node:focus .literature-node__halo,
+.literature-node.is-selected .literature-node__halo {
+  fill: rgba(184, 255, 114, 0.08);
+  stroke: var(--lime);
+  stroke-width: 2;
+}
+
+.literature-node:hover .literature-node__dot,
+.literature-node:focus .literature-node__dot,
+.literature-node.is-selected .literature-node__dot {
+  filter: url(#literature-glow);
+  transform: scale(1.28);
+}
+
+.literature-node.is-selected .literature-node__label {
+  fill: var(--ink);
+}
+
+.literature-node.is-filtered,
+.literature-links path.is-filtered {
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.literature-detail {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1.25rem;
+  min-height: 12.5rem;
+  padding: 1.35rem;
+  border-top: 1px solid var(--line);
+  background: #0d1b20;
+}
+
+.literature-detail__marker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.literature-detail__marker em {
+  width: 100%;
+  color: var(--lime);
+  font-style: normal;
+}
+
+.literature-detail [data-detail-meta] {
+  margin-bottom: 0.45rem;
+  color: var(--ink-faint);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.03em;
+}
+
+.literature-detail h3 {
+  max-width: 34ch;
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  line-height: 1.25;
+}
+
+.literature-detail [data-detail-summary] {
+  max-width: 48rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.literature-detail > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--lime);
+  color: var(--lime);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.literature-note {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border-top: 1px solid var(--line);
+  background: var(--night);
+  color: var(--ink-faint);
+  font-size: 0.7rem;
+}
+
+.literature-note strong {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 980px) {
+  .literature-toolbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .literature-search {
+    grid-column: 1 / -1;
+  }
+
+  .literature-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .literature-library {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .literature-paper-list {
+    max-height: 31rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .literature-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .literature-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .literature-search,
+  .literature-filters {
+    grid-column: auto;
+  }
+
+  .literature-reset {
+    justify-self: start;
+  }
+
+  .literature-graph__header p {
+    display: none;
+  }
+
+  .literature-detail {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .literature-detail__marker em {
+    width: auto;
+  }
+
+  .literature-detail > a {
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .literature-node,
+  .literature-node__dot,
+  .literature-node__halo,
+  .literature-links path {
+    transition: none;
+  }
+}
