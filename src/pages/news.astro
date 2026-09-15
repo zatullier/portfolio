@@ -24,15 +24,6 @@ const includedCount = sources.filter((source) => source.includedFile).length;
           compact exercise system flown on Artemis II.
         </p>
         <div class="button-row">
-          <a
-            class="button button--primary"
-            href={withBase('/downloads/flywheel-exercise-device-research.zip')}
-            download
-          >
-            Download research pack <span aria-hidden="true">↓</span>
-          </a>
-          <a class="button" href="#source-library">Browse all {sources.length} sources</a>
-        </div>
       </div>
 
       <figure class="news-hero-figure">
@@ -43,7 +34,7 @@ const includedCount = sources.filter((source) => source.includedFile).length;
           height="664"
         />
         <figcaption>
-          Orion Flywheel Exercise Device · NASA ·
+          Orion Flywheel Exercise Device · NASA
           <a
             href="https://commons.wikimedia.org/wiki/File:Flywheel_exercise_device_of_Orion_spacecraft.jpg"
             target="_blank"
@@ -66,12 +57,8 @@ const includedCount = sources.filter((source) => source.includedFile).length;
       <div class="news-section-heading">
         <div>
           <p class="eyebrow">Signal, not noise</p>
-          <h2>Start with these.</h2>
+          <h2>Overview Articles</h2>
         </div>
-        <p>
-          Eight pieces that tell the story from hardware definition and development through
-          ground testing, flight use, crew reaction, and ongoing research.
-        </p>
       </div>
 
       <div class="news-highlight-grid">
@@ -95,33 +82,6 @@ const includedCount = sources.filter((source) => source.includedFile).length;
     </div>
   </section>
 
-  <section class="news-archive-strip">
-    <div class="shell news-archive-grid">
-      <div>
-        <p class="eyebrow">Portable evidence set</p>
-        <h2>Research pack</h2>
-      </div>
-      <div>
-        <p>
-          The ZIP contains {includedCount} NASA/NTRS public-use documents,
-          one NASA public-domain image, a sortable CSV, a readable source catalog, provenance
-          notes, and a machine-readable manifest.
-        </p>
-        <p class="news-archive-note">
-          Copyrighted reporting, journal pages, and third-party media remain annotated links;
-          they are not republished in the archive.
-        </p>
-      </div>
-      <a
-        class="button button--primary"
-        href={withBase('/downloads/flywheel-exercise-device-research.zip')}
-        download
-      >
-        Download ZIP <span aria-hidden="true">↓</span>
-      </a>
-    </div>
-  </section>
-
   <section class="section-pad news-library" id="source-library">
     <div class="shell">
       <div class="news-section-heading news-section-heading--dark">
@@ -129,23 +89,9 @@ const includedCount = sources.filter((source) => source.includedFile).length;
           <p class="eyebrow eyebrow--dark">Source census · September 13, 2026</p>
           <h2>The full library.</h2>
         </div>
-        <p>
-          Primary sources lead. Independent reporting and media follow. Earlier ROCKY items
-          are labeled as lineage, not as descriptions of the unpowered device flown on Artemis II.
-        </p>
       </div>
 
       <div class="news-library-tools">
-        <label class="news-search">
-          <span>Search sources</span>
-          <input type="search" placeholder="Try “acoustics”, “parabolic”, or “crew”" data-news-search />
-        </label>
-        <div class="news-filters" aria-label="Filter sources">
-          <button type="button" class="is-active" data-news-filter="All" aria-pressed="true">All</button>
-          {categories.map((category) => (
-            <button type="button" data-news-filter={category} aria-pressed="false">{category}</button>
-          ))}
-        </div>
         <p class="news-result-count" data-news-count aria-live="polite">
           Showing {sources.length} of {sources.length} sources
         </p>
