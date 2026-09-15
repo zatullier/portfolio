@@ -6,15 +6,14 @@ studies, technical writing, and careful handling of sensitive work.
 
 Task List
 Hard
-- Add connection from 500px to projects page and link to contact page. Done
-- Polish plasma model program and put in projects. Working
-- Generate News page
+
+- Polish plasma model program and put in projects. Generated, in git, review and add to projects.
 - Generate Tools page
 - Polish 5020 automation and put in projects. Waiting on NASA comp.
 - Generate magnet calculation tool
-- Delete "Resume Tab"
+
 - Create symbol from Maci's drawings to add as the everypage symbol next to my name
-- Put NASA articles about flywheel
+
 - Fix Printed Resume
 - Determine less cheesy way to display skills
 - Personalize about page
@@ -24,13 +23,18 @@ Hard
 - Determine what other projects you want added
 - Find Latex compiler that is easy to use like overleaf, interfaces with Git, and is free.
 - Polish LEAF automation and put in projects. Waiting on NASA comp.
-- Generate LitMaps (https://app.litmaps.com/) for projects (bremm) and areas of interest. 
+
+- Generate LitMaps (https://app.litmaps.com/) for projects (bremm) and areas of interest. Done
+- Put NASA articles about flywheel. Done
+- Delete "Resume Tab". Done
+- Generate News page. Done
+- Add connection from 500px to projects page and link to contact page. Done
   
 Easy, timeconsuming
 - Go through current latex papers and determine which ones you want presented
 - Delete all non polished documents in Latex repository
 - Organize Latex repository
-- Add photos to 500px
+- Add photos to 500px. 90%
 - Finish transferring all resume information over to career.ts
 - Organize Home page to match structure 3 bar (about, experience...) with links to those pages.
 - Make ProjectCaseStudy.astro similar to writing>[slug].astro or vice versa, but either way, include links to output and background code.
