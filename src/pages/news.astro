@@ -97,7 +97,13 @@ const includedCount = sources.filter((source) => source.includedFile).length;
       </div>
 
       <ol class="news-source-list">
-        {sources.map((source, index) => (
+        {sources
+          .toSorted((a, b) => {
+            if (!a.date) return 1;
+            if (!b.date) return -1;
+              return b.date.localeCompare(a.date);
+          })
+          .map((source, index) => (
           <li
             data-news-item
             data-category={source.category}
@@ -136,7 +142,6 @@ const includedCount = sources.filter((source) => source.includedFile).length;
     <div class="shell news-method-grid">
       <div>
         <p class="eyebrow">Method + boundaries</p>
-        <h2>What this archive is—and is not.</h2>
       </div>
       <div>
         <p>
