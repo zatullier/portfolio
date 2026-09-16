@@ -29,14 +29,14 @@ Easy, timeconsuming
 - Generate Tools page
 - Personalize about page
 - Change color scheme on all pages. All dark, but different flavors
-- Go through current latex papers and determine which ones you want presented
-- Delete all non polished documents in Latex repository
-- Organize Latex repository
 - Add photos to 500px. 90%
 - Finish transferring all resume information over to career.ts
 - Organize Home page to match structure 3 bar (about, experience...) with links to those pages.
 - Make ProjectCaseStudy.astro similar to writing>[slug].astro or vice versa, but either way, include links to output and background code.
 - Make Project and Writing code structure similar
+- Go through current latex papers and determine which ones you want presented. Done
+- Delete all non polished documents in Latex repository. Done
+- Organize Latex repository. Done
 
 
 ## Pages
