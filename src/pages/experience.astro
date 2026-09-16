@@ -202,33 +202,32 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
             <article class="resume-entry">
               <div class="resume-entry-header">
                 <div>
-                  <h3>Design-to-Flight Engineer and Metal Finishing Technician</h3>
-                  <p>NASA HUNCH Program</p>
+                  <h3>{hunch?.title}</h3>
+                  <p>{hunch?.organization}</p>
                 </div>
-                <span>NASA Johnson Space Center - Houston, Texas · 2019-2021</span>
+                <span>{fluids?.location} · {fluids?.startMonth} {fluids?.startYear} - {fluids?.endMonth} {fluids?.endYear}</span>
               </div>
               <ul>
                 <li>
-                  Developed and reviewed mechanical drawings for compliance with NASA/JSC
-                  manufacturing and safety standards.
+                  {fluids?.bullets[0]}
                 </li>
                 <li>
-                  Produced verification documentation with traceability similar to licensing-style
-                  quality packages required for safety-critical hardware.
-                </li>
-                <li>Authored assembly and manufacturing procedures for certified flight hardware.</li>
-                <li>Conducted cost analyses to guide procurement of components and consumables.</li>
-                <li>
-                  Reverse-engineered student and commercial prototypes for spaceflight compliance
-                  evaluation.
+                  {fluids?.bullets[1]}
                 </li>
                 <li>
-                  Advised student teams to align designs with NASA/JSC flight hardware standards
-                  using core engineering principles.
+                  {fluids?.bullets[2]}
                 </li>
                 <li>
-                  Mentored HUNCH students in collaborative design practices to develop innovative,
-                  standards-compliant engineering solutions.
+                  {fluids?.bullets[3]}
+                </li>
+                <li>
+                  {fluids?.bullets[4]}
+                </li>
+                <li>
+                  {fluids?.bullets[5]}
+                </li>
+                <li>
+                  {fluids?.bullets[6]}
                 </li>
               </ul>
             </article>
