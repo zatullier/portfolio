@@ -10,8 +10,15 @@ Hard
 - Polish plasma model program and put in projects. Generated, in git, review and add to projects.
 - Polish 5020 automation and put in projects. Waiting on NASA comp.
 - Generate magnet calculation tool
-- Fix Printed Resume
 - Determine less cheesy way to display skills
+  - Add details to "expertise" and pull all data from there for skill display and resume
+- Split "News" page
+  - Make Flywheel a News subpage
+  - Make Hunch a News subpage
+  - Generate potable water dispenser subpage
+  - Generate a in depth review of HUNCH and potable water dispenser news for things I was involved in
+- Fix Printed Resume
+
 - Make more accurate timeline (months), add projects and writings and skills
 - Determine what to do with other writing places
 - Determine what other projects you want added
@@ -30,13 +37,14 @@ Easy, timeconsuming
 - Personalize about page
 - Change color scheme on all pages. All dark, but different flavors
 - Add photos to 500px. 90%
-- Finish transferring all resume information over to career.ts
 - Organize Home page to match structure 3 bar (about, experience...) with links to those pages.
 - Make ProjectCaseStudy.astro similar to writing>[slug].astro or vice versa, but either way, include links to output and background code.
 - Make Project and Writing code structure similar
+
 - Go through current latex papers and determine which ones you want presented. Done
 - Delete all non polished documents in Latex repository. Done
 - Organize Latex repository. Done
+- Finish transferring all resume information over to career.ts. Done
 
 
 ## Pages
