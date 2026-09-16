@@ -18,6 +18,7 @@ Hard
   - Generate potable water dispenser subpage
   - Generate a in depth review of HUNCH and potable water dispenser news for things I was involved in
 - Fix Printed Resume
+- Make loop in "experience" for 'bullets'
 
 - Make more accurate timeline (months), add projects and writings and skills
 - Determine what to do with other writing places
