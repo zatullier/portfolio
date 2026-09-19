@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsArchive from '../../components/NewsArchive.astro';
+import sources from '../../data/potable-water-news.json';
+---
+
+<BaseLayout
+  title="Exploration Potable Water Dispenser"
+  description="A public-source archive tracing Leidos' Exploration Potable Water Dispenser from development through ISS checkout and operational use."
+>
+  <NewsArchive
+    index="NEWS 03 / xPWD"
+    eyebrow="Exploration Potable Water Dispenser"
+    title="From water-system lessons to flight demonstration."
+    lede="A source trail connecting the legacy ISS dispenser, NASA's exploration requirements, Leidos' development work, and the 2023 on-orbit checkout campaign."
+    sources={sources}
+    sourceDate="September 19, 2026"
+    facts={[
+      { value: '≈3 years', label: 'Leidos development effort' },
+      { value: 'Aug. 30, 2023', label: 'deployed on ISS' },
+      { value: 'UV', label: 'point-of-use disinfection' },
+      { value: 'Hot + ambient', label: 'water delivery' },
+    ]}
+    method="This archive distinguishes the original ISS Potable Water Dispenser from the Leidos-developed Exploration Potable Water Dispenser. Company releases establish development responsibility and contract context; NASA papers, briefings, and station reports establish the technical rationale, checkout sequence, and operational status."
+  />
+</BaseLayout>
+

@@ -13,31 +13,51 @@ const { project } = Astro.props;
     <div class="shell case-hero-grid">
       <div>
         <p class="eyebrow">Case study / {project.number}</p>
-        <h3>{project.title}</h3>
+        <h1>{project.title}</h1>
         <p class="hero-lede">{project.summary}</p>
       </div>
-      <aside class="case-meta">.
-<!--
-        <p class="case-status"><span></span>{project.status}</p>
--->
+      <aside class="case-meta">
         <dl>
           <div>
             <dt>Status</dt>
             <dd>{project.status}</dd>
-          </div>  
+          </div>
           <div>
             <dt>Disciplines</dt>
             <dd>{project.disciplines.join(' · ')}</dd>
           </div>
-          <div>
-            <dt>Tools Used</dt>
-            <dd>No proprietary values or identifiers</dd>
-<!--            <dd>{project.tools.join(' · ')}</dd>  -->
-          </div>
+          {project.tools && (
+            <div>
+              <dt>Tools and formats</dt>
+              <dd>{project.tools.join(' · ')}</dd>
+            </div>
+          )}
         </dl>
       </aside>
     </div>
   </section>
+
+  {project.resources && (
+    <section class="case-resource-section section-pad" aria-label={project.resourceLabel ?? 'Project resources'}>
+      <div class="shell content-grid">
+        <div class="content-label">
+          <span>Resources</span>
+          <p>{project.resourceLabel ?? 'Project files'}</p>
+        </div>
+        <div class="case-resource-list">
+          {project.resources.map((resource) => (
+            <a href={resource.href} target="_blank" rel="noreferrer">
+              <span>
+                <strong>{resource.label}</strong>
+                <small>{resource.description}</small>
+              </span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="paper-section section-pad">
     <div class="shell content-grid">
@@ -55,50 +75,22 @@ const { project } = Astro.props;
     </div>
   </section>
 
-<!-- 
   <section class="section-pad">
     <div class="shell content-grid">
       <div class="content-label">
         <span>Section 2</span>
-        <p>Assumptions</p>
-      </div>
-      <div>
-        <h5>{project.assumptionSummary}</h5>
-        <div class="process-grid">
-          {
-            project.assumption.map((step, index) => (
-              <article class="process-step">
-                <span>Assumption {index + 1}</span>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </section>
--->
-
-  <section class="section-pad">
-    <div class="shell content-grid">
-      <div class="content-label">
-        <span>Section 3</span>
         <p>Approach</p>
       </div>
       <div>
-        <h5>ill pull data from previous whatever and plug it into generated blah blah verifing the repeatability and reliability then implement it into blah.</h5>
-<!--         <h5>{project.approachSummary}</h5>  -->
+        {project.approachSummary && <p class="section-intro">{project.approachSummary}</p>}
         <div class="process-grid">
-          {
-            project.approach.map((step, index) => (
-              <article class="process-step">
-                <span>0{index + 1}</span>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </article>
-            ))
-          }
+          {project.approach.map((step, index) => (
+            <article class="process-step">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </div>
@@ -107,15 +99,12 @@ const { project } = Astro.props;
   <section class="accent-section section-pad">
     <div class="shell content-grid">
       <div class="content-label content-label--dark">
-        <span>Section 4</span>
+        <span>Section 3</span>
         <p>Outputs</p>
       </div>
-      <div>
-<!--         <h5>{project.approachSummary}</h5>  -->
-        <ol class="artifact-list">
-          {project.artifacts.map((artifact, index) => <li><span>Artifact {index + 1}</span>{artifact}</li>)}
-        </ol>
-      </div>
+      <ol class="artifact-list">
+        {project.artifacts.map((artifact, index) => <li><span>Artifact {index + 1}</span>{artifact}</li>)}
+      </ol>
     </div>
   </section>
 
@@ -132,3 +121,4 @@ const { project } = Astro.props;
     </div>
   </section>
 </article>
+
