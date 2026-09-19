@@ -147,12 +147,12 @@ export const projects: Project[] = [
       {
         label: 'Download complete package',
         description: 'Download the workbook, PDF, CAD, printable files, BOMs, and calibration records.',
-        href: 'https://github.com/zatullier/magnet-hall-engineering/archive/refs/heads/main.zip',
+        href: 'https://github.com/zatullier/Magnetic-Analysis/archive/refs/heads/main.zip',
       },
       {
         label: 'Browse on GitHub',
         description: 'Review the package structure, source files, verification notes, and model limitations.',
-        href: 'https://github.com/zatullier/magnet-hall-engineering',
+        href: 'https://github.com/zatullier/Magnetic-Analysis',
       },
     ],
   },
