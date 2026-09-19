@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsArchive from '../../components/NewsArchive.astro';
+import sources from '../../data/hunch-news.json';
+---
+
+<BaseLayout
+  title="NASA HUNCH: 2018-2021"
+  description="A bounded public-source archive of NASA HUNCH news published from 2018 through 2021."
+>
+  <NewsArchive
+    index="NEWS 02 / HUNCH 2018-2021"
+    eyebrow="High school students United with NASA to Create Hardware"
+    title="Four years of students building for space."
+    lede="A deliberately bounded archive of HUNCH flight hardware, design, culinary work, mentoring, and program growth reported between 2018 and 2021."
+    sources={sources}
+    sourceDate="September 19, 2026"
+    facts={[
+      { value: '2018-2021', label: 'publication window' },
+      { value: '282', label: 'partner schools in 2021' },
+      { value: '47 states', label: 'represented in 2021' },
+      { value: '2,700+', label: 'students in 2020-2021' },
+    ]}
+    method="The library includes only pieces published from January 1, 2018 through December 31, 2021. Program counts come from NASA's annual STEM engagement reports. Current HUNCH pages and later retrospectives are excluded from the source list even when they add useful historical context."
+  />
+</BaseLayout>
+

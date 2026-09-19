@@ -1,0 +1,113 @@
+[
+  {
+    "id": "nasa-intrepid-2018",
+    "category": "Program",
+    "date": "2018-05-15",
+    "title": "High School Students Building NASA Hardware Recognized at Intrepid Museum Event",
+    "publisher": "NASA",
+    "format": "News release",
+    "url": "https://www.nasa.gov/news-release/high-school-students-building-nasa-hardware-recognized-at-intrepid-museum-event/",
+    "description": "A concise 2018 program snapshot covering student-built station hardware, software, culinary work, and the Intrepid recognition event.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-glenn-frontiers-2018",
+    "category": "Mentoring",
+    "date": "2018-06",
+    "title": "Glenn Mentors Aid NASA's HUNCH Program for Future STEM Workforce",
+    "publisher": "NASA Glenn",
+    "format": "Center newsletter PDF",
+    "url": "https://www.nasa.gov/wp-content/uploads/2015/02/afjune2018.pdf",
+    "description": "Aerospace Frontiers follows Glenn mentoring across culinary, design, and prototype teams during the 2017-2018 school year.",
+    "highlight": false
+  },
+  {
+    "id": "nasa-langley-2019",
+    "category": "Culinary",
+    "date": "2019-03-12",
+    "title": "High School Students Look to Improve Astronauts' Palates, Workspaces via HUNCH Program",
+    "publisher": "NASA Langley",
+    "format": "Feature",
+    "url": "https://www.nasa.gov/centers-and-facilities/langley/high-school-students-look-to-improve-astronauts-palates-workspaces-via-hunch-program/",
+    "description": "A detailed look at the 2019 culinary preliminary challenge and HUNCH's broader role in creating hardware and food for human spaceflight.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-langley-culinary-2020",
+    "category": "Culinary",
+    "date": "2020-06-15",
+    "title": "Virginia High School Finishes in Third Place at 2020 HUNCH Culinary Competition",
+    "publisher": "NASA Langley",
+    "format": "Feature",
+    "url": "https://www.nasa.gov/centers-and-facilities/langley/virginia-high-school-finishes-in-third-place-at-2020-hunch-culinary-competition/",
+    "description": "Coverage of the first partially virtual culinary finals and the way teams adapted judging, video, and research-paper work during the pandemic.",
+    "highlight": false
+  },
+  {
+    "id": "nasa-marshall-culinary-2020",
+    "category": "Culinary",
+    "date": "2020-07-09",
+    "title": "Alabama High School Students Create a Meal NASA Will Send to Astronauts in Space",
+    "publisher": "NASA Marshall",
+    "format": "Feature",
+    "url": "https://www.nasa.gov/centers-and-facilities/marshall/alabama-high-school-students-create-a-meal-nasa-will-send-to-astronauts-in-space/",
+    "description": "The story of the 2020 winning Moroccan chicken tagine and the food-science, nutrition, and culinary work behind a station-bound entrée.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-glenn-lockers-2020",
+    "category": "Flight hardware",
+    "date": "2020-08",
+    "title": "Student-Built Lockers Fly on NASA's Historic Mission",
+    "publisher": "NASA Glenn",
+    "format": "Center newsletter PDF",
+    "url": "https://www.nasa.gov/wp-content/uploads/2015/02/aerospace-frontiers-august-2020_0.pdf",
+    "description": "Documents four HUNCH single stowage lockers carried aboard the SpaceX Demo-2 mission and the network of schools supported by Glenn mentors.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-ostem-highlights-2020",
+    "category": "Program data",
+    "date": "2021-03",
+    "title": "NASA OSTEM Highlights 2020",
+    "publisher": "NASA Office of STEM Engagement",
+    "format": "Annual report PDF",
+    "url": "https://www.nasa.gov/wp-content/uploads/2021/03/nasa_ostem_highlights_2020_0.pdf",
+    "description": "Agency-level program metrics for FY 2020, including participation, partner schools, flight-design developments, soft goods, and stowage lockers.",
+    "highlight": false
+  },
+  {
+    "id": "tri-county-finalists-2021",
+    "category": "Design",
+    "date": "2021-05-31",
+    "title": "Tri-County Students Selected as Finalists in NASA HUNCH Program",
+    "publisher": "Tri-County Regional Vocational Technical School District",
+    "format": "District news",
+    "url": "https://www.franklinmatters.org/2021/05/tri-county-students-selected-as.html",
+    "description": "A local view of the design-review path, including preliminary reviews, finalist selection, and mentoring by NASA and industry participants.",
+    "highlight": false
+  },
+  {
+    "id": "sreb-hunch-2021",
+    "category": "Design",
+    "date": "2021-10-07",
+    "title": "PBL + NASA = Success",
+    "publisher": "Southern Regional Education Board",
+    "format": "Education feature",
+    "url": "https://www.sreb.org/post/pbl-nasa-success",
+    "description": "A case study of three 2020-2021 Meridian Technology Center finalist teams and HUNCH's engineering-design review process.",
+    "highlight": false
+  },
+  {
+    "id": "nasa-stem-highlights-2021",
+    "category": "Program data",
+    "date": "2021",
+    "title": "NASA STEM Engagement Highlights 2021",
+    "publisher": "NASA Office of STEM Engagement",
+    "format": "Annual report PDF",
+    "url": "https://www.nasa.gov/wp-content/uploads/2015/02/edu_nasa_stem_engagement_highlights_2021.pdf",
+    "description": "The period's broadest official census: 282 schools in 47 states, more than 2,700 students during 2020-2021, and station-bound hygiene kits and stowage lockers.",
+    "highlight": true
+  }
+]
+

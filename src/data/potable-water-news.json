@@ -1,0 +1,135 @@
+[
+  {
+    "id": "ntrs-original-pwd-2010",
+    "category": "Baseline",
+    "date": "2010",
+    "title": "International Space Station USOS Potable Water Dispenser: On-Orbit Functionality Versus Design",
+    "publisher": "NASA NTRS",
+    "format": "Technical paper PDF",
+    "url": "https://ntrs.nasa.gov/api/citations/20100014345/downloads/20100014345.pdf?attachment=true",
+    "description": "The design and early on-orbit record of the original U.S. segment PWD delivered on STS-126 and activated in November 2008.",
+    "highlight": false
+  },
+  {
+    "id": "ntrs-exploration-pwd-2019",
+    "category": "Development",
+    "date": "2019",
+    "title": "Exploration Potable Water Dispenser Development Direction",
+    "publisher": "NASA NTRS",
+    "format": "Technical conference paper PDF",
+    "url": "https://ntrs.nasa.gov/api/citations/20190027253/downloads/20190027253.pdf?attachment=true",
+    "description": "A life-support technology roadmap describing removal of stagnant flow regions and provisions for flow-through UV disinfection and alternative biocide approaches.",
+    "highlight": true
+  },
+  {
+    "id": "ntrs-water-management-2022",
+    "category": "Development",
+    "date": "2022-07",
+    "title": "Life Support — Water Management",
+    "publisher": "NASA NTRS",
+    "format": "Technical presentation PDF",
+    "url": "https://ntrs.nasa.gov/api/citations/20220010093/downloads/ICES-2022-281%20ECLSS_Overview_July%205th.pdf",
+    "description": "Places the Exploration PWD within NASA's broader long-duration water-management and dormancy technology portfolio.",
+    "highlight": false
+  },
+  {
+    "id": "nasa-ng19-planning-2022",
+    "category": "Program",
+    "date": "2022-10",
+    "title": "Exploration Capabilities Development Technology Demonstrations: FY23 Hardware",
+    "publisher": "NASA Advisory Council",
+    "format": "Program briefing PDF",
+    "url": "https://www.nasa.gov/wp-content/uploads/2023/10/nac-oct2022-iss-final2.pdf",
+    "description": "A NASA program briefing identifying xPWD as life-support demonstration hardware targeted for Northrop Grumman's NG-19 mission.",
+    "highlight": false
+  },
+  {
+    "id": "nasa-install-2023",
+    "category": "On orbit",
+    "date": "2023-08-31",
+    "title": "ISS Daily Summary: xPWD Installed, Activated, and Checked Out",
+    "publisher": "NASA",
+    "format": "ISS status report",
+    "url": "https://www.nasa.gov/blogs/stationreport/2023/08/31/iss-daily-summary-report-8-31-2023/",
+    "description": "The first official operations entry after installation in EXPRESS Rack 7, with the exploration rationale and comparison to the legacy dispenser.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-leak-check-2023",
+    "category": "Checkout",
+    "date": "2023-09-04",
+    "title": "ISS Daily Summary: Leak Check, Flush, and Water Sampling",
+    "publisher": "NASA",
+    "format": "ISS status report",
+    "url": "https://www.nasa.gov/blogs/stationreport/2023/09/04/iss-daily-summary-report-9-04-2023/",
+    "description": "The hardware passed its potable-bus leak check before crew flush, sample collection, and checkout continued.",
+    "highlight": false
+  },
+  {
+    "id": "nasa-microbial-check-2023",
+    "category": "Checkout",
+    "date": "2023-09-06",
+    "title": "ISS Daily Summary: Initial Microbial Check",
+    "publisher": "NASA",
+    "format": "ISS status report",
+    "url": "https://www.nasa.gov/blogs/stationreport/2023/09/06/iss-daily-summary-report-9-06-2023/",
+    "description": "No microbial growth was identified in the first reported incubation check, while NASA explicitly withheld crew-use approval until commissioning was complete.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-coliform-training-2023",
+    "category": "Checkout",
+    "date": "2023-09-21",
+    "title": "ISS Daily Summary: Coliform Results and Crew Training",
+    "publisher": "NASA",
+    "format": "ISS status report",
+    "url": "https://www.nasa.gov/blogs/stationreport/2023/09/21/iss-daily-summary-report-9-21-2023/",
+    "description": "Records evaluation of the coliform test and nominal crew-use onboard training during the commissioning campaign.",
+    "highlight": false
+  },
+  {
+    "id": "leidos-deployment-2023",
+    "category": "People and program",
+    "date": "2023-11-07",
+    "title": "Leidos Deploys Potable Water System to International Space Station",
+    "publisher": "Leidos",
+    "format": "Company release",
+    "url": "https://www.leidos.com/insights/leidos-deploys-potable-water-system-international-space-station",
+    "description": "Leidos' account of the nearly three-year design, development, test, and certification effort performed under NASA's Cargo Mission Contract.",
+    "highlight": true
+  },
+  {
+    "id": "nasa-operational-use-2023",
+    "category": "Outcome",
+    "date": "2023-11",
+    "title": "New Water Dispenser Improves Water Sanitization on Station",
+    "publisher": "NASA Advisory Council",
+    "format": "Program briefing PDF",
+    "url": "https://www.nasa.gov/wp-content/uploads/2023/11/iss-heo-nac-nov2023-final.pdf",
+    "description": "NASA's summary of the demonstrated UV-disinfection approach and the decision to clear xPWD for operational station use.",
+    "highlight": true
+  },
+  {
+    "id": "ntrs-water-status-2024",
+    "category": "Technical follow-up",
+    "date": "2024",
+    "title": "Status of the International Space Station Water Management and Recovery System",
+    "publisher": "NASA NTRS",
+    "format": "Technical paper PDF",
+    "url": "https://ntrs.nasa.gov/api/citations/20240005472/downloads/ICES%202024-317%20Status%20of%20ISS%20Water_Final.pdf",
+    "description": "A system-level follow-up explaining xPWD's removal of known dead legs, point-of-use UV reactor, dormancy objective, and September 2023 activation.",
+    "highlight": true
+  },
+  {
+    "id": "leidos-cargo-contract-2024",
+    "category": "People and program",
+    "date": "2024-07-11",
+    "title": "Leidos Awarded NASA Cargo Mission Support Contract",
+    "publisher": "Leidos",
+    "format": "Company release",
+    "url": "https://www.leidos.com/insights/leidos-awarded-476-million-nasa-cargo-mission-support-contract",
+    "description": "Connects the xPWD development and August 30, 2023 deployment to Leidos' continuing ISS and Artemis cargo-mission engineering work.",
+    "highlight": false
+  }
+]
+

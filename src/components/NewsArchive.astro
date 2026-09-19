@@ -1,0 +1,202 @@
+---
+import { withBase } from '../utils/paths';
+
+type NewsSource = {
+  id: string;
+  category: string;
+  date: string;
+  title: string;
+  publisher: string;
+  format: string;
+  url: string;
+  description: string;
+  highlight?: boolean;
+  includedFile?: string;
+};
+
+type Fact = { value: string; label: string };
+type HeroImage = { src: string; alt: string; width: number; height: number; caption: string; sourceUrl: string };
+
+type Props = {
+  index: string;
+  eyebrow: string;
+  title: string;
+  lede: string;
+  sources: NewsSource[];
+  facts: Fact[];
+  sourceDate: string;
+  method: string;
+  image?: HeroImage;
+};
+
+const { index, eyebrow, title, lede, sources, facts, sourceDate, method, image } = Astro.props;
+const highlights = sources.filter((source) => source.highlight);
+const categories = [...new Set(sources.map((source) => source.category))];
+const sortedSources = sources.toSorted((a, b) => b.date.localeCompare(a.date));
+---
+
+<section class:list={['news-hero', !image && 'news-hero--plain']}>
+  <div class:list={['shell', 'news-hero-grid', !image && 'news-hero-grid--text']}>
+    <div class="news-hero-copy">
+      <a class="news-back-link" href={withBase('/news/')}>← All news topics</a>
+      <span class="page-hero-index">{index}</span>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="news-hero-lede">{lede}</p>
+    </div>
+
+    {image && (
+      <figure class="news-hero-figure">
+        <img src={withBase(image.src)} alt={image.alt} width={image.width} height={image.height} />
+        <figcaption>
+          {image.caption}
+          <a href={image.sourceUrl} target="_blank" rel="noreferrer">source ↗</a>
+        </figcaption>
+      </figure>
+    )}
+  </div>
+
+  <div class="shell news-fact-grid" aria-label={`${eyebrow} at a glance`}>
+    {facts.map((fact) => <div><strong>{fact.value}</strong><span>{fact.label}</span></div>)}
+  </div>
+</section>
+
+<section class="section-pad news-highlight-section" id="highlights">
+  <div class="shell">
+    <div class="news-section-heading">
+      <div>
+        <p class="eyebrow">Selected reading</p>
+        <h2>Start with these.</h2>
+      </div>
+      <p>The strongest orientation pieces, official milestones, and technical context from the full source library.</p>
+    </div>
+
+    <div class="news-highlight-grid">
+      {highlights.map((source, sourceIndex) => (
+        <article class="news-highlight-card">
+          <div class="news-card-topline">
+            <span>{String(sourceIndex + 1).padStart(2, '0')}</span>
+            <span>{source.category} · {source.format}</span>
+          </div>
+          <div>
+            <p class="news-source-publisher">{source.publisher} · {source.date}</p>
+            <h3>{source.title}</h3>
+            <p>{source.description}</p>
+          </div>
+          <a href={source.url} target="_blank" rel="noreferrer">
+            Open source <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section-pad news-library" id="source-library">
+  <div class="shell">
+    <div class="news-section-heading news-section-heading--dark">
+      <div>
+        <p class="eyebrow eyebrow--dark">Source census · {sourceDate}</p>
+        <h2>The full library.</h2>
+      </div>
+      <p>Sort order is newest to oldest. Use the filters or search to narrow the archive without changing that chronology.</p>
+    </div>
+
+    <div class="news-library-tools">
+      <label class="news-search">
+        <span>Search library</span>
+        <input type="search" placeholder="Title, publisher, topic, or format" data-news-search />
+      </label>
+      <div class="news-filters" aria-label="Filter by category">
+        <button class="is-active" type="button" data-news-filter="All" aria-pressed="true">All</button>
+        {categories.map((category) => (
+          <button type="button" data-news-filter={category} aria-pressed="false">{category}</button>
+        ))}
+      </div>
+      <p class="news-result-count" data-news-count aria-live="polite">
+        Showing {sources.length} of {sources.length} sources
+      </p>
+    </div>
+
+    <ol class="news-source-list">
+      {sortedSources.map((source, sourceIndex) => (
+        <li
+          data-news-item
+          data-category={source.category}
+          data-search={`${source.title} ${source.publisher} ${source.description} ${source.format}`.toLowerCase()}
+        >
+          <span class="news-source-number">{String(sourceIndex + 1).padStart(2, '0')}</span>
+          <div class="news-source-copy">
+            <div class="news-source-meta">
+              <span>{source.category}</span>
+              <span>{source.format}</span>
+              {source.includedFile && <span class="news-included">In archive</span>}
+            </div>
+            <h3><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></h3>
+            <p>{source.description}</p>
+          </div>
+          <div class="news-source-origin">
+            <strong>{source.publisher}</strong>
+            <span>{source.date}</span>
+            <a href={source.url} target="_blank" rel="noreferrer" aria-label={`Open ${source.title}`}>↗</a>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="news-no-results" data-news-empty hidden>
+      No sources match that filter and search. Try a broader term.
+    </div>
+  </div>
+</section>
+
+<section class="section-pad news-method">
+  <div class="shell news-method-grid">
+    <div>
+      <p class="eyebrow">Method + boundaries</p>
+      <h2>Public record, clearly bounded.</h2>
+    </div>
+    <div><p>{method}</p></div>
+  </div>
+</section>
+
+<script is:inline>
+  const filterButtons = Array.from(document.querySelectorAll('[data-news-filter]'));
+  const searchInput = document.querySelector('[data-news-search]');
+  const items = Array.from(document.querySelectorAll('[data-news-item]'));
+  const count = document.querySelector('[data-news-count]');
+  const empty = document.querySelector('[data-news-empty]');
+  let activeCategory = 'All';
+
+  const normalizeSearch = (value) => value.toLowerCase().replace(/\b([a-z]{4,})s\b/g, '$1');
+
+  const updateLibrary = () => {
+    const query = normalizeSearch(searchInput?.value.trim() ?? '');
+    let visible = 0;
+
+    items.forEach((item) => {
+      const categoryMatches = activeCategory === 'All' || item.dataset.category === activeCategory;
+      const searchMatches = !query || normalizeSearch(item.dataset.search ?? '').includes(query);
+      item.hidden = !(categoryMatches && searchMatches);
+      if (!item.hidden) visible += 1;
+    });
+
+    if (count) count.textContent = `Showing ${visible} of ${items.length} sources`;
+    if (empty) empty.hidden = visible !== 0;
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeCategory = button.dataset.newsFilter;
+      filterButtons.forEach((candidate) => {
+        const selected = candidate === button;
+        candidate.classList.toggle('is-active', selected);
+        candidate.setAttribute('aria-pressed', String(selected));
+      });
+      updateLibrary();
+    });
+  });
+
+  searchInput?.addEventListener('input', updateLibrary);
+</script>
+

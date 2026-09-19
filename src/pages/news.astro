@@ -1,197 +1,101 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import sources from '../data/flywheel-news.json';
+import flywheelSources from '../data/flywheel-news.json';
+import hunchSources from '../data/hunch-news.json';
+import potableWaterSources from '../data/potable-water-news.json';
 import { withBase } from '../utils/paths';
 
-const highlights = sources.filter((source) => source.highlight);
-const categories = [...new Set(sources.map((source) => source.category))];
-const includedCount = sources.filter((source) => source.includedFile).length;
+const topics = [
+  {
+    number: '01',
+    title: 'Orion Flywheel Exercise Device',
+    eyebrow: 'Artemis II · Flight hardware',
+    description:
+      'The engineering, testing, people, and in-flight public record behind Orion\'s compact exercise system.',
+    href: '/news/flywheel/',
+    count: flywheelSources.length,
+    coverage: 'Development through Artemis II flight',
+  },
+  {
+    number: '02',
+    title: 'NASA HUNCH',
+    eyebrow: 'Student hardware · 2018-2021',
+    description:
+      'A tightly bounded four-year archive spanning flight hardware, design reviews, culinary work, mentoring, and pandemic adaptations.',
+    href: '/news/hunch/',
+    count: hunchSources.length,
+    coverage: 'News published 2018-2021 only',
+  },
+  {
+    number: '03',
+    title: 'Exploration Potable Water Dispenser',
+    eyebrow: 'ISS life support · Leidos',
+    description:
+      'The path from the legacy station dispenser to xPWD development, installation, microbial checkout, and operational use.',
+    href: '/news/potable-water-dispenser/',
+    count: potableWaterSources.length,
+    coverage: 'Technical baseline through on-orbit follow-up',
+  },
+];
 ---
 
 <BaseLayout
   title="News"
-  description="A researched public-source archive about NASA's Orion Flywheel Exercise Device and its Artemis II flight."
-  image="/images/orion-flywheel-exercise-device.jpg"
+  description="Focused public-source archives for aerospace hardware, programs, and the people behind them."
 >
-  <section class="news-hero">
-    <div class="shell news-hero-grid">
-      <div class="news-hero-copy">
-        <span class="page-hero-index">05 / FLYWHEEL PUBLIC ARCHIVE</span>
-        <p class="eyebrow">Orion Flywheel Exercise Device</p>
-        <h1>Flight hardware, in the public record.</h1>
-        <p class="news-hero-lede">
-          A curated map of the engineering, testing, people, and in-flight moments behind the
-          compact exercise system flown on Artemis II.
+  <section class="page-hero news-index-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <span class="page-hero-index">05 / NEWS ARCHIVE</span>
+        <p class="eyebrow">Three focused dossiers</p>
+        <h1>Public records, organized around the hardware.</h1>
+      </div>
+      <div class="page-hero-note">
+        <p>
+          Each topic separates a short list of orientation pieces from a dated, searchable source
+          library. The descriptions stay within publicly released information.
         </p>
-      </div>
-
-      <figure class="news-hero-figure">
-        <img
-          src={withBase('/images/orion-flywheel-exercise-device.jpg')}
-          alt="The compact Orion Flywheel Exercise Device with its pull bar extended"
-          width="1025"
-          height="664"
-        />
-        <figcaption>
-          Orion Flywheel Exercise Device · NASA
-          <a
-            href="https://commons.wikimedia.org/wiki/File:Flywheel_exercise_device_of_Orion_spacecraft.jpg"
-            target="_blank"
-            rel="noreferrer"
-          >public-domain source ↗</a>
-        </figcaption>
-      </figure>
-    </div>
-
-    <div class="shell news-fact-grid" aria-label="Flywheel at a glance">
-      <div><strong>≈30 lb</strong><span>flight hardware</span></div>
-      <div><strong>3 gears</strong><span>low · medium · high</span></div>
-      <div><strong>400–500 lb</strong><span>highest expected load</span></div>
-      <div><strong>≈30 min/day</strong><span>per crewmember in flight</span></div>
-    </div>
-  </section>
-
-  <section class="section-pad news-highlight-section" id="highlights">
-    <div class="shell">
-      <div class="news-section-heading">
-        <div>
-          <p class="eyebrow">Signal, not noise</p>
-          <h2>Overview Articles</h2>
-        </div>
-      </div>
-
-      <div class="news-highlight-grid">
-        {highlights.map((source, index) => (
-          <article class="news-highlight-card">
-            <div class="news-card-topline">
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <span>{source.category} · {source.format}</span>
-            </div>
-            <div>
-              <p class="news-source-publisher">{source.publisher} · {source.date}</p>
-              <h3>{source.title}</h3>
-              <p>{source.description}</p>
-            </div>
-            <a href={source.url} target="_blank" rel="noreferrer">
-              Open source <span aria-hidden="true">↗</span>
-            </a>
-          </article>
-        ))}
       </div>
     </div>
   </section>
 
-  <section class="section-pad news-library" id="source-library">
-    <div class="shell">
-      <div class="news-section-heading news-section-heading--dark">
-        <div>
-          <p class="eyebrow eyebrow--dark">Source census · September 13, 2026</p>
-          <h2>The full library.</h2>
-        </div>
-      </div>
-
-      <div class="news-library-tools">
-        <p class="news-result-count" data-news-count aria-live="polite">
-          Showing {sources.length} of {sources.length} sources
-        </p>
-      </div>
-
-      <ol class="news-source-list">
-        {sources
-          .toSorted((a, b) => {
-            if (!a.date) return 1;
-            if (!b.date) return -1;
-              return b.date.localeCompare(a.date);
-          })
-          .map((source, index) => (
-          <li
-            data-news-item
-            data-category={source.category}
-            data-search={`${source.title} ${source.publisher} ${source.description} ${source.format}`.toLowerCase()}
-          >
-            <span class="news-source-number">{String(index + 1).padStart(2, '0')}</span>
-            <div class="news-source-copy">
-              <div class="news-source-meta">
-                <span>{source.category}</span>
-                <span>{source.format}</span>
-                {source.includedFile && <span class="news-included">In ZIP</span>}
-              </div>
-              <h3>
-                <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
-              </h3>
-              <p>{source.description}</p>
-            </div>
-            <div class="news-source-origin">
-              <strong>{source.publisher}</strong>
-              <span>{source.date}</span>
-              <a href={source.url} target="_blank" rel="noreferrer" aria-label={`Open ${source.title}`}>
-                ↗
-              </a>
-            </div>
-          </li>
-        ))}
-      </ol>
-
-      <div class="news-no-results" data-news-empty hidden>
-        No sources match that filter and search. Try a broader term.
-      </div>
+  <section class="section-pad news-index-section">
+    <div class="shell news-topic-grid">
+      {topics.map((topic) => (
+        <article class="news-topic-card">
+          <div class="news-card-topline">
+            <span>{topic.number}</span>
+            <span>{topic.eyebrow}</span>
+          </div>
+          <div>
+            <p class="news-topic-count">{topic.count} indexed sources</p>
+            <h2>{topic.title}</h2>
+            <p>{topic.description}</p>
+          </div>
+          <div class="news-topic-footer">
+            <small>{topic.coverage}</small>
+            <a href={withBase(topic.href)}>Open archive <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
   <section class="section-pad news-method">
     <div class="shell news-method-grid">
       <div>
-        <p class="eyebrow">Method + boundaries</p>
+        <p class="eyebrow">Editorial boundary</p>
+        <h2>Useful, not exhaustive by accident.</h2>
       </div>
       <div>
         <p>
-          The result is broad, but the open web changes; it is a dated
-          research snapshot rather than a claim that no other reference exists. Only publicly released information appears here. No proprietary design details are
-          inferred.
+          The Flywheel page retains the broad public-source census. HUNCH is intentionally limited
+          to 2018-2021. The potable-water archive combines the Leidos program record with NASA's
+          technical and on-orbit documentation so development claims can be checked against mission
+          evidence.
         </p>
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<script is:inline>
-  const filterButtons = Array.from(document.querySelectorAll('[data-news-filter]'));
-  const searchInput = document.querySelector('[data-news-search]');
-  const items = Array.from(document.querySelectorAll('[data-news-item]'));
-  const count = document.querySelector('[data-news-count]');
-  const empty = document.querySelector('[data-news-empty]');
-  let activeCategory = 'All';
-
-  const normalizeSearch = (value) =>
-    value.toLowerCase().replace(/\b([a-z]{4,})s\b/g, '$1');
-
-  const updateLibrary = () => {
-    const query = normalizeSearch(searchInput?.value.trim() ?? '');
-    let visible = 0;
-
-    items.forEach((item) => {
-      const categoryMatches = activeCategory === 'All' || item.dataset.category === activeCategory;
-      const searchMatches = !query || normalizeSearch(item.dataset.search ?? '').includes(query);
-      item.hidden = !(categoryMatches && searchMatches);
-      if (!item.hidden) visible += 1;
-    });
-
-    if (count) count.textContent = `Showing ${visible} of ${items.length} sources`;
-    if (empty) empty.hidden = visible !== 0;
-  };
-
-  filterButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      activeCategory = button.dataset.newsFilter;
-      filterButtons.forEach((candidate) => {
-        const selected = candidate === button;
-        candidate.classList.toggle('is-active', selected);
-        candidate.setAttribute('aria-pressed', String(selected));
-      });
-      updateLibrary();
-    });
-  });
-
-  searchInput?.addEventListener('input', updateLibrary);
-</script>
 

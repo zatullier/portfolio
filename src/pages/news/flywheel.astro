@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsArchive from '../../components/NewsArchive.astro';
+import sources from '../../data/flywheel-news.json';
+---
+
+<BaseLayout
+  title="Orion Flywheel Exercise Device"
+  description="A researched public-source archive about NASA's Orion Flywheel Exercise Device and its Artemis II flight."
+  image="/images/orion-flywheel-exercise-device.jpg"
+>
+  <NewsArchive
+    index="NEWS 01 / FLYWHEEL"
+    eyebrow="Orion Flywheel Exercise Device"
+    title="Flight hardware, in the public record."
+    lede="A curated map of the engineering, testing, people, and in-flight moments behind the compact exercise system flown on Artemis II."
+    sources={sources}
+    sourceDate="September 13, 2026"
+    facts={[
+      { value: '≈30 lb', label: 'flight hardware' },
+      { value: '3 gears', label: 'low · medium · high' },
+      { value: '400-500 lb', label: 'highest expected load' },
+      { value: '≈30 min/day', label: 'per crewmember in flight' },
+    ]}
+    method="This is a dated research snapshot, not a claim that no other reference exists. Only publicly released information appears here, and no proprietary design details are inferred."
+    image={{
+      src: '/images/orion-flywheel-exercise-device.jpg',
+      alt: 'The compact Orion Flywheel Exercise Device with its pull bar extended',
+      width: 1025,
+      height: 664,
+      caption: 'Orion Flywheel Exercise Device · NASA',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Flywheel_exercise_device_of_Orion_spacecraft.jpg',
+    }}
+  />
+</BaseLayout>
+

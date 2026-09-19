@@ -1,3 +1,9 @@
+export type ProjectResource = {
+  label: string;
+  description: string;
+  href: string;
+};
+
 export type Project = {
   slug: string;
   number: string;
@@ -6,112 +12,149 @@ export type Project = {
   summary: string;
   status: string;
   disciplines: string[];
+  tools?: string[];
   challenge: string;
   constraints: string[];
+  approachSummary?: string;
   approach: Array<{ title: string; description: string }>;
   artifacts: string[];
   outcome: string;
   reflection: string;
+  resourceLabel?: string;
+  resources?: ProjectResource[];
 };
 
 export const projects: Project[] = [
   {
     slug: 'Bremsstrahlung',
     number: '01',
-    title: 'Bremsstrahlung Reduction Using Energy Cutoff Method',
-    eyebrow: 'Analysis · Model Generation',
+    title: 'Plasma Radiation Control',
+    eyebrow: 'Plasma physics · Reproducible computation',
     summary:
-      'A reproducible computational framework for studying how energy-selective modification of relativistic electron distributions affects bremsstrahlung spectra and receptor-weighted radiation dose.',
-    status: 'Thesis calculations reproduced and benchmarked relativistic electron-ion bremsstrahlung kernel produced',
-    disciplines: ['Particle Physics', 'Numerical Analysis', 'Radiobiology'],
+      'A public Python framework connecting selective changes in relativistic electron distributions to radiation-weighted emission, orbit loss, and receptor-response surrogates.',
+    status:
+      'Active research code · Numerical verification documented · Experimental validation explicitly gated',
+    disciplines: ['Plasma physics', 'Numerical modeling', 'Radiation transport'],
+    tools: ['Python', 'NumPy', 'SciPy', 'pytest'],
     challenge:
-      'A flight-like assembly needed a defensible view of thermal margin across several operating modes. The useful answer was not a single temperature; it was a clear explanation of assumptions, sensitivities, and decision thresholds.',
+      'The thesis established a multiscale question: can magnetic perturbations reshape the superthermal electron population that drives relativistic radiation losses, and can the resulting benefit be traced without overstating the evidence? This project turns that question into a reproducible model-and-validation framework.',
     constraints: [
-      'Incomplete early-phase inputs and evolving boundary conditions',
-      'Multiple operating modes with different dominant heat paths',
-      'A review audience spanning analysis, design, and systems engineering',
+      'Authoritative device fields, boundaries, and several experimental datasets are not publicly available',
+      'Reduced plasma, orbit, source, and biological-response models have different domains of validity',
+      'Every result must distinguish a numerical benchmark, a model response, and an experimental claim',
     ],
+    approachSummary:
+      'The repository advances in gated milestones: reproduce the thesis, replace surrogate kernels where practical, add kinetic and orbit physics, and fail closed when external evidence is unavailable.',
     approach: [
       {
-        title: 'Frame the decision',
+        title: 'Reproduce the baseline',
         description:
-          'Translated the request into explicit questions, success criteria, and a small set of controlling requirements.',
+          'Rebuilt and audited the thesis calculations with versioned inputs, generated tables, and executable checks.',
       },
       {
-        title: 'Build traceability',
+        title: 'Add physical kernels',
         description:
-          'Structured the calculation flow so each assumption, input source, model step, and margin result could be reviewed independently.',
+          'Implemented relativistic electron-ion and reduced electron-electron emission models with independent thermal benchmarks.',
       },
       {
-        title: 'Expose sensitivity',
+        title: 'Connect fields to losses',
         description:
-          'Varied the highest-uncertainty inputs to show which unknowns materially changed the recommendation and which did not.',
+          'Added guiding-center and full-particle orbit models, field-map interfaces, kinetic evolution, and explicit source ledgers.',
       },
       {
-        title: 'Communicate the result',
+        title: 'Gate the claims',
         description:
-          'Condensed the analysis into a review package organized around margins, risks, and the next most valuable piece of evidence.',
+          'Encoded provenance and acceptance gates so missing authoritative data remains visible instead of being silently replaced by a proxy.',
       },
     ],
     artifacts: [
-      'Assumption and source register',
-      'Mode-by-mode thermal balance',
-      'Sensitivity matrix',
-      'Decision-focused review summary',
+      'Installable Python package and command-line studies',
+      'Unit and regression test suite with GitHub Actions',
+      'Versioned model equations, validation status, and data dictionaries',
+      'Reproducible figures, audit tables, and milestone reports',
     ],
     outcome:
-      'The resulting framework made the margin logic auditable and highlighted the uncertainties worth resolving first. Quantitative results and identifying details are intentionally excluded from this public example.',
+      'The repository now provides a traceable research scaffold from distribution modification through emission, orbit loss, source accounting, and response surrogates. It also records where public evidence supports a benchmark and where device-level conclusions remain blocked.',
     reflection:
-      'The strongest technical deliverable was the chain of reasoning, not the final number. A model becomes decision-grade when another engineer can challenge its assumptions and still follow the logic.',
+      'A useful scientific model should make its limits as reproducible as its results. The fail-closed gates are part of the engineering output, not an apology for missing data.',
+    resourceLabel: 'Project resources',
+    resources: [
+      {
+        label: 'Download source archive',
+        description: 'Download the current main branch as a ZIP file.',
+        href: 'https://github.com/zatullier/plasma-radiation-control/archive/refs/heads/main.zip',
+      },
+      {
+        label: 'Browse on GitHub',
+        description: 'Review the code, tests, model notes, data contracts, and validation gates.',
+        href: 'https://github.com/zatullier/plasma-radiation-control',
+      },
+    ],
   },
   {
-    slug: 'structural-test-correlation',
+    slug: 'magnet-hall-engineering',
     number: '02',
-    title: 'Structural Test Correlation',
-    eyebrow: 'Verification · Sanitized case study',
+    title: 'Magnet and Hall Sensor Engineering Package',
+    eyebrow: 'Bench hardware · CAD · Calculation workbook',
     summary:
-      'A disciplined model-to-test workflow that treats disagreement as information instead of hiding it in a scale factor.',
-    status: 'Representative example — geometry, loads, and results generalized',
-    disciplines: ['Structural analysis', 'Test planning', 'Data reduction'],
+      'An open engineering package for exploring axial magnet spacing, Hall-sensor calibration, field estimates, and a printable room-temperature test fixture.',
+    status: 'Revision A · Digitally checked · Physical build and measurement remain open',
+    disciplines: ['Mechanical design', 'Instrumentation', 'Engineering analysis'],
+    tools: ['Excel', 'AutoCAD', 'STEP', 'STL'],
     challenge:
-      'An analytical model and a physical test needed to tell a coherent story about load path and stiffness. The central task was to distinguish instrumentation effects, boundary-condition mismatch, and model-form error.',
+      'Magnet and Hall-sensor experiments need a consistent way to connect editable assumptions, calibrated measurements, fixture geometry, wiring, and field estimates. The package brings those pieces together without presenting example values as acceptance data.',
     constraints: [
-      'Limited sensor coverage and finite test time',
-      'Boundary conditions that could not be reproduced perfectly in analysis',
-      'The need to preserve pre-test predictions and avoid hindsight bias',
+      'The axial field calculation is not valid for a sideways sensor pass or an unmodeled off-axis trajectory',
+      'No physical build, gaussmeter measurement, aging test, or supplier material certification has been completed',
+      'Lifetime and demagnetization conclusions require measured retention data and justified uncertainty inputs',
     ],
+    approachSummary:
+      'The package combines an auditable workbook with a manufacturable fixture and explicit limits on what the unvalidated model can establish.',
     approach: [
       {
-        title: 'Define correlation metrics',
+        title: 'Parameterize the setup',
         description:
-          'Set comparison quantities and acceptance logic before reviewing test results, including both local and global response measures.',
+          'Placed dimensions, travel, surface readings, temperature, calibration data, and uncertainty allowances in editable workbook inputs.',
       },
       {
-        title: 'Protect the baseline',
+        title: 'Design the fixture',
         description:
-          'Archived pre-test assumptions and predictions so later model updates remained explicit, reviewable engineering choices.',
+          'Created an adjustable printed fixture with individual STEP/STL parts, assembly references, spacing options, and a mechanical BOM.',
       },
       {
-        title: 'Interrogate mismatches',
+        title: 'Document the circuit',
         description:
-          'Worked from measurement quality and fixture behavior toward model detail, changing one defensible assumption at a time.',
+          'Added sensor schematics, breadboard layouts, a connection schedule, a calibration log, and electrical purchase information.',
       },
       {
-        title: 'Close the loop',
+        title: 'Verify the digital package',
         description:
-          'Documented what the test validated, what remained uncertain, and how the correlated model could be used responsibly.',
+          'Checked workbook boundaries and formulas, model solids and meshes, drawing readback, assembly clearances, and electrical net consistency.',
       },
     ],
     artifacts: [
-      'Pre-test prediction package',
-      'Sensor-to-model mapping',
-      'Correlation scorecard',
-      'Model update log',
+      'Nine-sheet calculation and calibration workbook',
+      'Twenty-two-page engineering package PDF',
+      'STEP, STL, DWG, and DXF fixture files',
+      'Mechanical BOM, wiring schedule, and calibration log',
     ],
     outcome:
-      'The process produced a bounded, explainable model update and a clearer understanding of residual uncertainty. Program-specific acceptance values are not included.',
+      'Revision A is a complete digital prototype package ready for a controlled physical build and measurement campaign. The repository preserves editable source formats alongside printable and review-ready outputs.',
     reflection:
-      'Correlation is most credible when every adjustment has a physical explanation. Agreement by itself is not evidence that the model is right for the right reason.',
+      'A polished model is still only a model. The most important feature of this package is that it tells the next builder exactly which measurements are needed before the conclusions can become hardware evidence.',
+    resourceLabel: 'Engineering package',
+    resources: [
+      {
+        label: 'Download complete package',
+        description: 'Download the workbook, PDF, CAD, printable files, BOMs, and calibration records.',
+        href: 'https://github.com/zatullier/magnet-hall-engineering/archive/refs/heads/main.zip',
+      },
+      {
+        label: 'Browse on GitHub',
+        description: 'Review the package structure, source files, verification notes, and model limitations.',
+        href: 'https://github.com/zatullier/magnet-hall-engineering',
+      },
+    ],
   },
   {
     slug: 'mechanism-concept-trade',
@@ -162,7 +205,6 @@ export const projects: Project[] = [
     reflection:
       'A useful trade study does more than rank ideas. It reveals which assumptions control the ranking and identifies the cheapest evidence that could change the decision.',
   },
-
   {
     slug: 'ayo',
     number: '10',
@@ -170,31 +212,24 @@ export const projects: Project[] = [
     eyebrow: 'ayo',
     summary: 'ayo',
     status: 'ayo',
-    disciplines: ['ayo',],
-    tools: ['ayo',],
+    disciplines: ['ayo'],
+    tools: ['ayo'],
     challenge: 'ayo',
-    constraints: ['ayo',],
-    assumptionSummary: 'ayo',
-    assumption: [
-      {
-        title: 'ayo',
-        description: 'ayo',
-      },
-    ],
-    approachSummary: 'ayo',    
+    constraints: ['ayo'],
+    approachSummary: 'ayo',
     approach: [
       {
         title: 'ayo',
         description: 'ayo',
       },
     ],
-    artifacts: ['ayo',],
+    artifacts: ['ayo'],
     outcome: 'ayo',
     reflection: 'ayo',
   },
-      
 ];
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
+
