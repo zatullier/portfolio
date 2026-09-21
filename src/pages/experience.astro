@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CareerTimeline from '../components/CareerTimeline.astro';
-import CapabilityFlightPlan from '../components/CapabilityFlightPlan.astro';
+import CompetencyMatrix from '../components/CompetencyMatrix.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site } from '../data/site';
 import {careerTimeline} from '../data/career';
@@ -294,11 +294,11 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
   <section class="section-pad" id="expertise">
     <div class="shell">
       <SectionHeading
-        eyebrow="Capability flight plan"
-        title="Technical depth, plotted as mission range."
-        intro="Select a discipline to move the vehicle along an eight-stage trajectory. Greater range represents deeper independent ownership—from exposure at launch to mission command."
+        eyebrow="Technical competencies"
+        title="Skills supported by demonstrated application."
+        intro="A concise view of engineering capabilities, assessed by independence, complexity, and technical ownership rather than arbitrary percentages."
       />
-      <CapabilityFlightPlan />
+      <CompetencyMatrix />
     </div>
   </section>
 
@@ -308,5 +308,6 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
       ?.addEventListener('click', () => window.print());
   </script>
 </BaseLayout>
+
 
 
