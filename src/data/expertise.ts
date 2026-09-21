@@ -1,4 +1,4 @@
-export type ExpertiseLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+export type ExpertiseLevel = 'proficient' | 'advanced' | 'lead';
 
 export type ExpertiseSkill = {
   slug: string;
@@ -8,25 +8,31 @@ export type ExpertiseSkill = {
   evidence: string;
 };
 
-export const expertiseScale: Record<ExpertiseLevel, string> = {
-  1: 'Exposure',
-  2: 'Foundation',
-  3: 'Developing',
-  4: 'Applied',
-  5: 'Proficient',
-  6: 'Advanced',
-  7: 'Specialist',
-  8: 'Mastery',
+export const expertiseScale: Record<
+  ExpertiseLevel,
+  { label: string; definition: string }
+> = {
+  proficient: {
+    label: 'Proficient',
+    definition: 'Performs independently within a defined technical scope.',
+  },
+  advanced: {
+    label: 'Advanced',
+    definition: 'Owns complex work, resolves ambiguity, and guides technical decisions.',
+  },
+  lead: {
+    label: 'Lead',
+    definition: 'Integrates disciplines and is accountable for program-level outcomes.',
+  },
 };
 
-// Provisional self-assessment based on the public resume. Adjust the level (1–8)
-// whenever you want to tune how much mission range the visualization communicates.
+// Provisional self-assessment based on the public resume and portfolio evidence.
 export const expertiseSkills: ExpertiseSkill[] = [
   {
     slug: 'systems-integration',
     title: 'Systems integration',
     category: 'Technical leadership',
-    level: 8,
+    level: 'lead',
     evidence:
       'Leads cross-functional hardware development through requirements, interfaces, supplier execution, testing, and configuration-controlled delivery.',
   },
@@ -34,7 +40,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'requirements-interfaces',
     title: 'Requirements & interfaces',
     category: 'Systems engineering',
-    level: 7,
+    level: 'advanced',
     evidence:
       'Develops system requirements, interface definitions, verification plans, and change packages for safety-critical hardware.',
   },
@@ -42,7 +48,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'verification-validation',
     title: 'Verification & validation',
     category: 'Systems engineering',
-    level: 7,
+    level: 'advanced',
     evidence:
       'Plans and coordinates verification evidence across analysis, inspection, supplier data, and integrated testing.',
   },
@@ -50,7 +56,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'mechanical-fluids',
     title: 'Mechanical & fluid systems',
     category: 'Engineering analysis',
-    level: 7,
+    level: 'advanced',
     evidence:
       'Applies fluid, thermal, mechanical, and pressurized-system fundamentals from design through integration and test.',
   },
@@ -58,7 +64,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'configuration-management',
     title: 'Configuration management',
     category: 'Program execution',
-    level: 7,
+    level: 'advanced',
     evidence:
       'Maintains traceability among controlled drawings, requirements, procedures, analyses, and engineering changes.',
   },
@@ -66,7 +72,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'cad-drawings',
     title: 'CAD & technical drawings',
     category: 'Mechanical design',
-    level: 6,
+    level: 'proficient',
     evidence:
       'Creates and reviews production drawings using GD&T, ASME Y14 practices, and configuration-controlled CAD workflows.',
   },
@@ -74,7 +80,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'manufacturing-test',
     title: 'Manufacturing & test',
     category: 'Hardware execution',
-    level: 6,
+    level: 'proficient',
     evidence:
       'Supports fabrication, precision inspection, assembly documentation, environmental testing, and flight-hardware readiness.',
   },
@@ -82,7 +88,7 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'computational-physics',
     title: 'Computational physics',
     category: 'Research & modeling',
-    level: 6,
+    level: 'proficient',
     evidence:
       'Builds multiphysics models spanning plasma dynamics, magnetic-field interactions, and radiation transport.',
   },
@@ -90,9 +96,10 @@ export const expertiseSkills: ExpertiseSkill[] = [
     slug: 'programming-automation',
     title: 'Programming & automation',
     category: 'Digital engineering',
-    level: 5,
+    level: 'proficient',
     evidence:
       'Uses Python, MATLAB, VBA, Java, and LabVIEW for analysis, data workflows, modeling, and engineering automation.',
   },
 ];
+
 

@@ -1,0 +1,330 @@
+---
+import {
+  expertiseScale,
+  expertiseSkills,
+  type ExpertiseLevel,
+} from '../data/expertise';
+
+const scaleOrder: ExpertiseLevel[] = ['proficient', 'advanced', 'lead'];
+---
+
+<div class="competency-matrix">
+  <div class="competency-matrix__basis">
+    <p class="eyebrow">Assessment basis</p>
+    <p>
+      Levels describe demonstrated independence, complexity, and technical ownership. They are
+      qualitative role expectations—not percentages, years of experience, or certifications.
+    </p>
+  </div>
+
+  <div class="competency-matrix__legend" aria-label="Competency level definitions">
+    {
+      scaleOrder.map((level) => (
+        <div class="competency-matrix__definition" data-level={level}>
+          <span aria-hidden="true" />
+          <div>
+            <strong>{expertiseScale[level].label}</strong>
+            <p>{expertiseScale[level].definition}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="competency-matrix__table-wrap">
+    <table>
+      <caption>Engineering competency matrix with evidence for each assessed level.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">Discipline</th>
+          <th scope="col">Level</th>
+          <th scope="col">Evidence of application</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          expertiseSkills.map((skill) => (
+            <tr>
+              <td data-label="Capability">
+                <strong class="competency-matrix__skill">{skill.title}</strong>
+              </td>
+              <td data-label="Discipline">{skill.category}</td>
+              <td data-label="Level">
+                <span class="competency-matrix__level" data-level={skill.level}>
+                  <i aria-hidden="true" />
+                  {expertiseScale[skill.level].label}
+                </span>
+              </td>
+              <td data-label="Evidence of application" class="competency-matrix__evidence">
+                {skill.evidence}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .competency-matrix {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .competency-matrix__basis {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 2.2fr);
+    gap: 1.5rem;
+    padding: 1.5rem 0 2rem;
+  }
+
+  .competency-matrix__basis p {
+    margin: 0;
+  }
+
+  .competency-matrix__basis > p:last-child {
+    max-width: 52rem;
+    color: var(--ink-soft);
+  }
+
+  .competency-matrix__legend {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .competency-matrix__definition {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+    min-height: 8rem;
+    padding: 1.25rem;
+  }
+
+  .competency-matrix__definition + .competency-matrix__definition {
+    border-left: 1px solid var(--line);
+  }
+
+  .competency-matrix__definition > span {
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-top: 0.35rem;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+
+  .competency-matrix__definition[data-level='advanced'] > span {
+    background: var(--blue);
+  }
+
+  .competency-matrix__definition[data-level='lead'] > span {
+    background: var(--lime);
+  }
+
+  .competency-matrix__definition strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .competency-matrix__definition p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .competency-matrix__table-wrap {
+    margin-top: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--night-raised);
+  }
+
+  caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  th,
+  td {
+    padding: 1rem 1.1rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    border-bottom: 1px solid var(--line-strong);
+    color: var(--ink-faint);
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  tbody tr + tr {
+    border-top: 1px solid var(--line);
+  }
+
+  td {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  th:nth-child(1),
+  td:nth-child(1) {
+    width: 21%;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    width: 18%;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3) {
+    width: 13%;
+  }
+
+  .competency-matrix__skill {
+    color: var(--ink);
+    font-size: 0.98rem;
+    font-weight: 610;
+  }
+
+  .competency-matrix__level {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .competency-matrix__level i {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+
+  .competency-matrix__level[data-level='advanced'] i {
+    background: var(--blue);
+  }
+
+  .competency-matrix__level[data-level='lead'] i {
+    background: var(--lime);
+  }
+
+  .competency-matrix__evidence {
+    max-width: 41rem;
+  }
+
+  @media (max-width: 840px) {
+    .competency-matrix__basis {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+
+    .competency-matrix__legend {
+      grid-template-columns: 1fr;
+    }
+
+    .competency-matrix__definition {
+      min-height: auto;
+    }
+
+    .competency-matrix__definition + .competency-matrix__definition {
+      border-top: 1px solid var(--line);
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .competency-matrix__table-wrap {
+      overflow: visible;
+      border: 0;
+      background: transparent;
+    }
+
+    thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    table,
+    tbody,
+    tr,
+    td {
+      display: block;
+      width: 100%;
+    }
+
+    table {
+      background: transparent;
+    }
+
+    tbody tr,
+    tbody tr + tr {
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      background: var(--night-raised);
+    }
+
+    tbody tr + tr {
+      margin-top: 0.75rem;
+    }
+
+    td,
+    td:nth-child(n) {
+      width: 100%;
+      padding: 0;
+    }
+
+    td + td {
+      margin-top: 0.85rem;
+    }
+
+    td::before {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--ink-faint);
+      content: attr(data-label);
+      font-size: 0.64rem;
+      font-weight: 650;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    td:first-child::before {
+      display: none;
+    }
+  }
+</style>
+
