@@ -12,11 +12,6 @@ Hard
 - Generate magnet calculation tool
 - Determine less cheesy way to display skills
   - Add details to "expertise" and pull all data from there for skill display and resume
-- Split "News" page
-  - Make Flywheel a News subpage
-  - Make Hunch a News subpage
-  - Generate potable water dispenser subpage
-  - Generate a in depth review of HUNCH and potable water dispenser news for things I was involved in
 - Fix Printed Resume
 - Make loop in "experience" for 'bullets'
 
@@ -31,7 +26,13 @@ Hard
 - Delete "Resume Tab". Done
 - Generate News page. Done
 - Add connection from 500px to projects page and link to contact page. Done
-  
+- Split "News" page. Done
+  - Make Flywheel a News subpage. Done
+  - Make Hunch a News subpage. Done
+  - Generate potable water dispenser subpage. Done
+  - Generate a in depth review of HUNCH and potable water dispenser news for things I was involved in. Done
+
+
 Easy, timeconsuming
 - Create symbol from Maci's drawings to add as the everypage symbol next to my name
 - Generate Tools page
