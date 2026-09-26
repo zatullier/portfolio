@@ -1,5 +1,16 @@
 [
   {
+    "id": "Augustine PMP Post",
+    "category": "Mission",
+    "date": "2026-04",
+    "title": "Meeting the Crew",
+    "publisher": "Philip Augustine",
+    "format": "Reference page",
+    "url": "https://lnkd.in/p/gTa9rqya",
+    "description": "This post from a colleague shows our team with the Artemis-II astronauts and their backups observing the flight unit",
+    "highlight": false
+  },
+  {
     "id": "nasa-crew-systems",
     "category": "Mission",
     "date": "2026-09",
@@ -198,7 +209,7 @@
     "format": "Video + transcript",
     "url": "https://www.asc-csa.gc.ca/eng/multimedia/search/video/19714?type=2",
     "description": "Jeremy Hansen demonstrates and explains rowing, squats, deadlifts, curls, and high pulls on the compact system.",
-    "highlight": true
+    "highlight": false
   },
   {
     "id": "csa-broll",
@@ -288,7 +299,7 @@
     "format": "Research poster",
     "url": "https://ntrs.nasa.gov/citations/20260002521",
     "description": "NASA/KBR/UHCL study plan for testing an eight-week flywheel-only program against aerobic, muscular, immune, and EVA-relevant performance outcomes.",
-    "highlight": true,
+    "highlight": false,
     "includedFile": "documents/06-ntrs-orion-flywheel-efficacy-study-2026.pdf"
   },
   {
