@@ -483,7 +483,7 @@ h3 {
 .home-hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 79px);
+  min-height: auto;
   border-bottom: 1px solid var(--line);
 }
 
@@ -502,11 +502,11 @@ h3 {
   position: relative;
   z-index: 1;
   display: grid;
-  min-height: calc(100vh - 79px);
-  grid-template-columns: minmax(0, 1.08fr) minmax(370px, 0.92fr);
+  min-height: auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 6rem);
-  padding-block: 4rem;
+  padding-block: clamp(4rem, 8vw, 7rem);
 }
 
 .home-hero h1 {
