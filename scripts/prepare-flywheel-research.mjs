@@ -4,6 +4,8 @@ import { deflateRawSync } from 'node:zlib';
 const archiveRoot = 'public/downloads/flywheel-research';
 const documentsRoot = `${archiveRoot}/documents`;
 const zipPath = 'public/downloads/flywheel-exercise-device-research.zip';
+const downloadAttempts = 3;
+const retryDelayMs = 1_000;
 
 const downloads = [
   ['https://www.nasa.gov/wp-content/uploads/2026/04/lsah-newsletter-2026-vol31-issue1.pdf', `${documentsRoot}/02-nasa-from-friction-to-flywheel.pdf`],
@@ -24,22 +26,46 @@ await Promise.all([
   `${documentsRoot}/09-nasa-jsc-2024-annual-report-flywheel-extract.pdf`,
 ].map((path) => rm(path, { force: true })));
 
-for (const [url, destination] of downloads) {
-  let exists = false;
+const fileExists = async (path) => {
   try {
-    exists = (await stat(destination)).size > 0;
+    return (await stat(path)).size > 0;
   } catch {
-    // Download below.
+    return false;
   }
-  if (exists) continue;
+};
 
-  const response = await fetch(url, {
-    redirect: 'follow',
-    headers: { 'User-Agent': 'zatullier-portfolio research archive builder' },
-  });
-  if (!response.ok) throw new Error(`Could not download ${url}: ${response.status}`);
-  await writeFile(destination, Buffer.from(await response.arrayBuffer()));
+const pause = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+async function downloadFile(url, destination) {
+  if (await fileExists(destination)) return true;
+
+  for (let attempt = 1; attempt <= downloadAttempts; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        redirect: 'follow',
+        headers: { 'User-Agent': 'zatullier-portfolio research archive builder' },
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const body = Buffer.from(await response.arrayBuffer());
+      if (body.length === 0) throw new Error('empty response');
+      await writeFile(destination, body);
+      return true;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      if (attempt < downloadAttempts) {
+        console.warn(`Download attempt ${attempt}/${downloadAttempts} failed for ${url}: ${message}`);
+        await pause(retryDelayMs * attempt);
+        continue;
+      }
+
+      console.warn(`Skipping unavailable research asset after ${downloadAttempts} attempts: ${url} (${message})`);
+      return false;
+    }
+  }
 }
+
+await Promise.all(downloads.map(([url, destination]) => downloadFile(url, destination)));
 
 const sources = JSON.parse(await readFile('src/data/flywheel-news.json', 'utf8'));
 const csvCell = (value = '') => `"${String(value).replaceAll('"', '""')}"`;
@@ -68,7 +94,14 @@ markdown.push('## Research notes', '', '- The flown device is the unpowered Orio
 await writeFile(`${archiveRoot}/SOURCES.md`, markdown.join('\n'));
 
 await mkdir(`${archiveRoot}/media`, { recursive: true });
-await copyFile('public/images/orion-flywheel-exercise-device.jpg', `${archiveRoot}/media/orion-flywheel-exercise-device.jpg`);
+const imageSource = 'public/images/orion-flywheel-exercise-device.jpg';
+const imageArchiveDestination = `${archiveRoot}/media/orion-flywheel-exercise-device.jpg`;
+if (await fileExists(imageSource)) {
+  await copyFile(imageSource, imageArchiveDestination);
+} else {
+  await rm(imageArchiveDestination, { force: true });
+  console.warn('The Flywheel hero image was unavailable; continuing the site build without a local copy.');
+}
 
 const archiveFiles = [];
 async function walk(directory, relative = '') {
