@@ -52,7 +52,7 @@ export const writing: WritingPiece[] = [
         heading: 'From plasma kinetics to consequence',
         paragraphs: [
           'Relativistic plasmas can lose a significant share of stored energy through bremsstrahlung, synchrotron emission, and related high-energy photon processes. The work examines magnetic perturbations as a way to selectively deplete or redistribute the superthermal electrons that contribute disproportionately to those losses.',
-          'The engineering question does not end at reduced radiated power. A changed photon spectrum must still be transported through structures and shielding, converted to absorbed dose, and evaluated against molecular and cellular response.',
+          'This work extends the mathematics beyond controlling the nuclear process and describes how those changes impact the people working on the physical hardware. The redistributed photons are analyzed through their entire lifetime, including transportation through structures and shielding and impact on biological specimin using absorbed dose and cellular response.',
         ],
       },
       {
@@ -71,78 +71,6 @@ export const writing: WritingPiece[] = [
         heading: 'Scope and next phase',
         paragraphs: [
           'The numerical examples are reproducible, illustrative calculations rather than unreported experimental results. The proposed magnetic configurations remain physics concepts, not final reactor hardware. The recommended next phase is a staged validation campaign that first confirms electron-tail control, closes the energy balance, measures the absolute photon spectrum, and validates transport and dosimetry before biological testing.',
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'model-to-test-correlation',
-    category: 'Verification',
-    title: 'A practical guide to model-to-test correlation',
-    summary:
-      'How to learn from disagreement while keeping analytical updates physically defensible.',
-    readTime: '5 min read',
-    lede:
-      'Correlation is not the act of tuning a model until its curve resembles test data. It is a structured investigation into why two representations of the same hardware disagree.',
-    sections: [
-      {
-        heading: 'Define success before the test',
-        paragraphs: [
-          'Choose comparison metrics, tolerances, and update rules before data arrives. Preserve the pre-test prediction. Otherwise, hindsight makes it too easy to accept a plausible-looking but weakly justified change.',
-        ],
-      },
-      {
-        heading: 'Work from the test boundary inward',
-        paragraphs: [
-          'Begin with sensor health, units, synchronization, fixtures, and boundary conditions. Only then move toward mesh density, material properties, joint behavior, or other model details.',
-        ],
-        bullets: [
-          'Confirm the measured quantity matches the modeled quantity.',
-          'Check global behavior before explaining local peaks.',
-          'Change one physical assumption at a time.',
-          'Keep an explicit log of every update and its rationale.',
-        ],
-      },
-      {
-        heading: 'State the model’s new domain of trust',
-        paragraphs: [
-          'A correlated model is not universally validated. Document the loads, configurations, frequencies, or temperatures covered by the evidence—and be equally clear about the regions still supported only by engineering judgment.',
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'design-reviews-surface-uncertainty',
-    category: 'Engineering practice',
-    title: 'Design reviews that surface uncertainty early',
-    summary:
-      'A review structure that rewards clear unknowns and produces sharper follow-through.',
-    readTime: '4 min read',
-    lede:
-      'The most valuable design review is not the one with the fewest questions. It is the one that finds consequential uncertainty while there is still time to act on it.',
-    sections: [
-      {
-        heading: 'Organize around claims',
-        paragraphs: [
-          'Instead of walking slide by slide through design history, state the claims the design must support: it fits, carries load, survives the environment, can be built, and can be verified. Pair each claim with evidence and uncertainty.',
-        ],
-      },
-      {
-        heading: 'Show margins and maturity together',
-        paragraphs: [
-          'A positive margin based on a low-maturity input should not read like a closed item. Display analytical result, input maturity, and verification status together so reviewers can see where confidence is earned and where it is provisional.',
-        ],
-        bullets: [
-          'What must be true for this conclusion to hold?',
-          'Which assumption has the most leverage?',
-          'What evidence would change the design?',
-          'Who owns the uncertainty and when will it close?',
-        ],
-      },
-      {
-        heading: 'Treat actions as engineering output',
-        paragraphs: [
-          'A review is complete only when each action has a precise question, owner, due point, and closure evidence. Good action wording turns a meeting observation into a bounded piece of engineering work.',
         ],
       },
     ],
