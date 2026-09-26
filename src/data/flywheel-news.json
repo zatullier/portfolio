@@ -8,7 +8,7 @@
     "format": "Reference page",
     "url": "https://www.nasa.gov/reference/crew-systems/",
     "description": "NASA's current definitive overview of the flown Orion Flywheel: interfaces, three gears, exercises, loading, stowage, dual use as a hatch step, and Artemis II instrumentation.",
-    "highlight": true
+    "highlight": false
   },
   {
     "id": "nasa-ryan-schulte",
@@ -30,7 +30,7 @@
     "format": "Mission update",
     "url": "https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-orion-completes-tli-burn-crew-begins-journey-to-the-moon/",
     "description": "The clearest official account of the first in-flight sessions, including simultaneous air-revitalization monitoring and assessment of exercise-induced spacecraft motion.",
-    "highlight": true
+    "highlight": false
   },
   {
     "id": "spacecom-crew-verdict",
@@ -41,7 +41,7 @@
     "format": "Reported feature",
     "url": "https://www.space.com/space-exploration/artemis/nasas-artemis-2-astronauts-are-cruising-to-the-moon-so-why-are-they-doing-cpr-tests-today",
     "description": "Independent mission reporting captures Reid Wiseman's immediate assessment after a 30-minute workout: the hardware worked and provided a useful workout, with a note about static charge.",
-    "highlight": true
+    "highlight": false
   },
   {
     "id": "nasa-friction-to-flywheel",
@@ -52,7 +52,7 @@
     "format": "Newsletter PDF",
     "url": "https://www.nasa.gov/wp-content/uploads/2026/04/lsah-newsletter-2026-vol31-issue1.pdf",
     "description": "A compact visual history connecting Apollo's Exer-Genie to the Orion Flywheel and explaining the new device's packaging, tablet data, and structural-step role.",
-    "highlight": true,
+    "highlight": false,
     "includedFile": "documents/02-nasa-from-friction-to-flywheel.pdf"
   },
   {
@@ -64,7 +64,7 @@
     "format": "Feature",
     "url": "https://www.asc-csa.gc.ca/eng/news/articles/2024/2024-07-22-how-canada-helps-artemis-astronauts-stay-in-shape.asp",
     "description": "The best account of CSA's replicated-device protocol work: 30 participants, ground campaigns, parabolic flights, exercise selection, and planned effectiveness research.",
-    "highlight": true
+    "highlight": false
   },
   {
     "id": "ntrs-comparison-results-2026",
@@ -75,7 +75,7 @@
     "format": "Technical presentation",
     "url": "https://ntrs.nasa.gov/citations/20260002262",
     "description": "Instrumented comparison of the Orion Flywheel and kBox Pro, including force-displacement profiles and the finding that system friction changes the eccentric loading response.",
-    "highlight": true,
+    "highlight": false,
     "includedFile": "documents/05-ntrs-orion-flywheel-vs-kbox-results-2026.pdf"
   },
   {
@@ -198,7 +198,7 @@
     "format": "Video + transcript",
     "url": "https://www.asc-csa.gc.ca/eng/multimedia/search/video/19714?type=2",
     "description": "Jeremy Hansen demonstrates and explains rowing, squats, deadlifts, curls, and high pulls on the compact system.",
-    "highlight": false
+    "highlight": true
   },
   {
     "id": "csa-broll",
@@ -264,7 +264,7 @@
     "format": "Engineering poster",
     "url": "https://ntrs.nasa.gov/citations/20230001466",
     "description": "Public-use poster by Boyer, Gomes, Roper, and Schulte covering the system requirement, hardware overview, acceptance testing, and delivery path.",
-    "highlight": false,
+    "highlight": true,
     "includedFile": "documents/03-ntrs-flywheel-development-and-evaluation-2023.pdf"
   },
   {
@@ -288,7 +288,7 @@
     "format": "Research poster",
     "url": "https://ntrs.nasa.gov/citations/20260002521",
     "description": "NASA/KBR/UHCL study plan for testing an eight-week flywheel-only program against aerobic, muscular, immune, and EVA-relevant performance outcomes.",
-    "highlight": false,
+    "highlight": true,
     "includedFile": "documents/06-ntrs-orion-flywheel-efficacy-study-2026.pdf"
   },
   {
@@ -331,7 +331,7 @@
     "title": "Task Book: Efficacy of Orion Flywheel Exercise Training",
     "publisher": "NASA Human Research Program",
     "format": "Project report PDF",
-    "url": "https://taskbook.nasaprs.com/tbp/tbpdf.cfm?id=16181",
+    "url": "https://taskbook.nasaprs.com/tbp/index.cfm?action=public_query_taskbook_content&TASKID=2F999F7B562E0FC9F429E63FD090888E",
     "description": "Formal project record for the physiological-efficacy study, including risks, objectives, investigator, schedule, and planned deliverables.",
     "highlight": false
   },
@@ -475,9 +475,9 @@
     "title": "In tight quarters, Artemis II astronauts stay fit with the flywheel",
     "publisher": "KUOW / NPR",
     "format": "Radio feature",
-    "url": "https://www.kuow.org/stories/in-tight-quarters-artemis-ii-astronauts-stay-fit-with-the-flywheel",
+    "url": "https://www.kuow.org/2026-04-08/in-tight-quarters-artemis-ii-astronauts-stay-fit-with-the-flywheel",
     "description": "Accessible independent explanation of the exercise problem and the elegantly compact hardware flown aboard Orion.",
-    "highlight": false
+    "highlight": true
   },
   {
     "id": "spacecom-preflight",
