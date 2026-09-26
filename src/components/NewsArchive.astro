@@ -41,7 +41,8 @@ const sortedSources = sources.toSorted((a, b) => b.date.localeCompare(a.date));
       <a class="news-back-link" href={withBase('/news/')}>← All news topics</a>
       <span class="page-hero-index">{index}</span>
       <p class="eyebrow">{eyebrow}</p>
-      <p>{title}</p>
+      <h2>{title}</h2>
+      <p>{lede}</p>
     </div>
 
     {image && (
