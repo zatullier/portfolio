@@ -1,0 +1,34 @@
+---
+import ResumeDocument from '../../components/ResumeDocument.astro';
+import { site } from '../../data/site';
+import '../../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{site.name} — Résumé</title>
+  </head>
+  <body>
+    <main id="main-content">
+      <section class="resume-print-section">
+        <div class="shell">
+          <div class="resume-toolbar">
+            <p>Two-page US Letter résumé. Use 100% scale and turn off browser headers and footers.</p>
+            <button class="button button--primary" type="button" data-print-document>Print / save PDF</button>
+          </div>
+          <ResumeDocument />
+        </div>
+      </section>
+    </main>
+    <script>
+      document.querySelector('[data-print-document]')?.addEventListener('click', () => window.print());
+      if (new URLSearchParams(window.location.search).has('print')) {
+        document.fonts.ready.then(() => window.print());
+      }
+    </script>
+  </body>
+</html>

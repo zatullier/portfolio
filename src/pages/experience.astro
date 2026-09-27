@@ -3,13 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CareerTimeline from '../components/CareerTimeline.astro';
 import CapabilityEvidenceMap from '../components/CapabilityEvidenceMap.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import { site } from '../data/site';
-import {careerTimeline} from '../data/career';
-const bach = careerTimeline.find((item) => item.tone === 'bach');
-const mast = careerTimeline.find((item) => item.tone === 'mast');
-const hunch = careerTimeline.find((item) => item.tone === 'hunch');
-const fluids = careerTimeline.find((item) => item.tone === 'fluids');
-const pe = careerTimeline.find((item) => item.tone === 'pe');
+import ResumeDocument from '../components/ResumeDocument.astro';
+import { withBase } from '../utils/paths';
 
 ---
 
@@ -37,246 +32,14 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
     <div class="shell">
       <div class="resume-toolbar">
         <p>
-          Formatted for US Letter. In the print dialog, choose Save as PDF and disable browser
-          headers and footers for the cleanest export.
+          Two-page résumé for US Letter. Print at 100% scale with browser headers and footers off.
         </p>
-        <button class="button button--primary" type="button" data-print-resume>
+        <a class="button button--primary" href={withBase('/experience/print/?print=1')} target="_blank" rel="noopener">
           Print / save PDF
-        </button>
+        </a>
       </div>
 
-      <article class="resume-sheet" aria-label="Zachary Tullier resume">
-        <header class="resume-header">
-          <div>
-            <h1>{site.name}</h1>
-            <p>{site.title}</p>
-          </div>
-          <p class="resume-contact">
-            <span>{site.location}</span>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <a href={site.github}>{site.github.replace('https://', '')}</a>
-          </p>
-        </header>
-
-        <section class="resume-summary" aria-label="Professional summary">
-          <p>
-            Systems-focused aerospace and mechanical engineer experienced in leading
-            multimillion-dollar development of safety-critical mechanical and fluid hardware for
-            human-spaceflight programs. Skilled in requirements and interface management,
-            verification planning, configuration control, supplier coordination, and
-            cross-functional execution from design through testing. Graduate research in
-            computational plasma physics adds depth in first-principles analysis, multiphysics
-            modeling, and radiation transport.
-          </p>
-        </section>
-
-        <section class="resume-section">
-          <h2>Education</h2>
-          <div>
-            <article class="resume-entry">
-              <div class="resume-entry-header">
-                <div>
-                  <h3>{bach?.title}</h3>
-                  <p>{bach?.organization}</p>
-                </div>
-                <span>2016-2021</span>
-              </div>
-            </article>
-
-            <article class="resume-entry">
-              <div class="resume-entry-header">
-                <div>
-                  <h3>{mast?.title}</h3>
-                  <p>{mast?.organization}</p>
-                </div>
-                <span>2024-2026</span>
-              </div>
-              <ul>
-                <li>
-                  {mast?.bullets[0]}
-                </li>
-                <li>
-                  {mast?.bullets[1]}
-                </li>
-                <li>
-                  {mast?.bullets[2]}
-                </li>
-                <li>
-                  {mast?.bullets[3]}
-                </li>
-                <li>
-                  {mast?.bullets[4]}
-                </li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="resume-section">
-          <h2>Experience</h2>
-          <div>
-            <article class="resume-entry">
-              <div class="resume-entry-header">
-                <div>
-                  <h3>{pe?.title}</h3>
-                  <p>{pe?.organization}</p>
-                </div>
-                <span>{pe?.location} · 2021-Present</span>
-              </div>
-              <ul>
-                <li>
-                  {pe?.bullets[0]}
-                </li>
-                <li>
-                  {pe?.bullets[1]}
-                </li>
-                <li>
-                  {pe?.bullets[2]}
-                </li>
-                <li>
-                  {pe?.bullets[3]}
-                </li>
-                <li>
-                  {pe?.bullets[3]}
-                </li>
-                <li>
-                  {pe?.bullets[4]}
-                </li>
-                <li>
-                  {pe?.bullets[5]}
-                </li>
-                <li>
-                  {pe?.bullets[6]}
-                </li>
-                <li>
-                  {pe?.bullets[7]}
-                </li>
-                <li>
-                  {pe?.bullets[8]}
-                </li>
-                <li>
-                  {pe?.bullets[9]}
-                </li>
-                <li>
-                  {pe?.bullets[10]}
-                </li>
-              </ul>
-            </article>
-
-            <article class="resume-entry resume-entry--print-break">
-              <div class="resume-entry-header">
-                <div>
-                  <h3>{fluids?.title}</h3>
-                  <p>{fluids?.organization}</p>
-                </div>
-                <span>{fluids?.location} · {fluids?.startMonth} {fluids?.startYear} - {fluids?.endMonth} {fluids?.endYear}</span>
-              </div>
-              <ul>
-                <li>
-                  {fluids?.bullets[0]}
-                </li>
-                <li>
-                  {fluids?.bullets[1]}
-                </li>
-                <li>
-                  {fluids?.bullets[2]}
-                </li>
-                <li>
-                  {fluids?.bullets[3]}
-                </li>
-                <li>
-                  {fluids?.bullets[4]}
-                </li>
-                <li>
-                  {fluids?.bullets[5]}
-                </li>
-                <li>
-                  {fluids?.bullets[6]}
-                </li>
-                <li>
-                  {fluids?.bullets[7]}
-                </li>
-              </ul>
-            </article>
-
-            <article class="resume-entry">
-              <div class="resume-entry-header">
-                <div>
-                  <h3>{hunch?.title}</h3>
-                  <p>{hunch?.organization}</p>
-                </div>
-                <span>{fluids?.location} · {fluids?.startMonth} {fluids?.startYear} - {fluids?.endMonth} {fluids?.endYear}</span>
-              </div>
-              <ul>
-                <li>
-                  {fluids?.bullets[0]}
-                </li>
-                <li>
-                  {fluids?.bullets[1]}
-                </li>
-                <li>
-                  {fluids?.bullets[2]}
-                </li>
-                <li>
-                  {fluids?.bullets[3]}
-                </li>
-                <li>
-                  {fluids?.bullets[4]}
-                </li>
-                <li>
-                  {fluids?.bullets[5]}
-                </li>
-                <li>
-                  {fluids?.bullets[6]}
-                </li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="resume-section">
-          <h2>Skills</h2>
-          <div class="resume-skills">
-            <div>
-              <strong>Engineering Software &amp; CAD</strong>
-              <span>SOLIDWORKS, Creo, Inventor, AutoCAD, Revit, Onshape, PTC Windchill</span>
-              <span>Process automation, design, and integration</span>
-              <span>Thermal, fluid, structural, and performance analysis</span>
-            </div>
-            <div>
-              <strong>Programming &amp; Automation</strong>
-              <span>Python, MATLAB, Java, VBA, LabVIEW</span>
-              <span>
-                Process automation, data acquisition and mechatronic control design, and plasma
-                modeling
-              </span>
-            </div>
-            <div class="resume-skill-wide">
-              <strong>System Design &amp; Analysis</strong>
-              <span>
-                System architecture definition, requirements development, interface controls,
-                verification and validation planning, failure modes and effects evaluation,
-                pressurized system design and test, configuration management, and design review
-                leadership
-              </span>
-            </div>
-            <div class="resume-skill-wide">
-              <strong>Laboratory &amp; Manufacturing Tools</strong>
-              <span>
-                NASA Assembly Documentation (EDS and COSMIC), ASME Y14, Geometric Dimensioning and
-                Tolerancing (GD&amp;T), precision torque tools, digital multimeters, magnetometer,
-                oscilloscope, power supplies, Micro-Hite, micrometers, calipers, optical comparator,
-                FaroArm, polymeric installation, data acquisition systems, handling electrostatic
-                discharge sensitive equipment, handling precision-cleaned hardware, laminar flow
-                benches, vibration table testing, thermal chamber, electromagnetic interference
-                diagnostic tools, acoustic diagnostic tools, compressed gas systems, pipe benders,
-                fused deposition modeling, stereolithography, manual mill and lathe, abrasive
-                finishing, waterjet, thermoforming, and arc welding
-              </span>
-            </div>
-          </div>
-        </section>
-      </article>
+      <ResumeDocument />
     </div>
   </section>
 
@@ -302,11 +65,6 @@ const pe = careerTimeline.find((item) => item.tone === 'pe');
     </div>
   </section>
 
-  <script>
-    document
-      .querySelector('[data-print-resume]')
-      ?.addEventListener('click', () => window.print());
-  </script>
 </BaseLayout>
 
 

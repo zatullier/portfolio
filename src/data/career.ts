@@ -5,7 +5,7 @@ export type CareerTimelineItem = {
   startYear: number;
   endYear: number;
   current?: boolean;
-  tone: 'foundation' | 'hardware' | 'fluids' | 'systems' | 'research';
+  tone: 'Bach' | 'hunch' | 'fluids' | 'pe' | 'mast';
   disciplines: string[];
   bullets: string[];
   location: string;
@@ -26,9 +26,9 @@ export const careerTimeline: CareerTimelineItem[] = [
     tone: 'Bach',
     disciplines: ['Aerospace', 'Mechanical', 'Analysis'],
     bullets: ['Ayo', 'Ayo', 'Ayo'],
-    location: ['Ayo'],
-    startMonth: ['Ayo'],
-    endMonth: ['Ayo'],
+    location: '',
+    startMonth: '',
+    endMonth: '',
 
   },
   {
@@ -46,9 +46,9 @@ export const careerTimeline: CareerTimelineItem[] = [
               'Reverse-engineered student and commercial prototypes for spaceflight compliance evaluation.',
               'Advised student teams to align designs with NASA/JSC flight hardware standards using core engineering principles.',
               'Mentored HUNCH students in collaborative design practices to develop innovative, standards-compliant engineering solutions.'],
-    location: ['NASA Johnson Space Center - Houston, Texas'],
-    startMonth: ['Ayo'],
-    endMonth: ['Ayo'],
+    location: 'NASA Johnson Space Center - Houston, Texas',
+    startMonth: '',
+    endMonth: '',
   },
   {
     period: '2021',
@@ -67,9 +67,9 @@ export const careerTimeline: CareerTimelineItem[] = [
               'Evaluated constructability constraints and provided recommendations to resolve installation conflicts in congested mechanical spaces.',
               'Supported the creation of equipment schedules, material specifications, and cut sheets to ensure selected components met performance, durability, and code-compliance requirements.',
               ],
-    location: ['Ayo'],
-    startMonth: ['Ayo'],
-    endMonth: ['Ayo'],
+    location: '',
+    startMonth: '',
+    endMonth: '',
   },
   {
     period: '2021–Present',
@@ -92,9 +92,9 @@ export const careerTimeline: CareerTimelineItem[] = [
               'Generated technical documentation packages, design reports, verification matrices, safety assessments, and configuration-controlled change packages supporting design certification.',
               'Provided technical direction to suppliers for component fabrication, verification data packages, inspection requirements, and materials/process compliance.',
                'Automated data workflows for assemblies comprising 400+ subcomponents.'],
-    location: ['Johnson Space Center - Houston, Texas'],
-    startMonth: ['Ayo'],
-    endMonth: ['Ayo'],
+    location: 'Johnson Space Center - Houston, Texas',
+    startMonth: '',
+    endMonth: '',
   },
   {
     period: '2024–2026',
@@ -111,9 +111,9 @@ export const careerTimeline: CareerTimelineItem[] = [
               'Applied quantum and classical radiation theory, transport equations, and field-particle interaction models to evaluate how perturbative magnetic geometries influence emissivity, stability, and energy balance.',
               'Produced research combining plasma physics, electrodynamics, computational modeling, and radiation transport - skills directly translatable to nuclear system analysis, radiation effects evaluation, and multiphysics design integration.'
               ],
-    location: ['Houston, Texas'],
-    startMonth: ['Ayo'],
-    endMonth: ['Ayo'],
+    location: 'Houston, Texas',
+    startMonth: '',
+    endMonth: '',
     
   },
 ];
