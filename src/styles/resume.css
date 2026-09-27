@@ -1,0 +1,257 @@
+.resume-page-footer {
+  display: none;
+}
+
+/* These rules also protect Ctrl+P on Experience. The print button opens a
+   document containing only the resume, so portfolio sections cannot paginate. */
+@media print {
+  @page {
+    size: Letter portrait;
+    margin: 0.5in;
+  }
+
+  html:has(.resume-sheet),
+  body:has(.resume-sheet) {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: white !important;
+    color: #172227;
+    color-scheme: light;
+  }
+
+  body:has(.resume-sheet) > :not(#main-content),
+  body:has(.resume-sheet) #main-content > :not(.resume-print-section),
+  .resume-print-section .resume-toolbar {
+    display: none !important;
+  }
+
+  body:has(.resume-sheet) #main-content,
+  .resume-print-section,
+  .resume-print-section > .shell,
+  .resume-print-section .resume-sheet {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  .resume-sheet,
+  .resume-sheet * {
+    box-sizing: border-box;
+  }
+
+  .resume-sheet .resume-page {
+    /* Letter's 10-inch printable height, with rounding room for pagination. */
+    height: 9.98in;
+    width: 7.5in;
+    display: flex;
+    flex-direction: column;
+    break-inside: avoid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--resume-print-size, 9pt);
+    line-height: var(--resume-print-leading, 1.25);
+    color: #172227;
+  }
+
+  .resume-sheet .resume-page + .resume-page {
+    break-before: page;
+  }
+
+  .resume-sheet .resume-page-content {
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+
+  .resume-sheet .resume-page-footer {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 8pt;
+    border-top: 0.5pt solid #b4bbc0;
+    color: #53616a;
+    font-size: 8pt;
+    line-height: 1.2;
+  }
+
+  .resume-sheet .resume-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16pt;
+    padding: 0 0 10pt;
+    border-bottom: 1.5pt solid #172227;
+  }
+
+  .resume-sheet .resume-header h1 {
+    margin: 0 0 4pt;
+    font-size: 25pt;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .resume-sheet .resume-header > div > p {
+    margin: 0;
+    font-size: 10pt;
+    line-height: 1.3;
+    color: #39474f;
+  }
+
+  .resume-sheet .resume-contact {
+    flex: 0 0 auto;
+    margin: 0;
+    text-align: right;
+  }
+
+  .resume-sheet .resume-contact a,
+  .resume-sheet .resume-contact span {
+    display: block;
+    font-size: 8pt;
+    line-height: 1.4;
+    color: #39474f;
+  }
+
+  .resume-sheet .resume-summary {
+    padding: 10pt 0;
+    border-bottom: 0.5pt solid #b4bbc0;
+  }
+
+  .resume-sheet .resume-summary p {
+    max-width: none;
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .resume-sheet .resume-section {
+    display: block;
+    padding: 9pt 0;
+    border-bottom: 0.5pt solid #b4bbc0;
+  }
+
+  .resume-sheet .resume-section:last-child {
+    border-bottom: 0;
+  }
+
+  .resume-sheet .resume-section > h2 {
+    display: block;
+    margin: 0 0 6pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .resume-sheet .resume-continuation span {
+    font-weight: 400;
+  }
+
+  .resume-sheet .resume-entry + .resume-entry {
+    margin-top: 9pt;
+  }
+
+  .resume-sheet .resume-entry-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10pt;
+    break-after: avoid;
+  }
+
+  .resume-sheet .resume-entry-header > div {
+    min-width: 0;
+  }
+
+  .resume-sheet .resume-entry h3 {
+    margin: 0 0 2pt;
+    font-size: 1.08em;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  .resume-sheet .resume-entry-header p,
+  .resume-sheet .resume-entry-header > span {
+    margin: 0 0 4pt;
+    max-width: none;
+    color: #39474f;
+    font-size: 0.9em;
+    line-height: 1.25;
+  }
+
+  .resume-sheet .resume-entry-header > span {
+    flex: 0 0 auto;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .resume-sheet .resume-entry ul {
+    margin: 2pt 0 0;
+    padding-left: 13pt;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .resume-sheet .resume-entry li {
+    padding-left: 1pt;
+    break-inside: avoid;
+  }
+
+  .resume-sheet .resume-entry li + li {
+    margin-top: 3pt;
+  }
+
+  .resume-sheet .resume-skills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7pt 14pt;
+  }
+
+  .resume-sheet .resume-skills > div {
+    font-size: inherit;
+    break-inside: avoid;
+  }
+
+  .resume-sheet .resume-skills strong {
+    display: block;
+    margin-bottom: 2pt;
+    font-size: inherit;
+  }
+
+  .resume-sheet .resume-skills span {
+    display: block;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .resume-sheet .resume-skills span + span {
+    margin-top: 2pt;
+  }
+
+  .resume-sheet .resume-skill-wide {
+    grid-column: 1 / -1;
+  }
+
+  .resume-sheet a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

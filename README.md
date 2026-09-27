@@ -176,6 +176,24 @@ For a future custom domain:
 └── tsconfig.json
 ```
 
+## Printing the résumé
+
+The Experience page and its **Print / save PDF** button share
+`src/components/ResumeDocument.astro`. The button opens
+`/experience/print/`, a document containing only the résumé; Ctrl+P on Experience
+also uses the same print layout.
+
+Use **US Letter**, **portrait**, **100% scale**, the CSS/default margins, and turn
+browser headers and footers **off**. The layout reserves two pages with half-inch
+margins and page numbers. Page one contains the summary, education, and current
+role; page two contains earlier roles and skills.
+
+Print sizing lives in `src/styles/resume.css`. Before printing, the component
+fits both pages to a shared 8.5–10.5 pt font size and adjusts line height between
+1.25 and 1.4. Substantial content additions may require moving entries between
+the two `data-resume-page` containers; always check the PDF after editing.
+Achievements come from `src/data/career.ts` and are rendered once per unique bullet.
+
 ## Content safety
 
 This repository is public. Do not commit source material, screenshots, diagrams, numbers,

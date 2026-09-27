@@ -1,0 +1,214 @@
+---
+import { site } from '../data/site';
+import { careerTimeline, type CareerTimelineItem } from '../data/career';
+import '../styles/resume.css';
+
+const bach = careerTimeline.find((item) => item.tone.toLowerCase() === 'bach');
+const mast = careerTimeline.find((item) => item.tone === 'mast');
+const hunch = careerTimeline.find((item) => item.tone === 'hunch');
+const fluids = careerTimeline.find((item) => item.tone === 'fluids');
+const pe = careerTimeline.find((item) => item.tone === 'pe');
+
+// Render each supplied achievement once; data strings are plain text, not HTML.
+const resumeBullets = (item?: CareerTimelineItem) =>
+  [...new Set(item?.bullets ?? [])].filter(Boolean).map((text) => text.replaceAll('&amp;', '&'));
+
+---
+
+<article class="resume-sheet" aria-label="Zachary Tullier resume">
+  <div class="resume-page" data-resume-page>
+    <div class="resume-page-content">
+      <header class="resume-header">
+        <div>
+          <h1>{site.name}</h1>
+          <p>{site.title}</p>
+        </div>
+        <p class="resume-contact">
+          <span>{site.location}</span>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={site.github}>{site.github.replace('https://', '')}</a>
+        </p>
+      </header>
+
+      <section class="resume-summary" aria-label="Professional summary">
+        <p>
+          Systems-focused aerospace and mechanical engineer experienced in leading
+          multimillion-dollar development of safety-critical mechanical and fluid hardware for
+          human-spaceflight programs. Skilled in requirements and interface management,
+          verification planning, configuration control, supplier coordination, and
+          cross-functional execution from design through testing. Graduate research in
+          computational plasma physics adds depth in first-principles analysis, multiphysics
+          modeling, and radiation transport.
+        </p>
+      </section>
+
+      <section class="resume-section">
+        <h2>Education</h2>
+        <div>
+          <article class="resume-entry">
+            <div class="resume-entry-header">
+              <div>
+                <h3>{bach?.title}</h3>
+                <p>{bach?.organization}</p>
+              </div>
+              <span>{bach?.period}</span>
+            </div>
+          </article>
+
+          <article class="resume-entry">
+            <div class="resume-entry-header">
+              <div>
+                <h3>{mast?.title}</h3>
+                <p>{mast?.organization}</p>
+              </div>
+              <span>{mast?.period}</span>
+            </div>
+            <ul>
+              {resumeBullets(mast).map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Experience</h2>
+        <div>
+          <article class="resume-entry">
+            <div class="resume-entry-header">
+              <div>
+                <h3>{pe?.title}</h3>
+                <p>{pe?.organization}</p>
+              </div>
+              <span>{pe?.period}</span>
+            </div>
+            <ul>
+              {resumeBullets(pe).map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+
+        </div>
+      </section>
+    </div>
+    <footer class="resume-page-footer">{site.name} <span>1 / 2</span></footer>
+  </div>
+  <div class="resume-page" data-resume-page>
+    <div class="resume-page-content">
+      <section class="resume-section">
+        <h2 class="resume-continuation">Experience <span>(continued)</span></h2>
+        <div>
+          <article class="resume-entry">
+            <div class="resume-entry-header">
+              <div>
+                <h3>{fluids?.title}</h3>
+                <p>{fluids?.organization}</p>
+              </div>
+              <span>{fluids?.period}</span>
+            </div>
+            <ul>
+              {resumeBullets(fluids).map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+
+          <article class="resume-entry">
+            <div class="resume-entry-header">
+              <div>
+                <h3>{hunch?.title}</h3>
+                <p>{hunch?.organization}</p>
+              </div>
+              <span>{hunch?.period}</span>
+            </div>
+            <ul>
+              {resumeBullets(hunch).map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Skills</h2>
+        <div class="resume-skills">
+          <div>
+            <strong>Engineering Software &amp; CAD</strong>
+            <span>SOLIDWORKS, Creo, Inventor, AutoCAD, Revit, Onshape, PTC Windchill</span>
+            <span>Process automation, design, and integration</span>
+            <span>Thermal, fluid, structural, and performance analysis</span>
+          </div>
+          <div>
+            <strong>Programming &amp; Automation</strong>
+            <span>Python, MATLAB, Java, VBA, LabVIEW</span>
+            <span>
+              Process automation, data acquisition and mechatronic control design, and plasma
+              modeling
+            </span>
+          </div>
+          <div class="resume-skill-wide">
+            <strong>System Design &amp; Analysis</strong>
+            <span>
+              System architecture definition, requirements development, interface controls,
+              verification and validation planning, failure modes and effects evaluation,
+              pressurized system design and test, configuration management, and design review
+              leadership
+            </span>
+          </div>
+          <div class="resume-skill-wide">
+            <strong>Laboratory &amp; Manufacturing Tools</strong>
+            <span>
+              NASA Assembly Documentation (EDS and COSMIC), ASME Y14, Geometric Dimensioning and
+              Tolerancing (GD&amp;T), precision torque tools, digital multimeters, magnetometer,
+              oscilloscope, power supplies, Micro-Hite, micrometers, calipers, optical comparator,
+              FaroArm, polymeric installation, data acquisition systems, handling electrostatic
+              discharge sensitive equipment, handling precision-cleaned hardware, laminar flow
+              benches, vibration table testing, thermal chamber, electromagnetic interference
+              diagnostic tools, acoustic diagnostic tools, compressed gas systems, pipe benders,
+              fused deposition modeling, stereolithography, manual mill and lathe, abrasive
+              finishing, waterjet, thermoforming, and arc welding
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="resume-page-footer">{site.name} <span>2 / 2</span></footer>
+  </div>
+</article>
+
+<script>
+  // Measure at the physical print width, independent of the screen viewport.
+  // Choose one readable font size for both pages, then balance their leading.
+  const pages = [...document.querySelectorAll<HTMLElement>('[data-resume-page]')];
+  const fits = (page: HTMLElement) => {
+    const content = page.querySelector<HTMLElement>('.resume-page-content')!;
+    const footer = page.querySelector<HTMLElement>('.resume-page-footer')!;
+    return content.offsetHeight + footer.offsetHeight + 8 <= page.clientHeight;
+  };
+
+  window.addEventListener('beforeprint', () => {
+    for (const page of pages) page.style.setProperty('--resume-print-leading', '1.25');
+    let low = 8.5;
+    let high = 10.5;
+    for (let step = 0; step < 10; step++) {
+      const size = (low + high) / 2;
+      for (const page of pages) page.style.setProperty('--resume-print-size', `${size}pt`);
+      if (pages.every(fits)) low = size;
+      else high = size;
+    }
+    for (const page of pages) {
+      page.style.setProperty('--resume-print-size', `${Math.floor(low * 100) / 100}pt`);
+      let minLeading = 1.25;
+      let maxLeading = 1.4;
+      for (let step = 0; step < 8; step++) {
+        const leading = (minLeading + maxLeading) / 2;
+        page.style.setProperty('--resume-print-leading', String(leading));
+        if (fits(page)) minLeading = leading;
+        else maxLeading = leading;
+      }
+      page.style.setProperty('--resume-print-leading', String(minLeading));
+    }
+  });
+
+  window.addEventListener('afterprint', () => {
+    for (const page of pages) {
+      page.style.removeProperty('--resume-print-size');
+      page.style.removeProperty('--resume-print-leading');
+    }
+  });
+</script>
